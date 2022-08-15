@@ -133,6 +133,7 @@ int main(void){
 	PidInit();
 	CAN1_Configuration();
 	stateInit();
+	Servo_Init();
 	u8 trackModeState = 0;
 	
 	
