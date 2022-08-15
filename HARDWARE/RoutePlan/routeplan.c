@@ -1,12 +1,13 @@
 #include "routeplan.h"
 
+//5个电机的结构体
 extern volatile MotorTypeDef Motor_1, Motor_2,Motor_3, Motor_4;
 extern volatile MotorTypeDef Motor_5;
 
 float motor_Position[3] = {0, 0, 0}; //coordinate x; coordinate y; Rotation angle(Horizontal counterclockwise is positive)
 
-float motor_circle_angle[5] = {0,0,0,0,0};   //Relative rotation angle of the universal wheel
-float motor_Position_angle[5] = {0,0,0,0,0}; //Absolute rotation angle of the universal wheel
+float motor_circle_angle[5] = {0,0,0,0,0};   //Relative rotation angle of the universal wheel 电机旋转的相对角度
+float motor_Position_angle[5] = {0,0,0,0,0}; //Absolute rotation angle of the universal wheel 电机旋转的绝对角度
 int i;
 
 /*————————————————————————————————————————————轨迹规划代码↓————————————————————————————————————————————*/
@@ -138,8 +139,7 @@ void routeplan(int s, int e, int startORend){
 	（eye）
 	
 	*/
-	
-	
+
 	if(startORend == 1){//初始位置位于终点,s,e交换，且2 => 0, 0 => 2 
 		//swap
 		int temp = s;
