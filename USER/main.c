@@ -198,38 +198,16 @@ int main(void){
 				}
 				else if(Sbox_state[motor_park_space_start][0] > 0){
 					if(Sbox_state[motor_park_space_start][1] >0){
-						if(Sbox_state[motor_park_space_start][1] == 1){
-//							Lift_Drop_box(860);
-//							CoordinatePositionMovement(0.0f, 0.0f, CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f));
-//							Lift_Drop_box(60);
-//							CoordinatePositionMovement(CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f),0.0f,0.0f);
-						}
-						if(Sbox_state[motor_park_space_start][1] == 2){
-//							Lift_Drop_box(860);
-//							CoordinatePositionMovement(0.0f, 0.0f, CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f));
-//							Lift_Drop_box(60);
-//							CoordinatePositionMovement(CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f),0.0f,0.0f);
-						}
-						
+						liftplan(1,Sbox_state[motor_park_space_start][1]);
+						mobile_box_state = Sbox_state[motor_park_space_start][1]; //milk box state
 						motor_park_space_end = ChooseEndPoint(Sbox_state[motor_park_space_start][1]);
-						Sbox_state[motor_park_space_start][1] = -1;
+						Sbox_state[motor_park_space_start][1] = -1; //update state
 					}
 					else{
-						if(Sbox_state[motor_park_space_start][0] == 1){
-//							Lift_Drop_box(860);
-//							CoordinatePositionMovement(0.0f, 0.0f, CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f));
-//							Lift_Drop_box(60);
-//							CoordinatePositionMovement(CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f),0.0f,0.0f);
-						}
-						if(Sbox_state[motor_park_space_start][0] == 2){
-//							Lift_Drop_box(860);
-//							CoordinatePositionMovement(0.0f, 0.0f, CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f));
-//							Lift_Drop_box(60);
-//							CoordinatePositionMovement(CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f),0.0f,0.0f);
-						}
-						mobile_box_state = Sbox_state[motor_park_space_start][1];
+						liftplan(0,Sbox_state[motor_park_space_start][1]);
+						mobile_box_state = Sbox_state[motor_park_space_start][0]; //milk box state
 						motor_park_space_end = ChooseEndPoint(Sbox_state[motor_park_space_start][0]);
-						Sbox_state[motor_park_space_start][0] = -1;
+						Sbox_state[motor_park_space_start][0] = -1; //update state
 					}
 				}
 
@@ -237,29 +215,7 @@ int main(void){
 				break;
 				
 			case DROP_MODE:
-				if(motor_park_space_end == 1){
-					//放置中间位置
-					if(mobile_box_state == 1)
-					{
-						//不需要调整位置
-					}
-					else
-					{
-						//需要位置调整
-					}
-					
-				}
-				else{
-					//放置两边的位置
-					if(mobile_box_state == 2)
-					{
-						//不需要调整位置
-					}
-					else
-					{
-						//需要位置调整
-					}
-				}
+				dropplan(motor_park_space_end,mobile_box_state);
 				motor_park_space_start = ChooseStartPoint();
 				if(motor_park_space_start>=0){Control_Mode = MOBILE_MODE;} // mission in progress
 				else{Control_Mode = STOP_MODE;} //mission over

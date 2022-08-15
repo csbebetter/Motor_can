@@ -222,6 +222,61 @@ void routeplan(int s, int e, int startORend){
 	}
 }
 
+
+void liftplan(int upordown, int state){
+	
+	if(upordown == 1 && state == 1)//up -
+	{
+//		Lift_Drop_box(860);
+//		CoordinatePositionMovement(0.0f, 0.0f, CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f));
+//		Lift_Drop_box(60);
+//		CoordinatePositionMovement(CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f),0.0f,0.0f);
+	}
+	if(upordown == 1 && state == 2)//up |
+	{
+	
+	}
+	if(upordown == 0 && state == 1)//down -
+	{
+	
+	}
+	if(upordown == 0 && state == 2)//down |
+	{
+	
+	}
+}
+	
+
+	
+void dropplan(int e, int state){
+	if(e == 1){
+		//放置中间位置
+		if(state == 1)
+		{
+			//不需要调整位置
+		}
+		else
+		{
+			//需要位置调整
+		}
+		
+	}
+	else{
+		//放置两边的位置
+		if(state == 2)
+		{
+			//不需要调整位置
+		}
+		else
+		{
+			//需要位置调整
+		}
+	}
+}
+
+
+
+
 //Judging the speed loop control stop
 bool stopCspdJudging(float cspderr, int x){
 	int stopj = -3;
