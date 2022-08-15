@@ -1,0 +1,96 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: sheng cao, huazhong, LIC=YA39H-WWCZ5-BSZYX-HHS3J-HLE2K-HXCB1
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.37.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 3 (build 300)
+Assembler:       Armasm.exe V5.06 update 3 (build 300)
+Linker/Locator:  ArmLink.exe V5.06 update 3 (build 300)
+Library Manager: ArmAr.exe V5.06 update 3 (build 300)
+Hex Converter:   FromElf.exe V5.06 update 3 (build 300)
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.56.1.0
+ 
+<h2>Project:</h2>
+C:\Users\csbeb\Desktop\WL_new_8_14\USER\CAN.uvprojx
+Project File Date:  08/14/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'CAN'
+compiling motor_control.c...
+compiling key.c...
+compiling MyServo.c...
+compiling system_stm32f4xx.c...
+compiling led.c...
+compiling stm32f4xx_it.c...
+compiling cal_distance.c...
+..\HARDWARE\WL_LaserDis_V2\cal_distance.h(6): warning:  #1295-D: Deprecated declaration cal_distance1 - give arg types
+  int cal_distance1();
+..\HARDWARE\WL_LaserDis_V2\cal_distance.c: 1 warning, 0 errors
+compiling track.c...
+..\HARDWARE\Track\track.c(314): warning:  #1-D: last line of file ends without a newline
+  }
+..\HARDWARE\Track\track.c: 1 warning, 0 errors
+compiling main.c...
+..\HARDWARE\WL_LaserDis_V2\cal_distance.h(6): warning:  #1295-D: Deprecated declaration cal_distance1 - give arg types
+  int cal_distance1();
+main.c(87): warning:  #940-D: missing return statement at end of non-void function "ChooseEndPoint"
+  }
+main.c(118): warning:  #177-D: variable "keepCommCnt" was declared but never referenced
+  	u32 keepCommCnt = 0;
+main.c: 3 warnings, 0 errors
+compiling can.c...
+..\HARDWARE\CAN\can.c(87): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		Motor_1.SpeedMeasure =((float)(short)(RxMessage.Data[2]<<8 | RxMessage.Data[3]))/19.0;//*187.0/3591;   
+..\HARDWARE\CAN\can.c(100): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		Motor_2.SpeedMeasure =((float)(short)(RxMessage.Data[2]<<8 | RxMessage.Data[3]))/19.0;//*187.0/3591;   
+..\HARDWARE\CAN\can.c(114): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		Motor_3.SpeedMeasure =((float)(short)(RxMessage.Data[2]<<8 | RxMessage.Data[3]))/19.0;//*187.0/3591;   
+..\HARDWARE\CAN\can.c(129): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		Motor_4.SpeedMeasure =((float)(short)(RxMessage.Data[2]<<8 | RxMessage.Data[3]))/19.0;//*187.0/3591;   
+..\HARDWARE\CAN\can.c(143): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		Motor_5.SpeedMeasure =((float)(short)(RxMessage.Data[2]<<8 | RxMessage.Data[3]))/19.0;//*187.0/3591;   
+..\HARDWARE\CAN\can.c: 5 warnings, 0 errors
+compiling routeplan.c...
+assembling startup_stm32f40_41xxx.s...
+compiling misc.c...
+compiling sys.c...
+compiling delay.c...
+compiling stm32f4xx_gpio.c...
+compiling stm32f4xx_syscfg.c...
+compiling usart.c...
+compiling stm32f4xx_fsmc.c...
+compiling stm32f4xx_rcc.c...
+compiling stm32f4xx_usart.c...
+compiling stm32f4xx_can.c...
+compiling stm32f4xx_tim.c...
+linking...
+Program Size: Code=29064 RO-data=712 RW-data=72 ZI-data=2768  
+FromELF: creating hex file...
+"..\OBJ\CAN.axf" - 0 Error(s), 10 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.16.0.pack
+                Keil.STM32F4xx_DFP.2.16.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  C:/Keil_v5/ARM/PACK/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:03
+</pre>
+</body>
+</html>
