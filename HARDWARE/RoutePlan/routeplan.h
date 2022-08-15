@@ -4,14 +4,14 @@
 
 #define MOTOR_DIAMETER	450.00f
 #define WHEEL_DIAMETER  75.00f
-#define LINEAR_SPEED 300
-#define SPINNING_SPEED 100
+#define LINEAR_SPEED 300   //straight speed
+#define SPINNING_SPEED 100 //rotate speed
 #define PI 3.141592768f
 #define CSPDERR 50
 #define CPOSERR 50
-#define theta -PI/4
-#define LINEAR_ERR 1.05f
-#define SPINNING_ERR 1.0f
+#define theta -PI/4		   //Coordinate transformation
+#define LINEAR_ERR 1.05f   //Correcting straight-line deviation
+#define SPINNING_ERR 1.0f  //Correcting rotate deviation
 
 
 
