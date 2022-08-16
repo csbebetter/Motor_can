@@ -21,29 +21,30 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
 Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
-C:\Users\csbeb\Desktop\WL_new_8_14\USER\CAN.uvprojx
+C:\Users\csbeb\Desktop\WL_new_Test\USER\CAN.uvprojx
 Project File Date:  08/14/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'CAN'
-compiling cal_distance.c...
-..\HARDWARE\WL_LaserDis_V2\cal_distance.h(9): warning:  #1-D: last line of file ends without a newline
-  int cal_distance3(void);
-..\HARDWARE\WL_LaserDis_V2\cal_distance.c: 1 warning, 0 errors
 compiling main.c...
 ..\HARDWARE\WL_LaserDis_V2\cal_distance.h(9): warning:  #1-D: last line of file ends without a newline
   int cal_distance3(void);
 main.c(88): warning:  #940-D: missing return statement at end of non-void function "ChooseEndPoint"
   }
+main.c(115): warning:  #177-D: variable "Control_Mode" was declared but never referenced
+  	int Control_Mode;
 main.c(119): warning:  #177-D: variable "keepCommCnt" was declared but never referenced
   	u32 keepCommCnt = 0;
-main.c: 3 warnings, 0 errors
-compiling routeplan.c...
+main.c(120): warning:  #177-D: variable "j" was declared but never referenced
+  	int j = 0;
+main.c(137): warning:  #177-D: variable "trackModeState" was declared but never referenced
+  	u8 trackModeState = 0;
+main.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=33072 RO-data=784 RW-data=72 ZI-data=2768  
+Program Size: Code=20732 RO-data=424 RW-data=52 ZI-data=2716  
 FromELF: creating hex file...
-"..\OBJ\CAN.axf" - 0 Error(s), 4 Warning(s).
+"..\OBJ\CAN.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -56,7 +57,7 @@ Package Vendor: Keil
   C:/Keil_v5/ARM/PACK/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

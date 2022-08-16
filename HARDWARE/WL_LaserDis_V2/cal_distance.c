@@ -8,7 +8,7 @@ void GPIO_Configuration(void)
   
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);  
   /*echo*/
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;//指定echo的引脚
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;//指定echo的引脚
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;//指定为in
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;

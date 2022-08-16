@@ -115,6 +115,9 @@ void AngularRotationMovement(float CurrentA, float ExpectedA){
 	motor_Position[2] = ExpectedA;
 }
 
+
+//+ 向下
+//- 向上
 void Lift_Drop_box(float s){
 	int m1 = Motor_1.PositionMeasure;
 	int m2 = Motor_2.PositionMeasure;
@@ -230,9 +233,7 @@ void liftplan(int upordown, int state){
 	if(upordown == 1 && state == 1)//up -
 	{
 		
-		CoordinatePositionMovement(0.0f, 0.0f, CTransX(400.00f, 00.00f), CTransY(400.00f, 00.00f));
-		Lift_Drop_box(-1080.0f);
-		CoordinatePositionMovement(CTransX(400.00f, 00.00f), CTransY(400.00f, 00.00f),0.0f,0.0f);
+
 	}
 	if(upordown == 1 && state == 2)//up |
 	{
