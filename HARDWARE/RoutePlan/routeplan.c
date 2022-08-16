@@ -232,8 +232,11 @@ void liftplan(int upordown, int state){
 	
 	if(upordown == 1 && state == 1)//up -
 	{
-		
-
+		Lift_Drop_box(-1080*4);
+		CoordinatePositionMovement(0, 0, CTransX(300.00f, 0.00f), CTransY(300.00f,0.00f));
+		Lift_Drop_box(-1080*6);
+		CoordinatePositionMovement(CTransX(300.00f, 0.00f), CTransY(300.00f,0.00f),0, 0);
+		Lift_Drop_box(-1080*4);
 	}
 	if(upordown == 1 && state == 2)//up |
 	{

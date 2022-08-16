@@ -135,12 +135,24 @@ int main(void){
 	stateInit();
 	Servo_Init();
 	u8 trackModeState = 0;
-	
-	
+
+
+
+	while(1){
+//		delay_ms(1000);
+//		MoveToDefault;
+//		delay_ms(1000);
+//		Clockwise;
+//		delay_ms(1000);
+//		MoveToDefault;
+//		delay_ms(1000);
+//		CounterClockwise;
+	}
+
 
 	//CoordinatePositionMovement(0.0f, 0.0f, CTransX(400.00f, 00.00f), CTransY(400.00f, 00.00f));
 	//Lift_Drop_box(2160.0f);
-	Servo_Angle_Set(180);
+	
 	//CoordinatePositionMovement(CTransX(400.00f, 00.00f), CTransY(400.00f, 00.00f),0.0f,0.0f);
 	
 //	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));

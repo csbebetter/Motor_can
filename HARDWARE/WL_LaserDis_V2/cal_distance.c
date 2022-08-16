@@ -26,7 +26,7 @@ int cal_distance1()  //ÏÂÃæÄ£¿é
 	unsigned int sum1=0;
 	unsigned int distance1=0;
 	int flag1=0;
-	
+	 
 	while(i1<=reading_count1)
 	{
 		i1++;
