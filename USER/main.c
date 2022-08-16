@@ -139,19 +139,14 @@ int main(void){
 	
 	/*——————————————————————————V 检测牛奶箱状态； 并进行移位操作，如果位置1没有牛奶箱，则移位到位置0 V————————————————————————————————————*/
 	Sbox_state[1][0] = cal_distance1();
-	//Sbox_state[0][0] = cal_distance3();
+	Sbox_state[0][0] = cal_distance3();
 	if(Sbox_state[1][0] == 0){
 		Sbox_state[2][0] = 3;
 		CoordinatePositionMovement(0.0f, 0.0f, CTransX(-500.00f, 00.00f), CTransY(-500.00f, 00.00f)); //如果中间没有，向左移到位置0。
 		motor_park_space_start = 0;//并将小车的状态位设置为处于0位置
 	}
 	else{ //否则小车不移位
-		if(Sbox_state[0][0] == 0){
-			Sbox_state[2][0] = 3;
-		}
-		else{
-			Sbox_state[2][0] = 0;
-		}
+		if(Sbox_state[0][0] == 0){Sbox_state[2][0] = 3;} else{Sbox_state[2][0] = 0;}
 	}
 	/*——————————————————————————^ 检测牛奶箱状态； 并进行移位操作，如果位置1没有牛奶箱，则移位到位置0 ^————————————————————————————————————*/
 	Control_Mode = LIFT_MODE;
@@ -172,10 +167,10 @@ int main(void){
 				/*轨迹规划*/
 				for (j=0; j<3; j++) motor_Position[j]=0;
 				void routeplan(int motor_park_space_strat, int motor_park_space_end, int motor_Location);
-				//-> TRACK_MODE
-				Control_Mode = TRACK_MODE;
 				//转换小车的s or e状态
 				if(motor_Location == 0){motor_Location = 1;}else{motor_Location = 0;}
+				//-> TRACK_MODE
+				Control_Mode = TRACK_MODE;
 				break;
 			
 			case TRACK_MODE:
@@ -184,7 +179,6 @@ int main(void){
 					stateInit();
 					//如果小车位于起始位置，做抬升;如果小车位于结尾位置，做放下操作
 					if(motor_Location == 0){Control_Mode=LIFT_MODE;}else{Control_Mode=DROP_MODE;}
-					
 				}
 				break;
 				
@@ -233,6 +227,5 @@ int main(void){
 		
 		}
 	}
-	
 }
 

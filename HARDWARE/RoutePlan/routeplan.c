@@ -121,9 +121,11 @@ void Lift_Drop_box(float s){
 	int m3 = Motor_3.PositionMeasure;
 	int m4 = Motor_4.PositionMeasure;
 	int m5 = Motor_5.PositionMeasure;
-	while(Motor_5.SpeedMeasure<1 && Motor_5.SpeedMeasure>-1){
+	while(!(fabs(Motor_5.PositionMeasure - s )<10)){
 		MotorPositionExpected(m1,m2,m3,m4,s);
+		delay_ms(2);
 	}
+	
 }
 
 void routeplan(int s, int e, int startORend){
@@ -227,10 +229,10 @@ void liftplan(int upordown, int state){
 	
 	if(upordown == 1 && state == 1)//up -
 	{
-//		Lift_Drop_box(860);
-//		CoordinatePositionMovement(0.0f, 0.0f, CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f));
-//		Lift_Drop_box(60);
-//		CoordinatePositionMovement(CTransX(250.00f, 00.00f), CTransY(250.00f, 00.00f),0.0f,0.0f);
+		
+		CoordinatePositionMovement(0.0f, 0.0f, CTransX(400.00f, 00.00f), CTransY(400.00f, 00.00f));
+		Lift_Drop_box(-1080.0f);
+		CoordinatePositionMovement(CTransX(400.00f, 00.00f), CTransY(400.00f, 00.00f),0.0f,0.0f);
 	}
 	if(upordown == 1 && state == 2)//up |
 	{

@@ -11,7 +11,7 @@
 #define CPOSERR 50
 #define theta -PI/4		   //Coordinate transformation
 #define LINEAR_ERR 1.05f   //Correcting straight-line deviation
-#define SPINNING_ERR 1.0f  //Correcting rotate deviation
+#define SPINNING_ERR 1.025f  //Correcting rotate deviation
 
 
 

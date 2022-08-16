@@ -3,5 +3,7 @@
 #include "delay.h"
 #include "stdio.h"
 
-int cal_distance1();
+void GPIO_Configuration(void);
+int cal_distance1(void);
 int cal_distance2(int last_flag);
+int cal_distance3(void);
