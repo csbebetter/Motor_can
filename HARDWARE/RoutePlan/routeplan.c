@@ -232,11 +232,11 @@ void liftplan(int upordown, int state){
 	
 	if(upordown == 1 && state == 1)//up -
 	{
-		Lift_Drop_box(-1080*4);
-		CoordinatePositionMovement(0, 0, CTransX(300.00f, 0.00f), CTransY(300.00f,0.00f));
-		Lift_Drop_box(-1080*6);
-		CoordinatePositionMovement(CTransX(300.00f, 0.00f), CTransY(300.00f,0.00f),0, 0);
-		Lift_Drop_box(-1080*4);
+		Lift_Drop_box(-4750);
+		CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
+		Lift_Drop_box(-5400);
+		CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
+		Lift_Drop_box(-3000);
 	}
 	if(upordown == 1 && state == 2)//up |
 	{
@@ -244,7 +244,11 @@ void liftplan(int upordown, int state){
 	}
 	if(upordown == 0 && state == 1)//down -
 	{
-	
+		Lift_Drop_box(-360);
+		CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
+		Lift_Drop_box(-3000);
+		CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
+
 	}
 	if(upordown == 0 && state == 2)//down |
 	{
@@ -260,6 +264,10 @@ void dropplan(int e, int state){
 		if(state == 1)
 		{
 			//不需要调整位置
+			CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
+			Lift_Drop_box(-360);
+			CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
+			
 		}
 		else
 		{
@@ -272,6 +280,9 @@ void dropplan(int e, int state){
 		if(state == 2)
 		{
 			//不需要调整位置
+			CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
+			Lift_Drop_box(-360);
+			CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
 		}
 		else
 		{

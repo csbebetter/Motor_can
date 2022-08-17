@@ -42,3 +42,4 @@
 ..\obj\routeplan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\routeplan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\routeplan.o: ..\SYSTEM\delay\delay.h
+..\obj\routeplan.o: ..\HARDWARE\Servo\MyServo.h

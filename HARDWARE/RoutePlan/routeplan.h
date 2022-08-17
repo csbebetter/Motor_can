@@ -1,6 +1,7 @@
 #include <math.h>
 #include "motor.h"
 #include "delay.h"
+#include "MyServo.h"
 
 #define MOTOR_DIAMETER	450.00f
 #define WHEEL_DIAMETER  75.00f

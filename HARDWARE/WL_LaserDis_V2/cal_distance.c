@@ -44,12 +44,12 @@ int cal_distance1()  //下面模块
 		//此时没有箱子
 		flag1 = 0;
 	}
-	if(distance1 >= 400 && distance1 <= 440 )
+	if(distance1 >= 435 && distance1 <= 480)
 	{
 		//此处有一个纸箱，纸箱横放
 		flag1 = 1;
 	}
-	if(distance1 >= 340 && distance1 <= 380)
+	if(distance1 >= 375 && distance1 <= 420)
 	{
 		//此处有一个纸箱，纸箱纵放
 		flag1 = 2;
@@ -82,12 +82,12 @@ int cal_distance2(int last_flag) //上面模块
 			delay_ms(10);
 		}
 		distance2 = (sum2-last_time2_max-last_time2_min)/5;
-		if(distance2 >= 210 && distance2 <= 250)
+		if(distance2 >= 280 && distance2 <= 320)
 		{
 			//此处有一个纸箱，纸箱横放
 			flag2 = 1;
 		}
-		if(distance2 >= 160 && distance2 <= 200)
+		if(distance2 >= 235 && distance2 <= 275)
 		{
 			//此处有一个纸箱，纸箱纵放
 			flag2 = 2;
