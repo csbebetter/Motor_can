@@ -265,6 +265,7 @@ u8 startTrack(void){
 		flag = 1;
 	}
 	else if(reachTarget(4)){
+<<<<<<< HEAD
 		lastRobotState = currentRobotState;
 		currentRobotState = COMM_STOP;
 		flag = 1;
@@ -274,25 +275,31 @@ u8 startTrack(void){
 		currentRobotState = COMM_LEFT;
 	}
 	else if(wayAllWhite() && flag == 1){
+=======
+>>>>>>> 9bd31f013e9ca3faacabcd8cb91eb8048cdc178c
 		lastRobotState = currentRobotState;
 		currentRobotState = COMM_STOP;
 	}
-	if(currentRobotState == COMM_STOP && wayAllWhite()){
-		if(lastRobotState == COMM_LEFT){
-			currentRobotState = COMM_LEFT;
-		}
-		if(lastRobotState == COMM_RIGHT){
-			currentRobotState = COMM_RIGHT;
-		}
-		if(lastRobotState == COMM_FORWARD){
-			if(reachTarget(4)){
-				currentRobotState = COMM_STOP;
-			}
-			else{
-				currentRobotState = COMM_FORWARD;
-			}
-		}
+	else if(wayAllWhite()){
+		lastRobotState = currentRobotState;
+		currentRobotState = COMM_LEFT;
 	}
+//	if(currentRobotState == COMM_STOP && wayAllWhite()){
+//		if(lastRobotState == COMM_LEFT){
+//			currentRobotState = COMM_LEFT;
+//		}
+//		if(lastRobotState == COMM_RIGHT){
+//			currentRobotState = COMM_RIGHT;
+//		}
+//		if(lastRobotState == COMM_FORWARD){
+//			if(reachTarget(4)){
+//				currentRobotState = COMM_STOP;
+//			}
+//			else{
+//				currentRobotState = COMM_FORWARD;
+//			}
+//		}
+//	}
 
 	switch(currentRobotState){
 		case COMM_FORWARD:{
