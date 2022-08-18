@@ -32,21 +32,20 @@ compiling main.c...
   int cal_distance3(void);
 main.c(88): warning:  #940-D: missing return statement at end of non-void function "ChooseEndPoint"
   }
-main.c(223): warning:  #128-D: loop is not reachable
-  	while(1){
-main.c(238): warning:  #128-D: loop is not reachable
-  	while(1){
-main.c(115): warning:  #177-D: variable "Control_Mode" was declared but never referenced
-  	int Control_Mode;
+main.c(119): warning:  #177-D: variable "keepCommCnt" was declared but never referenced
+  	u32 keepCommCnt = 0;
 main.c(120): warning:  #177-D: variable "j" was declared but never referenced
   	int j = 0;
-main.c(137): warning:  #177-D: variable "trackModeState" was declared but never referenced
-  	u8 trackModeState = 0;
-main.c: 7 warnings, 0 errors
+main.c: 4 warnings, 0 errors
+compiling track.c...
+..\HARDWARE\Track\track.c(326): warning:  #1-D: last line of file ends without a newline
+  }
+..\HARDWARE\Track\track.c: 1 warning, 0 errors
+compiling routeplan.c...
 linking...
-Program Size: Code=37088 RO-data=712 RW-data=56 ZI-data=2768  
+Program Size: Code=36112 RO-data=712 RW-data=56 ZI-data=2768  
 FromELF: creating hex file...
-"..\OBJ\CAN.axf" - 0 Error(s), 7 Warning(s).
+"..\OBJ\CAN.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 

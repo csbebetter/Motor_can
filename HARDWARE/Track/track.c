@@ -2,6 +2,7 @@
 
 u8 currentRobotState;
 u8 lastRobotState;
+static u8 flag = 0;
 
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！儉治旗鷹◎！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
 /*！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！儉治旗鷹◎！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！*/
@@ -247,19 +248,32 @@ void stateInit(void){
 }
 
 u8 startTrack(void){
+	
 	if(needForward()){
 		lastRobotState = currentRobotState;
 		currentRobotState = COMM_FORWARD;
+		flag = 1;
 	}
 	else if(needLeft()){
 		lastRobotState = currentRobotState;
 		currentRobotState = COMM_LEFT;
+		flag = 1;
 	}
 	else if(needRight()){
 		lastRobotState = currentRobotState;
 		currentRobotState = COMM_RIGHT;
+		flag = 1;
 	}
-	else if(reachTarget(4) || wayAllWhite()){
+	else if(reachTarget(4)){
+		lastRobotState = currentRobotState;
+		currentRobotState = COMM_STOP;
+		flag = 1;
+	}
+	else if(wayAllWhite() && flag == 0){
+		lastRobotState = currentRobotState;
+		currentRobotState = COMM_LEFT;
+	}
+	else if(wayAllWhite() && flag == 1){
 		lastRobotState = currentRobotState;
 		currentRobotState = COMM_STOP;
 	}

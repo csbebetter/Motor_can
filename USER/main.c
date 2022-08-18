@@ -145,100 +145,29 @@ int main(void){
 //	Lift_Drop_box(-1400);
 	
 	
-
-	CoordinatePositionMovement(CTransX(0.00f, -550.00f), CTransY(0.00f, -550.00f), CTransX(-1200.00f, -550.00f), CTransY(-1200.00f, -550.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 519.00f), CTransY(-1200.00f, 519.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 519.00f), CTransY(-1900.00f, 519.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
-
-
-
-	runStop();
-	while(1){
-		
-			if(needForward()){
-				lastRobotState = currentRobotState;
-				currentRobotState = COMM_FORWARD;
-			}
-			else if(needLeft()){
-				lastRobotState = currentRobotState;
-				currentRobotState = COMM_LEFT;
-			}
-			else if(needRight()){
-				lastRobotState = currentRobotState;
-				currentRobotState = COMM_RIGHT;
-			}
-			else if(reachTarget(4) || wayAllWhite()){
-				lastRobotState = currentRobotState;
-				currentRobotState = COMM_STOP;
-			}
-			if(currentRobotState == COMM_STOP && wayAllWhite()){
-				if(lastRobotState == COMM_LEFT){
-					currentRobotState = COMM_LEFT;
-					++keepCommCnt;
-				}
-				if(lastRobotState == COMM_RIGHT){
-					currentRobotState = COMM_RIGHT;
-					++keepCommCnt;
-				}
-				if(lastRobotState == COMM_FORWARD){
-					if(reachTarget(4)){
-						currentRobotState = COMM_STOP;
-					}
-					else{
-						currentRobotState = COMM_FORWARD;
-						++keepCommCnt;
-					}
-				}
-			}
-			if(keepCommCnt > 1000){
-				keepCommCnt =0;
-				currentRobotState = COMM_STOP;
-			}
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -1100.00f), CTransY(0.00f, -1100.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2000.00f, -1100.00f), CTransY(-2000.00f, -1100.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
 			
-			switch(currentRobotState){
-				case COMM_FORWARD:{
-					runFront();
-					break;
-				}
-				case COMM_LEFT:{
-					runLeft();
-					break;
-				}
-				case COMM_RIGHT:{
-					runRight();
-					break;
-				}
-				case COMM_STOP:{
-					runStop();
-					break;
-				}
-				default:{
-					delay_ms(10);
-					break;
-				}
-			}
-		}
+			Control_Mode=TRACK_MODE;
 
 	while(1){
-		if(SEARCH_OUT_IO_3 == WHITE_AREA){
-			LED0 = 0;
-		}
-		else{
-			LED0 = 1;
-		}
-		if(SEARCH_OUT_IO_4 == WHITE_AREA){
-			LED1 = 0;
-		}
-		else{
-			LED1 = 1;
-		}
-	}
-	
-	while(1){
-		MotorSpeedExpected(0, 0, 0, 0, 0);
-		delay_ms(1);
-	
+		switch(Control_Mode){
+			case TRACK_MODE:
+				trackModeState = startTrack();
+				if(trackModeState){
+					stateInit();
+					//如果小车位于起始位置，做抬升;如果小车位于结尾位置，做放下操作
+					Control_Mode = STOP_MODE;
+				}
+				break;
+			case STOP_MODE:
+				MotorSpeedExpected(0, 0, 0, 0, 0);
+				delay_ms(1);
+			default:
+				Control_Mode=STOP_MODE;
+		}	
+
 	}
 //	
 	
