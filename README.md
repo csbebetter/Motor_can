@@ -2,6 +2,7 @@
 
 ## 1. List of Items:
 
+<<<<<<< HEAD
 | Items                | quantity |
 | :------------------: | -------- |
 | RoboMaster M3508 P19 | 4        |
@@ -15,6 +16,21 @@
 | omni wheel | 4        |
 | STM32F407 core development board | 1        |
 | JTA1050 CAN | 1        |
+=======
+|              Items               | quantity |
+| :------------------------------: | -------- |
+|       RoboMaster M3508 P19       | 4        |
+|         RoboMaster C620          | 4        |
+|       RoboMaster M2006 P36       | 1        |
+|         RoboMaster C610          | 1        |
+|           Servo (any)            | 1        |
+|          Ranging sensor          | 2        |
+|       Photoelectric sensor       | 1        |
+|  Grayscale Line Tracking Sensor  | 1        |
+|            omni wheel            | 4        |
+| STM32F407 core development board | 1        |
+|           JTA1050 CAN            | 1        |
+>>>>>>> 7da1b17ca4459006e02714d2c918001ab18f0214
 
 ## 2. Introduction of  The Code
 
