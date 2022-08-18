@@ -406,6 +406,7 @@ bool stopCspdJudging(float cspderr, int x){
 	else{return false;}
 }
 
+
 bool stopCposJudging(float cposerr,int x){
 	int stopj = -3;
 	if(Motor_1.SpeedMeasure<cposerr && Motor_1.SpeedMeasure>-cposerr){stopj+=1;}
