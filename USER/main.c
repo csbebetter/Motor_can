@@ -138,103 +138,103 @@ int main(void){
 	
 	
 	
-	Lift_Drop_box(-3950);
-	CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
-	Lift_Drop_box(-4900);
-	CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
-	Lift_Drop_box(-1400);
+//	Lift_Drop_box(-3950);
+//	CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
+//	Lift_Drop_box(-4900);
+//	CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
+//	Lift_Drop_box(-1400);
 	
 	
-//	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));
-//	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1100.00f, -500.00f), CTransY(-1100.00f, -500.00f));
-//	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1100.00f, 600.00f), CTransY(-1100.00f, 600.00f));
-//	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, 600.00f), CTransY(-1800.00f, 600.00f));
-//	AngularRotationMovement(motor_Position[2], -190.0f);
-//	CoordinatePositionMovement(0, 0, CTransX(00.00f, 610.00f), CTransY(00.00f, 610.00f));
+
+	CoordinatePositionMovement(CTransX(0.00f, -550.00f), CTransY(0.00f, -550.00f), CTransX(-1200.00f, -550.00f), CTransY(-1200.00f, -550.00f));
+	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 519.00f), CTransY(-1200.00f, 519.00f));
+	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 519.00f), CTransY(-1900.00f, 519.00f));
+	AngularRotationMovement(motor_Position[2], 180.0f);
 
 
-//	runStop();
-//	while(1){
-//		
-//			if(needForward()){
-//				lastRobotState = currentRobotState;
-//				currentRobotState = COMM_FORWARD;
-//			}
-//			else if(needLeft()){
-//				lastRobotState = currentRobotState;
-//				currentRobotState = COMM_LEFT;
-//			}
-//			else if(needRight()){
-//				lastRobotState = currentRobotState;
-//				currentRobotState = COMM_RIGHT;
-//			}
-//			else if(reachTarget(4) || wayAllWhite()){
-//				lastRobotState = currentRobotState;
-//				currentRobotState = COMM_STOP;
-//			}
-//			if(currentRobotState == COMM_STOP && wayAllWhite()){
-//				if(lastRobotState == COMM_LEFT){
-//					currentRobotState = COMM_LEFT;
-//					++keepCommCnt;
-//				}
-//				if(lastRobotState == COMM_RIGHT){
-//					currentRobotState = COMM_RIGHT;
-//					++keepCommCnt;
-//				}
-//				if(lastRobotState == COMM_FORWARD){
-//					if(reachTarget(4)){
-//						currentRobotState = COMM_STOP;
-//					}
-//					else{
-//						currentRobotState = COMM_FORWARD;
-//						++keepCommCnt;
-//					}
-//				}
-//			}
-//			if(keepCommCnt > 1000){
-//				keepCommCnt =0;
-//				currentRobotState = COMM_STOP;
-//			}
-//			
-//			switch(currentRobotState){
-//				case COMM_FORWARD:{
-//					runFront();
-//					break;
-//				}
-//				case COMM_LEFT:{
-//					runLeft();
-//					break;
-//				}
-//				case COMM_RIGHT:{
-//					runRight();
-//					break;
-//				}
-//				case COMM_STOP:{
-//					runStop();
-//					break;
-//				}
-//				default:{
-//					delay_ms(10);
-//					break;
-//				}
-//			}
-//		}
 
-//	while(1){
-//		if(SEARCH_OUT_IO_3 == WHITE_AREA){
-//			LED0 = 0;
-//		}
-//		else{
-//			LED0 = 1;
-//		}
-//		if(SEARCH_OUT_IO_4 == WHITE_AREA){
-//			LED1 = 0;
-//		}
-//		else{
-//			LED1 = 1;
-//		}
-//	}
-//	
+	runStop();
+	while(1){
+		
+			if(needForward()){
+				lastRobotState = currentRobotState;
+				currentRobotState = COMM_FORWARD;
+			}
+			else if(needLeft()){
+				lastRobotState = currentRobotState;
+				currentRobotState = COMM_LEFT;
+			}
+			else if(needRight()){
+				lastRobotState = currentRobotState;
+				currentRobotState = COMM_RIGHT;
+			}
+			else if(reachTarget(4) || wayAllWhite()){
+				lastRobotState = currentRobotState;
+				currentRobotState = COMM_STOP;
+			}
+			if(currentRobotState == COMM_STOP && wayAllWhite()){
+				if(lastRobotState == COMM_LEFT){
+					currentRobotState = COMM_LEFT;
+					++keepCommCnt;
+				}
+				if(lastRobotState == COMM_RIGHT){
+					currentRobotState = COMM_RIGHT;
+					++keepCommCnt;
+				}
+				if(lastRobotState == COMM_FORWARD){
+					if(reachTarget(4)){
+						currentRobotState = COMM_STOP;
+					}
+					else{
+						currentRobotState = COMM_FORWARD;
+						++keepCommCnt;
+					}
+				}
+			}
+			if(keepCommCnt > 1000){
+				keepCommCnt =0;
+				currentRobotState = COMM_STOP;
+			}
+			
+			switch(currentRobotState){
+				case COMM_FORWARD:{
+					runFront();
+					break;
+				}
+				case COMM_LEFT:{
+					runLeft();
+					break;
+				}
+				case COMM_RIGHT:{
+					runRight();
+					break;
+				}
+				case COMM_STOP:{
+					runStop();
+					break;
+				}
+				default:{
+					delay_ms(10);
+					break;
+				}
+			}
+		}
+
+	while(1){
+		if(SEARCH_OUT_IO_3 == WHITE_AREA){
+			LED0 = 0;
+		}
+		else{
+			LED0 = 1;
+		}
+		if(SEARCH_OUT_IO_4 == WHITE_AREA){
+			LED1 = 0;
+		}
+		else{
+			LED1 = 1;
+		}
+	}
+	
 	while(1){
 		MotorSpeedExpected(0, 0, 0, 0, 0);
 		delay_ms(1);

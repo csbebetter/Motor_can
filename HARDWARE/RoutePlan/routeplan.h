@@ -5,7 +5,7 @@
 
 #define MOTOR_DIAMETER	450.00f
 #define WHEEL_DIAMETER  75.00f
-#define LINEAR_SPEED 300   //straight speed
+#define LINEAR_SPEED 200   //straight speed
 #define SPINNING_SPEED 80 //rotate speed
 #define PI 3.141592768f
 #define CSPDERR 50

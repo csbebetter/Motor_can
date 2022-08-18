@@ -57,7 +57,7 @@ void CoordinatePositionMovement(float CurrentX, float CurrentY, float ExpectedX,
 								0);
 		}
 		delay_ms(2);
-	}while(!(stopCspdJudging(CSPDERR*4,-1)));
+	}while(!(stopCspdJudging(CSPDERR*10,-1)));
 		
   //实现小车缓慢减速
 	do{
@@ -66,7 +66,7 @@ void CoordinatePositionMovement(float CurrentX, float CurrentY, float ExpectedX,
 							sign(linear_speed[2])*flag*fabs(errX)/(fabs(errX)+fabs(errY)),
 							sign(linear_speed[3])*flag*fabs(errY)/(fabs(errX)+fabs(errY)),
 							0);
-		if(flag>50)flag -= 0.3f;
+		if(flag>50)flag -= 0.5f;
 		delay_ms(2);
 	}while(!(stopCspdJudging(CSPDERR,-1)));
 
@@ -148,28 +148,29 @@ void routeplan(int s, int e, int startORend){
 	if(startORend == 0){
 		
 		if(s==1&&e==1){
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1100.00f, -500.00f), CTransY(-1100.00f, -500.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1100.00f, 600.00f), CTransY(-1100.00f, 600.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, 600.00f), CTransY(-1800.00f, 600.00f));
-			AngularRotationMovement(motor_Position[2], -190.0f);
-			CoordinatePositionMovement(0, 0, CTransX(00.00f, 610.00f), CTransY(00.00f, 610.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -550.00f), CTransY(0.00f, -550.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, -550.00f), CTransY(-1200.00f, -550.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 520.00f), CTransY(-1200.00f, 520.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 520.00f), CTransY(-1900.00f, 520.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+			CoordinatePositionMovement(0, 0, CTransX(00.00f, 523.00f), CTransY(00.00f, 523.00f));
 		}
 
 		if(s==1&&e==0){
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -550.00f), CTransY(0.00f, -550.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, -550.00f), CTransY(-1200.00f, -550.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 520.00f), CTransY(-1200.00f, 520.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 520.00f), CTransY(-1900.00f, 520.00f));
 			AngularRotationMovement(motor_Position[2], 180.0f);
 		}
 
 		if(s==1&&e==2){
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, 500.00f), CTransY(0.00f, 500.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -550.00f), CTransY(0.00f, -550.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, -550.00f), CTransY(-1200.00f, -550.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 519.00f), CTransY(-1200.00f, 519.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 519.00f), CTransY(-1900.00f, 519.00f));
 			AngularRotationMovement(motor_Position[2], 180.0f);
+			CoordinatePositionMovement(0, 0, CTransX(00.00f, 1100.00f), CTransY(00.00f, 1100.00f));
 		}
 
 		if(s==2&&e==0){
