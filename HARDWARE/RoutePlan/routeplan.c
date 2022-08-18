@@ -145,85 +145,151 @@ void routeplan(int s, int e, int startORend){
 	
 	*/
 
-	if(startORend == 1){//初始位置位于终点,s,e交换，且2 => 0, 0 => 2 
-		//swap
-		int temp = s;
-		s = e;
-		e = temp;
-		//2=>0, 0=>2 
-		if(e!=1){if(e==0){e=2;}else{e=0;}}
-		if(s!=1){if(s==0){s=2;}else{s=0;}}
+	if(startORend == 0){
+		
+		if(s==1&&e==1){
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1100.00f, -500.00f), CTransY(-1100.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1100.00f, 600.00f), CTransY(-1100.00f, 600.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, 600.00f), CTransY(-1800.00f, 600.00f));
+			AngularRotationMovement(motor_Position[2], -190.0f);
+			CoordinatePositionMovement(0, 0, CTransX(00.00f, 610.00f), CTransY(00.00f, 610.00f));
+		}
+
+		if(s==1&&e==0){
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
+
+		if(s==1&&e==2){
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, 500.00f), CTransY(0.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
+
+		if(s==2&&e==0){
+			CoordinatePositionMovement(0.00f, -500.00f, CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
+
+		if(s==2&&e==1){
+			CoordinatePositionMovement(0.00f, -500.00f, CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 00.00f), CTransY(-2250.00f, 00.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
+
+		if(s==2&&e==2){
+			CoordinatePositionMovement(0.00f, -500.00f, CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
+
+		if(s==0&&e==2){
+			CoordinatePositionMovement(0.00f, 500.00f, CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
+
+		if(s==0&&e==1){
+			CoordinatePositionMovement(0.00f, 500.00f, CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 00.00f), CTransY(-2250.00f, 00.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
+
+		if(s==0&&e==0){
+			CoordinatePositionMovement(0.00f, 500.00f, CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
 	}
 	
-	if(s==1&&e==1){
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 00.00f), CTransY(-2250.00f, 00.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
-	}
+	if(startORend == 1){
+		if(s==1&&e==1){
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1100.00f, -500.00f), CTransY(-1100.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1100.00f, 600.00f), CTransY(-1100.00f, 600.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, 600.00f), CTransY(-1800.00f, 600.00f));
+			AngularRotationMovement(motor_Position[2], -190.0f);
+			CoordinatePositionMovement(0, 0, CTransX(00.00f, 610.00f), CTransY(00.00f, 610.00f));
+		}
 
-	if(s==1&&e==0){
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
-	}
+		if(s==1&&e==0){
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -500.00f), CTransY(0.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
 
-	if(s==1&&e==2){
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, 500.00f), CTransY(0.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
-	}
+		if(s==1&&e==2){
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, 500.00f), CTransY(0.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
 
-	if(s==2&&e==0){
-	CoordinatePositionMovement(0.00f, -500.00f, CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
-	}
+		if(s==2&&e==0){
+			CoordinatePositionMovement(0.00f, -500.00f, CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
 
-	if(s==2&&e==1){
-	CoordinatePositionMovement(0.00f, -500.00f, CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 00.00f), CTransY(-2250.00f, 00.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
-	}
+		if(s==2&&e==1){
+			CoordinatePositionMovement(0.00f, -500.00f, CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 00.00f), CTransY(-2250.00f, 00.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
 
-	if(s==2&&e==2){
-	CoordinatePositionMovement(0.00f, -500.00f, CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
-	}
+		if(s==2&&e==2){
+			CoordinatePositionMovement(0.00f, -500.00f, CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
 
-	if(s==0&&e==2){
-	CoordinatePositionMovement(0.00f, 500.00f, CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
-	}
+		if(s==0&&e==2){
+			CoordinatePositionMovement(0.00f, 500.00f, CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
 
-	if(s==0&&e==1){
-	CoordinatePositionMovement(0.00f, 500.00f, CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 00.00f), CTransY(-2250.00f, 00.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
-	}
+		if(s==0&&e==1){
+			CoordinatePositionMovement(0.00f, 500.00f, CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 00.00f), CTransY(-2250.00f, 00.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
 
-	if(s==0&&e==0){
-	CoordinatePositionMovement(0.00f, 500.00f, CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
-	CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
-	AngularRotationMovement(motor_Position[2], 180.0f);
+		if(s==0&&e==0){
+			CoordinatePositionMovement(0.00f, 500.00f, CTransX(-1250.00f, 500.00f), CTransY(-1250.00f, 500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1250.00f, -500.00f), CTransY(-1250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, -500.00f), CTransY(-2250.00f, -500.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2250.00f, 500.00f), CTransY(-2250.00f, 500.00f));
+			AngularRotationMovement(motor_Position[2], 180.0f);
+		}
 	}
 }
 
@@ -236,7 +302,7 @@ void liftplan(int upordown, int state){
 		CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
 		Lift_Drop_box(-4900);
 		CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
-		Lift_Drop_box(-3000);
+		Lift_Drop_box(-1400);
 	}
 	if(upordown == 1 && state == 2)//up |
 	{
@@ -249,13 +315,13 @@ void liftplan(int upordown, int state){
 		CoordinatePositionMovement(CTransX(370.00f, 30.00f), CTransY(370.00f,30.00f), CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f));
 		CoordinatePositionMovement(CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f), CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
 		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),0,0);
-		Lift_Drop_box(-3000);
+		Lift_Drop_box(-1400);
 	}
 	if(upordown == 0 && state == 1)//down -
 	{
 		Lift_Drop_box(-360);
 		CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
-		Lift_Drop_box(-3000);
+		Lift_Drop_box(-1400);
 		CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
 
 	}
@@ -266,7 +332,7 @@ void liftplan(int upordown, int state){
 		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f));
 		Lift_Drop_box(-360);
 		CoordinatePositionMovement(CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f), CTransX(370.00f, 30.00f), CTransY(370.00f,30.00f));
-		Lift_Drop_box(-3000);
+		Lift_Drop_box(-1400);
 		CoordinatePositionMovement(CTransX(370.00f, 30.00f), CTransY(370.00f,30.00f), CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f));
 		CoordinatePositionMovement(CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f), CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
 		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),0,0);
