@@ -259,26 +259,30 @@ u8 startTrack(void){
 		lastRobotState = currentRobotState;
 		currentRobotState = COMM_RIGHT;
 	}
-	else if(reachTarget(4) || wayAllWhite()){
+	else if(reachTarget(4)){
 		lastRobotState = currentRobotState;
 		currentRobotState = COMM_STOP;
 	}
-	if(currentRobotState == COMM_STOP && wayAllWhite()){
-		if(lastRobotState == COMM_LEFT){
-			currentRobotState = COMM_LEFT;
-		}
-		if(lastRobotState == COMM_RIGHT){
-			currentRobotState = COMM_RIGHT;
-		}
-		if(lastRobotState == COMM_FORWARD){
-			if(reachTarget(4)){
-				currentRobotState = COMM_STOP;
-			}
-			else{
-				currentRobotState = COMM_FORWARD;
-			}
-		}
+	else if(wayAllWhite()){
+		lastRobotState = currentRobotState;
+		currentRobotState = COMM_LEFT;
 	}
+//	if(currentRobotState == COMM_STOP && wayAllWhite()){
+//		if(lastRobotState == COMM_LEFT){
+//			currentRobotState = COMM_LEFT;
+//		}
+//		if(lastRobotState == COMM_RIGHT){
+//			currentRobotState = COMM_RIGHT;
+//		}
+//		if(lastRobotState == COMM_FORWARD){
+//			if(reachTarget(4)){
+//				currentRobotState = COMM_STOP;
+//			}
+//			else{
+//				currentRobotState = COMM_FORWARD;
+//			}
+//		}
+//	}
 
 	switch(currentRobotState){
 		case COMM_FORWARD:{
