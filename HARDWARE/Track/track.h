@@ -1,35 +1,38 @@
+#ifndef __TRACT_H
+#define __TRACT_H
+
 #include <math.h>
 #include "motor.h"
 #include "delay.h"
 
 
-#define SEARCH_OUT_PIN_1 GPIO_Pin_12
+#define SEARCH_OUT_PIN_1 GPIO_Pin_1
 #define SEARCH_OUT_GPIO_1 GPIOE
 #define SEARCH_OUT_IO_1 GPIO_ReadInputDataBit(GPIOE, SEARCH_OUT_PIN_1)
 
-#define SEARCH_OUT_PIN_2 GPIO_Pin_10
-#define SEARCH_OUT_GPIO_2 GPIOE
-#define SEARCH_OUT_IO_2 GPIO_ReadInputDataBit(GPIOE, SEARCH_OUT_PIN_2)
+#define SEARCH_OUT_PIN_2 GPIO_Pin_9
+#define SEARCH_OUT_GPIO_2 GPIOB
+#define SEARCH_OUT_IO_2 GPIO_ReadInputDataBit(GPIOB, SEARCH_OUT_PIN_2)
 
-#define SEARCH_OUT_PIN_3 GPIO_Pin_8
-#define SEARCH_OUT_GPIO_3 GPIOE
-#define SEARCH_OUT_IO_3 GPIO_ReadInputDataBit(GPIOE, SEARCH_OUT_PIN_3)
+#define SEARCH_OUT_PIN_3 GPIO_Pin_7
+#define SEARCH_OUT_GPIO_3 GPIOB
+#define SEARCH_OUT_IO_3 GPIO_ReadInputDataBit(GPIOB, SEARCH_OUT_PIN_3)
 
-#define SEARCH_OUT_PIN_4 GPIO_Pin_1
-#define SEARCH_OUT_GPIO_4 GPIOG
-#define SEARCH_OUT_IO_4 GPIO_ReadInputDataBit(GPIOG, SEARCH_OUT_PIN_4)
+#define SEARCH_OUT_PIN_4 GPIO_Pin_5
+#define SEARCH_OUT_GPIO_4 GPIOB
+#define SEARCH_OUT_IO_4 GPIO_ReadInputDataBit(GPIOB, SEARCH_OUT_PIN_4)
 
-#define SEARCH_OUT_PIN_5 GPIO_Pin_15
-#define SEARCH_OUT_GPIO_5 GPIOF
-#define SEARCH_OUT_IO_5 GPIO_ReadInputDataBit(GPIOF, SEARCH_OUT_PIN_5)
+#define SEARCH_OUT_PIN_5 GPIO_Pin_7
+#define SEARCH_OUT_GPIO_5 GPIOD
+#define SEARCH_OUT_IO_5 GPIO_ReadInputDataBit(GPIOD, SEARCH_OUT_PIN_5)
 
-#define SEARCH_OUT_PIN_6 GPIO_Pin_13
-#define SEARCH_OUT_GPIO_6 GPIOF
-#define SEARCH_OUT_IO_6 GPIO_ReadInputDataBit(GPIOF, SEARCH_OUT_PIN_6)
+#define SEARCH_OUT_PIN_6 GPIO_Pin_5
+#define SEARCH_OUT_GPIO_6 GPIOD
+#define SEARCH_OUT_IO_6 GPIO_ReadInputDataBit(GPIOD, SEARCH_OUT_PIN_6)
 
-#define SEARCH_OUT_PIN_7 GPIO_Pin_11
-#define SEARCH_OUT_GPIO_7 GPIOF
-#define SEARCH_OUT_IO_7 GPIO_ReadInputDataBit(GPIOF, SEARCH_OUT_PIN_7)
+#define SEARCH_OUT_PIN_7 GPIO_Pin_3
+#define SEARCH_OUT_GPIO_7 GPIOD
+#define SEARCH_OUT_IO_7 GPIO_ReadInputDataBit(GPIOD, SEARCH_OUT_PIN_7)
 
 #define BLACK_AREA 1
 #define WHITE_AREA 0
@@ -61,6 +64,6 @@ void redRayDebug(void);
 void stateInit(void);
 u8 startTrack(void);
 
-
+#endif
 
 

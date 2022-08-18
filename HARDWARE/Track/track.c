@@ -15,8 +15,6 @@ void GPIOCLKInit(void)
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC , ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD , ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE , ENABLE);
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF , ENABLE);
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG , ENABLE);
 }
 
 void RedRayInit(void){
