@@ -112,7 +112,7 @@ void RedRayInit(void){
 	GPIO_Init(SEARCH_OUT_GPIO_17, &GPIO_InitStructure);
 }
 
-
+//判断是否全黑
 u8 wayAllBlack(void){
 	if(SEARCH_OUT_IO_1 == BLACK_AREA &&
 	SEARCH_OUT_IO_2 == BLACK_AREA &&
@@ -129,6 +129,7 @@ u8 wayAllBlack(void){
 	}
 }
 
+//
 u8 canRotate(void){
 	if(SEARCH_OUT_IO_1 == WHITE_AREA &&
 	SEARCH_OUT_IO_2 == WHITE_AREA &&
@@ -370,9 +371,9 @@ void stateInit(void){
 }
 
 u8 startTrack(void){
-//	if(canRotate() && flag == 0){
-//		flag = 1;
-//	}
+	if(canRotate() && flag == 0){
+		flag = 1;
+	}
 	if(rotateToTrack() && flag == 1){
 		rotateFlag = 0;
 		flag = 2;
@@ -416,16 +417,16 @@ u8 startTrack(void){
 			}
 		}
 	}
-//	if(flag == 1){
-//		if(needRotateClockwise()){
-//			lastRobotState = currentRobotState;
-//			currentRobotState = COMM_CLOCK;
-//		}
-//		else if(needRotateCounterClockwise()){
-//			lastRobotState = currentRobotState;
-//			currentRobotState = COMM_CTCLOCK;
-//		}
-//	}
+	if(flag == 1){
+		if(needRotateClockwise()){
+			lastRobotState = currentRobotState;
+			currentRobotState = COMM_CLOCK;
+		}
+		else if(needRotateCounterClockwise()){
+			lastRobotState = currentRobotState;
+			currentRobotState = COMM_CTCLOCK;
+		}
+	}
 	if(flag == 2){
 		if(needForward()){
 			lastRobotState = currentRobotState;
