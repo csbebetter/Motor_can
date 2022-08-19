@@ -48,3 +48,4 @@
 ..\obj\main.o: ..\HARDWARE\KEY\key.h
 ..\obj\main.o: ..\HARDWARE\Track\track.h
 ..\obj\main.o: ..\HARDWARE\WL_LaserDis_V2\cal_distance.h
+..\obj\main.o: ..\HARDWARE\HCSR04\hcsr04.h

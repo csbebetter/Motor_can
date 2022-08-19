@@ -27,24 +27,25 @@ Project File Date:  08/19/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'CAN'
-compiling track.c...
-..\HARDWARE\Track\track.c(268): error:  #29: expected an expression
-  <<<<<<< HEAD
-..\HARDWARE\Track\track.c(278): error:  #29: expected an expression
-  =======
-..\HARDWARE\Track\track.c: 0 warnings, 2 errors
 compiling main.c...
-..\HARDWARE\WL_LaserDis_V2\cal_distance.h(9): warning:  #1-D: last line of file ends without a newline
+..\HARDWARE\HCSR04\hcsr04.h(12): warning:  #1-D: last line of file ends without a newline
+   
+..\HARDWARE\WL_LaserDis_V2\cal_distance.h(10): warning:  #1-D: last line of file ends without a newline
   int cal_distance3(void);
-main.c(88): warning:  #940-D: missing return statement at end of non-void function "ChooseEndPoint"
+main.c(89): warning:  #940-D: missing return statement at end of non-void function "ChooseEndPoint"
   }
-main.c(119): warning:  #177-D: variable "keepCommCnt" was declared but never referenced
+main.c(177): warning:  #111-D: statement is unreachable
+  			
+lockwise;
+main.c(120): warning:  #177-D: variable "keepCommCnt" was declared but never referenced
   	u32 keepCommCnt = 0;
-main.c(120): warning:  #177-D: variable "j" was declared but never referenced
+main.c(121): warning:  #177-D: variable "j" was declared but never referenced
   	int j = 0;
-main.c: 4 warnings, 0 errors
-compiling routeplan.c...
-"..\OBJ\CAN.axf" - 2 Error(s), 4 Warning(s).
+main.c: 6 warnings, 0 errors
+linking...
+Program Size: Code=22852 RO-data=424 RW-data=56 ZI-data=2712  
+FromELF: creating hex file...
+"..\OBJ\CAN.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -57,8 +58,7 @@ Package Vendor: Keil
   C:/Keil_v5/ARM/PACK/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
 
 <h2>Collection of Component Files used:</h2>
-Target not created.
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

@@ -1,20 +1,7 @@
 #include "cal_distance.h"
 //接线：PB10号口接RXD  11口接TXD
 //      PA3 接TXD      2接RXD
-
-void GPIO_Configuration(void)
-{
-  GPIO_InitTypeDef  GPIO_InitStructure;
-  
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);  
-  /*echo*/
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;//指定echo的引脚
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;//指定为in
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_Init(GPIOD, &GPIO_InitStructure);
-}
+extern u16 TIM2_Flag;
 
 
 int cal_distance1()  //下面模块
@@ -100,27 +87,39 @@ int cal_distance2(int last_flag) //上面模块
 
 int cal_distance3()
 {
-	volatile int jug=-1;
-	int i3=0;
+	int diatance_Data;
+	int sum=0;
+	int maxx=0,minn=999999999;
+	int k=0;
 	int flag3=-1;
-	//delay_init(168); 
-	//uart_init(115200);
-	GPIO_Configuration();
+	int threshold_value=10;
+    u16 q;
+    u16 b;
+    u16 s;
+    u16 g;
+ 
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); //中断优先级设置
+  
+    GPIO_Configuration3();
+    TIM2_Configuration(5000,419);  
 	
-	while(i3<=11)
-	{
-		i3++;
-		if(i3 == 9)	jug=GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_8);// 变量返回0表示传感器的灯是亮的  返回1表示传感器灯是灭的
-		delay_ms(5);
+  while (k<11)
+  {
+	k++;
+    diatance_Data = get_Diatance();  
+    q = diatance_Data/1000;
+    b = diatance_Data/100%10;
+    s = diatance_Data/10%10;
+    g = diatance_Data%10;
+    diatance_Data = q*1000+b*100+s*10+g;
+    //if(diatance_Data>maxx)	maxx=diatance_Data;
+	if(diatance_Data<minn)	minn=diatance_Data;
+	//sum+=diatance_Data;
+    delay_us(500);
 	}
-	if(jug == 0)
-	{
-		flag3=0;
-	}
-	if(jug == 1)
-	{
-		flag3=3;
-	}
+	
+	diatance_Data=minn;
+	if(diatance_Data >= threshold_value) flag3=0;//此时大于阈值  表示此处没有箱子
+	else flag3=3;
 	return flag3;
-	
 }

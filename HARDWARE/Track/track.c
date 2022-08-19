@@ -1,8 +1,14 @@
 #include "track.h"
 
-u8 currentRobotState;
-u8 lastRobotState;
+static u8 currentRobotState;
+static u8 lastRobotState;
+
+/*	flag = 0, Move Left 
+		flag = 1, Rotate
+		flag = 2, Track Mode
+*/
 static u8 flag = 0;
+static u8 rotateFlag = 0;
 
 /*————————————————————————————————————————————循迹代码↓————————————————————————————————————————————*/
 /*————————————————————————————————————————————循迹代码↓————————————————————————————————————————————*/
@@ -62,6 +68,48 @@ void RedRayInit(void){
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Init(SEARCH_OUT_GPIO_7, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = SEARCH_OUT_PIN_11;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(SEARCH_OUT_GPIO_11, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = SEARCH_OUT_PIN_12;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(SEARCH_OUT_GPIO_12, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = SEARCH_OUT_PIN_13;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(SEARCH_OUT_GPIO_13, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = SEARCH_OUT_PIN_14;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(SEARCH_OUT_GPIO_14, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = SEARCH_OUT_PIN_15;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(SEARCH_OUT_GPIO_15, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = SEARCH_OUT_PIN_16;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(SEARCH_OUT_GPIO_16, &GPIO_InitStructure);
+	
+	GPIO_InitStructure.GPIO_Pin = SEARCH_OUT_PIN_17;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+	GPIO_Init(SEARCH_OUT_GPIO_17, &GPIO_InitStructure);
 }
 
 
@@ -79,6 +127,69 @@ u8 wayAllBlack(void){
 	else{
 		return 0;
 	}
+}
+
+u8 canRotate(void){
+	if(SEARCH_OUT_IO_1 == WHITE_AREA &&
+	SEARCH_OUT_IO_2 == WHITE_AREA &&
+	SEARCH_OUT_IO_6 == WHITE_AREA &&
+	SEARCH_OUT_IO_7 == WHITE_AREA &&
+	SEARCH_OUT_IO_4 == BLACK_AREA){
+		return 1;
+	}
+	else{
+		return 0;
+	}
+}
+
+u8 needRotateClockwise(void){
+	if(canRotate() && SEARCH_OUT_IO_17 == WHITE_AREA
+		&& SEARCH_OUT_IO_16 == WHITE_AREA
+		&& SEARCH_OUT_IO_15 == WHITE_AREA
+		&& SEARCH_OUT_IO_14 == WHITE_AREA
+		&& (SEARCH_OUT_IO_13 == WHITE_AREA
+		|| SEARCH_OUT_IO_12 == BLACK_AREA
+		|| SEARCH_OUT_IO_11 == BLACK_AREA)){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+}
+
+u8 needRotateCounterClockwise(void){
+	if(canRotate() && SEARCH_OUT_IO_11 == WHITE_AREA
+		&& SEARCH_OUT_IO_12 == WHITE_AREA
+		&& SEARCH_OUT_IO_13 == WHITE_AREA
+		&& SEARCH_OUT_IO_14 == WHITE_AREA
+		&& (SEARCH_OUT_IO_15 == WHITE_AREA
+		|| SEARCH_OUT_IO_16 == BLACK_AREA
+		|| SEARCH_OUT_IO_17 == BLACK_AREA)){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+}
+
+u8 rotateToTrack(void){
+	if((SEARCH_OUT_IO_1 == BLACK_AREA && SEARCH_OUT_IO_17 == BLACK_AREA
+		&& SEARCH_OUT_IO_2 == BLACK_AREA && SEARCH_OUT_IO_16 == BLACK_AREA)
+		|| (SEARCH_OUT_IO_2 == BLACK_AREA && SEARCH_OUT_IO_16 == BLACK_AREA
+		&& SEARCH_OUT_IO_3 == BLACK_AREA && SEARCH_OUT_IO_15 == BLACK_AREA)
+		|| (SEARCH_OUT_IO_3 == BLACK_AREA && SEARCH_OUT_IO_15 == BLACK_AREA
+		&& SEARCH_OUT_IO_4 == BLACK_AREA && SEARCH_OUT_IO_14 == BLACK_AREA)
+		|| (SEARCH_OUT_IO_4 == BLACK_AREA && SEARCH_OUT_IO_14 == BLACK_AREA
+		&& SEARCH_OUT_IO_5 == BLACK_AREA && SEARCH_OUT_IO_13 == BLACK_AREA)
+		|| (SEARCH_OUT_IO_5 == BLACK_AREA && SEARCH_OUT_IO_13 == BLACK_AREA
+		&& SEARCH_OUT_IO_6 == BLACK_AREA && SEARCH_OUT_IO_12 == BLACK_AREA)
+		|| (SEARCH_OUT_IO_6 == BLACK_AREA && SEARCH_OUT_IO_12 == BLACK_AREA
+		&& SEARCH_OUT_IO_7 == BLACK_AREA && SEARCH_OUT_IO_11 == BLACK_AREA)){
+			return 1;
+		}
+		else{
+			return 0;
+		}
 }
 
 u8 wayAllWhite(void){
@@ -128,20 +239,6 @@ u8 reachTarget(u8 target){
 	}
 }
 
-u8 needLeft(void){
-	if(SEARCH_OUT_IO_1 == WHITE_AREA &&
-		SEARCH_OUT_IO_2 == WHITE_AREA &&
-		SEARCH_OUT_IO_3 == WHITE_AREA &&
-		SEARCH_OUT_IO_4 == WHITE_AREA &&
-		(SEARCH_OUT_IO_7 == BLACK_AREA ||
-		SEARCH_OUT_IO_6 == BLACK_AREA)){
-			return 1;
-		}
-		else{
-			return 0;
-		}
-}
-
 u8 needRight(void){
 	if(SEARCH_OUT_IO_7 == WHITE_AREA &&
 		SEARCH_OUT_IO_6 == WHITE_AREA &&
@@ -149,6 +246,20 @@ u8 needRight(void){
 		SEARCH_OUT_IO_4 == WHITE_AREA &&
 		(SEARCH_OUT_IO_1 == BLACK_AREA ||
 		SEARCH_OUT_IO_2 == BLACK_AREA)){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+}
+
+u8 needLeft(void){
+	if(SEARCH_OUT_IO_1 == WHITE_AREA &&
+		SEARCH_OUT_IO_2 == WHITE_AREA &&
+		SEARCH_OUT_IO_3 == WHITE_AREA &&
+		SEARCH_OUT_IO_4 == WHITE_AREA &&
+		(SEARCH_OUT_IO_7 == BLACK_AREA ||
+		SEARCH_OUT_IO_6 == BLACK_AREA)){
 			return 1;
 		}
 		else{
@@ -173,27 +284,37 @@ u8 needForward(void){
 
 
 void runFront(void){
-	MotorSpeedExpected(50, -50, -50, 50, 0);
+	MotorSpeedExpected(30, -30, -30, 30, 0);
 	delay_ms(1);
 }
 
 void runBack(void){
-	MotorSpeedExpected(-50, 50, 50, -50, 0);
+	MotorSpeedExpected(-30, 30, 30, -30, 0);
 	delay_ms(1);
 }
 
 void runLeft(void){
-	MotorSpeedExpected(50, 50, -50, -50, 0);
+	MotorSpeedExpected(-30, -30, 30, 30, 0);
 	delay_ms(1);
 }
 
 void runRight(void){
-	MotorSpeedExpected(-50, -50, 50, 50, 0);
+	MotorSpeedExpected(30, 30, -30, -30, 0);
 	delay_ms(1);
 }
 
 void runStop(void){
 	MotorSpeedExpected(0, 0, 0, 0, 0);
+	delay_ms(1);
+}
+
+void clockwiseRotate(void){
+	MotorSpeedExpected(30, 30, 30, 30, 0);
+	delay_ms(1);
+}
+
+void clockwiseCounterRotate(void){
+	MotorSpeedExpected(-30, -30, -30, -30, 0);
 	delay_ms(1);
 }
 
@@ -245,61 +366,105 @@ void redRayDebug(void){
 void stateInit(void){
 	lastRobotState = COMM_STOP;
 	currentRobotState = COMM_STOP;
+	flag = 0;
 }
 
 u8 startTrack(void){
-	
-	if(needForward()){
-		lastRobotState = currentRobotState;
-		currentRobotState = COMM_FORWARD;
-		flag = 1;
+//	if(canRotate() && flag == 0){
+//		flag = 1;
+//	}
+	if(rotateToTrack() && flag == 1){
+		rotateFlag = 0;
+		flag = 2;
 	}
-	else if(needLeft()){
-		lastRobotState = currentRobotState;
-		currentRobotState = COMM_LEFT;
-		flag = 1;
-	}
-	else if(needRight()){
-		lastRobotState = currentRobotState;
-		currentRobotState = COMM_RIGHT;
-		flag = 1;
-	}
-	else if(reachTarget(4)){
-<<<<<<< HEAD
-		lastRobotState = currentRobotState;
-		currentRobotState = COMM_STOP;
-		flag = 1;
-	}
-	else if(wayAllWhite() && flag == 0){
+	if(flag == 0){
 		lastRobotState = currentRobotState;
 		currentRobotState = COMM_LEFT;
+		if(rotateFlag == 0){
+			if(SEARCH_OUT_IO_7 == BLACK_AREA && SEARCH_OUT_IO_11 == BLACK_AREA){
+				rotateFlag = 1;
+				flag = 1;
+			}
+			else if(SEARCH_OUT_IO_7 == BLACK_AREA && SEARCH_OUT_IO_11 == WHITE_AREA){
+				rotateFlag = 2; // need clockwise rotate
+				flag = 1;
+			}
+			else if(SEARCH_OUT_IO_7 == WHITE_AREA && SEARCH_OUT_IO_11 == BLACK_AREA){
+				rotateFlag = 3; // need counterclockwise rotate
+				flag = 1;
+			}
+		}
 	}
-	else if(wayAllWhite() && flag == 1){
-=======
->>>>>>> 9bd31f013e9ca3faacabcd8cb91eb8048cdc178c
-		lastRobotState = currentRobotState;
-		currentRobotState = COMM_STOP;
+	if(flag == 1){
+		if(rotateFlag == 1){
+			if(SEARCH_OUT_IO_4 == BLACK_AREA){
+				flag = 2;
+				lastRobotState = currentRobotState;
+				currentRobotState = COMM_FORWARD;
+			}
+		}
+		else if(rotateFlag == 2){
+			if(SEARCH_OUT_IO_2 == BLACK_AREA || SEARCH_OUT_IO_1 == BLACK_AREA){
+				lastRobotState = currentRobotState;
+				currentRobotState = COMM_CLOCK;
+			}
+		}
+		else if(rotateFlag == 3){
+			if(SEARCH_OUT_IO_6 == BLACK_AREA || SEARCH_OUT_IO_7 == BLACK_AREA){
+				lastRobotState = currentRobotState;
+				currentRobotState = COMM_CTCLOCK;
+			}
+		}
 	}
-	else if(wayAllWhite()){
-		lastRobotState = currentRobotState;
-		currentRobotState = COMM_LEFT;
-	}
-//	if(currentRobotState == COMM_STOP && wayAllWhite()){
-//		if(lastRobotState == COMM_LEFT){
-//			currentRobotState = COMM_LEFT;
+//	if(flag == 1){
+//		if(needRotateClockwise()){
+//			lastRobotState = currentRobotState;
+//			currentRobotState = COMM_CLOCK;
 //		}
-//		if(lastRobotState == COMM_RIGHT){
-//			currentRobotState = COMM_RIGHT;
-//		}
-//		if(lastRobotState == COMM_FORWARD){
-//			if(reachTarget(4)){
-//				currentRobotState = COMM_STOP;
-//			}
-//			else{
-//				currentRobotState = COMM_FORWARD;
-//			}
+//		else if(needRotateCounterClockwise()){
+//			lastRobotState = currentRobotState;
+//			currentRobotState = COMM_CTCLOCK;
 //		}
 //	}
+	if(flag == 2){
+		if(needForward()){
+			lastRobotState = currentRobotState;
+			currentRobotState = COMM_FORWARD;
+		}
+		else if(needLeft()){
+			lastRobotState = currentRobotState;
+			currentRobotState = COMM_LEFT;
+		}
+		else if(needRight()){
+			lastRobotState = currentRobotState;
+			currentRobotState = COMM_RIGHT;
+		}
+		else if(reachTarget(6)){
+			lastRobotState = currentRobotState;
+			currentRobotState = COMM_STOP;
+		}
+		else if(wayAllWhite()){
+			lastRobotState = currentRobotState;
+			currentRobotState = COMM_STOP;
+		}
+	}
+	
+	if(currentRobotState == COMM_STOP && wayAllWhite() && flag == 2){
+		if(lastRobotState == COMM_LEFT){
+			currentRobotState = COMM_LEFT;
+		}
+		if(lastRobotState == COMM_RIGHT){
+			currentRobotState = COMM_RIGHT;
+		}
+		if(lastRobotState == COMM_FORWARD){
+			if(reachTarget(6)){
+				currentRobotState = COMM_STOP;
+			}
+			else{
+				currentRobotState = COMM_FORWARD;
+			}
+		}
+	}
 
 	switch(currentRobotState){
 		case COMM_FORWARD:{
@@ -318,13 +483,21 @@ u8 startTrack(void){
 			runStop();
 			break;
 		}
+		case COMM_CLOCK:{
+			clockwiseRotate();
+			break;
+		}
+		case COMM_CTCLOCK:{
+			clockwiseCounterRotate();
+			break;
+		}
 		default:{
 			delay_ms(10);
 			break;
 		}
 	}
 	
-	if(reachTarget(4)){
+	if(reachTarget(6)){
 		return 1;
 	}
 	else{

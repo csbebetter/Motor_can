@@ -9,6 +9,7 @@
 #include "MyServo.h"
 #include "track.h"
 #include "cal_distance.h"
+#include "hcsr04.h"
 
 //5种模式
 #define MOBILE_MODE 1
@@ -135,22 +136,46 @@ int main(void){
 	stateInit();
 	Servo_Init();
 	u8 trackModeState = 0;
-	
-	
-	
-	
+	while(1)
+	{
+		delay_ms(1500);
+		Servo_Angle_Set(45);
+		delay_ms(1500);
+		Servo_Angle_Set(0);
+		
+	}
+//	Sbox_state[0][0] = cal_distance3();
+//	delay_ms(1);
+//	
+//		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
+//		//Clockwise;
+//		Lift_Drop_box(-4270);
+//		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
+//		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
+//		Lift_Drop_box(-5200);
+//		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
+//		Lift_Drop_box(-2000);
+//		CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
+
+
+//		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -550.00f), CTransY(0.00f, -550.00f));
+//		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, -550.00f), CTransY(-1200.00f, -550.00f));
+//		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 520.00f), CTransY(-1200.00f, 520.00f));
+//		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 520.00f), CTransY(-1900.00f, 520.00f));
+//		AngularRotationMovement(motor_Position[2], 180.0f);
+		
 //	Lift_Drop_box(-3950);
-//	CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
+//CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
 //	Lift_Drop_box(-4900);
 //	CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
 //	Lift_Drop_box(-1400);
 	
 	
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -1100.00f), CTransY(0.00f, -1100.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2000.00f, -1100.00f), CTransY(-2000.00f, -1100.00f));
-			AngularRotationMovement(motor_Position[2], 180.0f);
-			
-			Control_Mode=TRACK_MODE;
+//			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -1100.00f), CTransY(0.00f, -1100.00f));
+//			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2000.00f, -1100.00f), CTransY(-2000.00f, -1100.00f));
+//			AngularRotationMovement(motor_Position[2], 180.0f);
+			Clockwise;
+	Control_Mode=STOP_MODE;
 
 	while(1){
 		switch(Control_Mode){
@@ -170,7 +195,7 @@ int main(void){
 		}	
 
 	}
-//	
+
 	
 	
 	
@@ -205,11 +230,12 @@ int main(void){
 	
 	
 //	/*——————————————————————————V 检测牛奶箱状态； 并进行移位操作，如果位置1没有牛奶箱，则移位到位置0 V————————————————————————————————————*/
+//	delay_ms(2000);
 //	Sbox_state[1][0] = cal_distance1();
 //	Sbox_state[0][0] = cal_distance3();
 //	if(Sbox_state[1][0] == 0){
 //		Sbox_state[2][0] = 3;
-//		CoordinatePositionMovement(0.0f, 0.0f, CTransX(00.00f, 400.00f), CTransY(00.00f, 400.00f)); //如果中间没有，向左移到位置0。
+//		CoordinatePositionMovement(0.0f, 0.0f, CTransX(00.00f, 550.00f), CTransY(00.00f, 550.00f)); //如果中间没有，向左移到位置0。
 //		motor_park_space_start = 0;//并将小车的状态位设置为处于0位置
 //	}
 //	else{ //否则小车不移位

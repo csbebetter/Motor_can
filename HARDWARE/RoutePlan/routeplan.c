@@ -58,7 +58,10 @@ void CoordinatePositionMovement(float CurrentX, float CurrentY, float ExpectedX,
 		}
 		delay_ms(2);
 	}while(!(stopCspdJudging(CSPDERR*8,-1)));
-		
+	
+	if (flag<50){
+		flag = 50;
+	}
   //实现小车缓慢减速
 	do{
 		MotorSpeedExpected( sign(linear_speed[0])*flag*fabs(errX)/(fabs(errX)+fabs(errY)),
@@ -287,44 +290,43 @@ void liftplan(int upordown, int state){
 	
 	if(upordown == 1 && state == 1)//up -
 	{
-		Lift_Drop_box(-3950);
+		Lift_Drop_box(-4270);
 		CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
-		Lift_Drop_box(-4900);
+		Lift_Drop_box(-5200);
 		CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
-		Lift_Drop_box(-1400);
+		Lift_Drop_box(-2000);
 	}
 	if(upordown == 1 && state == 2)//up |
 	{
 		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
-		Clockwise;
-		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f));
-		Lift_Drop_box(-4000);
-		CoordinatePositionMovement(CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f), CTransX(370.00f, 30.00f), CTransY(370.00f,30.00f));
-		Lift_Drop_box(-4900);
-		CoordinatePositionMovement(CTransX(370.00f, 30.00f), CTransY(370.00f,30.00f), CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f));
-		CoordinatePositionMovement(CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f), CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
-		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),0,0);
-		Lift_Drop_box(-1400);
+		//Clockwise;
+		Lift_Drop_box(-4270);
+		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
+		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
+		Lift_Drop_box(-5200);
+		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
+		Lift_Drop_box(-2000);
+		CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
+
 	}
 	if(upordown == 0 && state == 1)//down -
 	{
 		Lift_Drop_box(-360);
 		CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
-		Lift_Drop_box(-1400);
+		Lift_Drop_box(-2000);
 		CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
 
 	}
 	if(upordown == 0 && state == 2)//down |
 	{
 		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
-		Clockwise;
-		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f));
+		//Clockwise;
 		Lift_Drop_box(-360);
-		CoordinatePositionMovement(CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f), CTransX(370.00f, 30.00f), CTransY(370.00f,30.00f));
-		Lift_Drop_box(-1400);
-		CoordinatePositionMovement(CTransX(370.00f, 30.00f), CTransY(370.00f,30.00f), CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f));
-		CoordinatePositionMovement(CTransX(370.00f, 250.00f), CTransY(370.00f,250.00f), CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
-		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),0,0);
+		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
+		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
+		Lift_Drop_box(-2000);
+		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
+		CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
 
 	}
 }
