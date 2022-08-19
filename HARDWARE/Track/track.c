@@ -318,50 +318,50 @@ void clockwiseCounterRotate(void){
 	delay_ms(1);
 }
 
-void redRayDebug(void){
-	if(SEARCH_OUT_IO_1 == WHITE_AREA){
-		printf("1: W\n");
-	}
-	else{
-		printf("1: B\n");
-	}
-	if(SEARCH_OUT_IO_2 == WHITE_AREA){
-		printf("2: W\n");
-	}
-	else{
-		printf("2: B\n");
-	}
-	if(SEARCH_OUT_IO_3 == WHITE_AREA){
-		printf("3: W\n");
-	}
-	else{
-		printf("3: B\n");
-	}
-	if(SEARCH_OUT_IO_4 == WHITE_AREA){
-		printf("4: W\n");
-	}
-	else{
-		printf("4: B\n");
-	}
-	if(SEARCH_OUT_IO_5 == WHITE_AREA){
-		printf("5: W\n");
-	}
-	else{
-		printf("5: B\n");
-	}
-	if(SEARCH_OUT_IO_6 == WHITE_AREA){
-		printf("6: W\n");
-	}
-	else{
-		printf("6: B\n");
-	}
-	if(SEARCH_OUT_IO_7 == WHITE_AREA){
-		printf("7: W\n");
-	}
-	else{
-		printf("7: B\n");
-	}
-}
+//void redRayDebug(void){
+//	if(SEARCH_OUT_IO_1 == WHITE_AREA){
+//		printf("1: W\n");
+//	}
+//	else{
+//		printf("1: B\n");
+//	}
+//	if(SEARCH_OUT_IO_2 == WHITE_AREA){
+//		printf("2: W\n");
+//	}
+//	else{
+//		printf("2: B\n");
+//	}
+//	if(SEARCH_OUT_IO_3 == WHITE_AREA){
+//		printf("3: W\n");
+//	}
+//	else{
+//		printf("3: B\n");
+//	}
+//	if(SEARCH_OUT_IO_4 == WHITE_AREA){
+//		printf("4: W\n");
+//	}
+//	else{
+//		printf("4: B\n");
+//	}
+//	if(SEARCH_OUT_IO_5 == WHITE_AREA){
+//		printf("5: W\n");
+//	}
+//	else{
+//		printf("5: B\n");
+//	}
+//	if(SEARCH_OUT_IO_6 == WHITE_AREA){
+//		printf("6: W\n");
+//	}
+//	else{
+//		printf("6: B\n");
+//	}
+//	if(SEARCH_OUT_IO_7 == WHITE_AREA){
+//		printf("7: W\n");
+//	}
+//	else{
+//		printf("7: B\n");
+//	}
+//}
 
 void stateInit(void){
 	lastRobotState = COMM_STOP;

@@ -18,12 +18,11 @@
 #define DROP_MODE 4
 #define STOP_MODE 5
 
-//////////////
-//仅用于track循迹操作
+
 extern float motor_Position[3];
 extern u8 currentRobotState;
 extern u8 lastRobotState;
-/////////////
+
 
 
 /*         
@@ -36,27 +35,27 @@ Ebox_state[3]			0、1、2    motor_park_space_end         motor_Location = 1
 						( end )    
 */
 int Sbox_state[3][2]; //Start 起始位置 0，1，2的牛奶箱摆放状态。0：未放牛奶箱，1：放牛奶箱横放，2：放牛奶箱纵放,3：放置牛奶箱，但不知道摆放方式，-1：放有牛奶箱但已处理完成
-int Ebox_state[3]; //End 结束位置 0，1，2的牛奶箱摆放状态。 0：闲置；1：已放置牛奶箱子
+int Ebox_state[3]={0,0,0}; //End 结束位置 0，1，2的牛奶箱摆放状态。 0：闲置；1：已放置牛奶箱子
 int mobile_box_state = 0; //运动过程中牛奶箱的运动状态。1：放牛奶箱横放，2：放牛奶箱纵放
 int motor_park_space_start = 1; //小车目标起点位置的3个位置0，1，2
 int motor_park_space_end = 0;   //小车目标终点位置的3个位置0，1，2
 int motor_Location = 0; //s or e state    0：小车位于起始处，1：小车位于放置处
-
+int k;
 
 //选择牛奶箱子放置位置
-int ChooseEndPoint(int i){
+int ChooseEndPoint(int iput){
 	int Ebox_state_sum = 0;
-	for(i=0;i<3;i++) Ebox_state_sum += Ebox_state[i];
+	for(k=0;k<3;k++) Ebox_state_sum += Ebox_state[k];
 	
 	if(Ebox_state_sum == 2) //如果只剩一个空，则被迫选择
 	{
-		for(i=0;i<3;i++){
-			if(Ebox_state[i]==0) return i;
+		for(k=0;k<3;k++){
+			if(Ebox_state[k]==0) return k;
 		}
 	}
 	if(Ebox_state_sum == 1)// 如果有两个空闲位置
 	{
-		if(i == 1) //横放
+		if(iput == 1) //横放
 		{
 			if(Ebox_state[1] == 1){
 				return 0;
@@ -65,7 +64,7 @@ int ChooseEndPoint(int i){
 				return 1;
 			}
 		}
-		if(i == 2)//纵放
+		if(iput == 2)//纵放
 		{
 			if(Ebox_state[0] == 1){
 				return 2; //0处放置则选择2号位
@@ -77,11 +76,11 @@ int ChooseEndPoint(int i){
 	}
 	if(Ebox_state_sum == 0)//放置区还没有开始放置物品
 	{
-		if(i == 1) //横放
+		if(iput == 1) //横放
 		{
 			return 1; //放置中间
 		}
-		if(i == 2)//纵放
+		if(iput == 2)//纵放
 		{
 			return 0; //放置0号位置
 		}
@@ -102,7 +101,7 @@ int ChooseStartPoint(){
 				return 2;
 			}
 			else{
-				return -1; //任务结束
+				return -1; //任务结束!!!
 			}
 		}
 	}
@@ -136,19 +135,11 @@ int main(void){
 	stateInit();
 	Servo_Init();
 	u8 trackModeState = 0;
-	while(1)
-	{
-		delay_ms(1500);
-		Servo_Angle_Set(45);
-		delay_ms(1500);
-		Servo_Angle_Set(0);
-		
-	}
-//	Sbox_state[0][0] = cal_distance3();
-//	delay_ms(1);
+
+
 //	
 //		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
-//		//Clockwise;
+//		Clockwise;
 //		Lift_Drop_box(-4270);
 //		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
 //		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
@@ -163,20 +154,12 @@ int main(void){
 //		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 520.00f), CTransY(-1200.00f, 520.00f));
 //		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 520.00f), CTransY(-1900.00f, 520.00f));
 //		AngularRotationMovement(motor_Position[2], 180.0f);
-		
-//	Lift_Drop_box(-3950);
-//CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
-//	Lift_Drop_box(-4900);
-//	CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
-//	Lift_Drop_box(-1400);
-	
-	
-//			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -1100.00f), CTransY(0.00f, -1100.00f));
-//			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-2000.00f, -1100.00f), CTransY(-2000.00f, -1100.00f));
-//			AngularRotationMovement(motor_Position[2], 180.0f);
-			Clockwise;
-	Control_Mode=STOP_MODE;
+//		
 
+
+		
+	Control_Mode=TRACK_MODE;
+	
 	while(1){
 		switch(Control_Mode){
 			case TRACK_MODE:
@@ -184,9 +167,17 @@ int main(void){
 				if(trackModeState){
 					stateInit();
 					//如果小车位于起始位置，做抬升;如果小车位于结尾位置，做放下操作
-					Control_Mode = STOP_MODE;
+					//Control_Mode = DROP_MODE;
 				}
 				break;
+//			case DROP_MODE:
+//				Lift_Drop_box(-360);
+//				CoordinatePositionMovement(0, 0, CTransX(0.00f, 200.00f), CTransY(0.00f,200.00f));
+//				CoordinatePositionMovement(CTransX(0.00f, 200.00f), CTransY(0.00f,200.00f),CTransX(-300.00f, 200.00f), CTransY(-300.00f,200.00f));
+//				CoordinatePositionMovement(CTransX(-300.00f, 200.00f), CTransY(-300.00f,200.00f),CTransX(-300.00f, 00.00f), CTransY(-300.00f,00.00f));
+//				Lift_Drop_box(0);
+//				Servo_Init();
+//				Control_Mode = STOP_MODE;
 			case STOP_MODE:
 				MotorSpeedExpected(0, 0, 0, 0, 0);
 				delay_ms(1);
@@ -225,14 +216,14 @@ int main(void){
 	
 	
 	
-	
-	
-	
-	
+//	
+//	
+
+//	
 //	/*——————————————————————————V 检测牛奶箱状态； 并进行移位操作，如果位置1没有牛奶箱，则移位到位置0 V————————————————————————————————————*/
 //	delay_ms(2000);
 //	Sbox_state[1][0] = cal_distance1();
-//	Sbox_state[0][0] = cal_distance3();
+//	Sbox_state[0][0] = 3;//cal_distance3();
 //	if(Sbox_state[1][0] == 0){
 //		Sbox_state[2][0] = 3;
 //		CoordinatePositionMovement(0.0f, 0.0f, CTransX(00.00f, 550.00f), CTransY(00.00f, 550.00f)); //如果中间没有，向左移到位置0。
@@ -242,26 +233,29 @@ int main(void){
 //		if(Sbox_state[0][0] == 0){Sbox_state[2][0] = 3;} else{Sbox_state[2][0] = 0;}
 //	}
 //	/*——————————————————————————^ 检测牛奶箱状态； 并进行移位操作，如果位置1没有牛奶箱，则移位到位置0 ^————————————————————————————————————*/
-//	Control_Mode = LIFT_MODE;
 
-//	
-//	
-//	/*Program flow ideas：
-//                       	 ------------------------------------------------------------------------<--------------------------------<
-//                     	v                                                                         |                                |
-//	 LIFT_MODE -> MOBILE_MODE -> TRACK_MODE (if motor_Location == 0) -> LIFT_MODE -> MOBILE_MODE -^                                |
-//											(if motor_Location == 0) -> DROP_MODE (if motor_park_space_start！=-1) -> MOBILE_MODE -^
-//																				  (if motor_park_space_start ==-1) -> STOP_MODE
-//	*/
-//	
+//	Control_Mode = LIFT_MODE;
+////	/*Program flow ideas：
+////                       	 ------------------------------------------------------------------------<--------------------------------<
+////                     	v                                                                         |                                |
+////	 LIFT_MODE -> MOBILE_MODE -> TRACK_MODE (if motor_Location == 0) -> LIFT_MODE -> MOBILE_MODE -^                                |
+////											(if motor_Location == 0) -> DROP_MODE (if motor_park_space_start！=-1) -> MOBILE_MODE -^
+////																				  (if motor_park_space_start ==-1) -> STOP_MODE
+////	*/
+
 //	while(1){
 //		switch(Control_Mode){
 //			case MOBILE_MODE:
 //				/*轨迹规划*/
-//				for (j=0; j<3; j++) motor_Position[j]=0;
-//				void routeplan(int motor_park_space_strat, int motor_park_space_end, int motor_Location);
+//				for (j=0; j<3; j++) {motor_Position[j]=0;}
+//				routeplan(motor_park_space_start, motor_park_space_end, motor_Location);
 //				//转换小车的s or e状态
-//				if(motor_Location == 0){motor_Location = 1;}else{motor_Location = 0;}
+//				if(motor_Location == 0){
+//					motor_Location = 1;
+//				}
+//				else{
+//					motor_Location = 0;
+//				}
 //				//-> TRACK_MODE
 //				Control_Mode = TRACK_MODE;
 //				break;
@@ -271,39 +265,45 @@ int main(void){
 //				if(trackModeState){
 //					stateInit();
 //					//如果小车位于起始位置，做抬升;如果小车位于结尾位置，做放下操作
-//					if(motor_Location == 0){Control_Mode=LIFT_MODE;}else{Control_Mode=DROP_MODE;}
+//					if(motor_Location == 0){
+//						Control_Mode=LIFT_MODE;
+//					}
+//					else{
+//						Control_Mode=DROP_MODE;
+//					}
 //				}
 //				break;
 //				
-//			case LIFT_MODE:
+//			case LIFT_MODE:	
 //				Sbox_state[motor_park_space_start][0] = cal_distance1();
 //				Sbox_state[motor_park_space_start][1] = cal_distance2(Sbox_state[motor_park_space_start][0]);
-//				if(Sbox_state[motor_park_space_start][0] == 0 || Sbox_state[motor_park_space_start][0] == -1) //With path planning, this situation does not occur
-//				{
-//					Control_Mode = STOP_MODE;
-//					printf("\r\n ERROR: You plan a bad route, here is noting! Rewrite your code!  \r\n");
-//					break;
+////				if(Sbox_state[motor_park_space_start][0] <= 0 ) //With path planning, this situation does not occur
+////				{
+////					Control_Mode = STOP_MODE;
+////					printf("\r\n ERROR: You plan a bad route, here is noting! Rewrite your code!  \r\n");
+////					break;
+////				}
+////				else{
+//				if(Sbox_state[motor_park_space_start][1] >0){
+//					liftplan(1,Sbox_state[motor_park_space_start][1]);
+//					mobile_box_state = Sbox_state[motor_park_space_start][1]; //milk box state
+//					motor_park_space_end = ChooseEndPoint(Sbox_state[motor_park_space_start][1]);
+//					Sbox_state[motor_park_space_start][1] = -1; //update state
 //				}
-//				else if(Sbox_state[motor_park_space_start][0] > 0){
-//					if(Sbox_state[motor_park_space_start][1] >0){
-//						liftplan(1,Sbox_state[motor_park_space_start][1]);
-//						mobile_box_state = Sbox_state[motor_park_space_start][1]; //milk box state
-//						motor_park_space_end = ChooseEndPoint(Sbox_state[motor_park_space_start][1]);
-//						Sbox_state[motor_park_space_start][1] = -1; //update state
-//					}
-//					else{
-//						liftplan(0,Sbox_state[motor_park_space_start][1]);
-//						mobile_box_state = Sbox_state[motor_park_space_start][0]; //milk box state
-//						motor_park_space_end = ChooseEndPoint(Sbox_state[motor_park_space_start][0]);
-//						Sbox_state[motor_park_space_start][0] = -1; //update state
-//					}
+//				else{
+//					liftplan(0,Sbox_state[motor_park_space_start][0]);
+//					mobile_box_state = Sbox_state[motor_park_space_start][0]; //milk box state
+//					motor_park_space_end = ChooseEndPoint(Sbox_state[motor_park_space_start][0]);
+//					Sbox_state[motor_park_space_start][0] = -1; //update state
 //				}
+////				}
 
 //				Control_Mode = MOBILE_MODE;
 //				break;
 //				
 //			case DROP_MODE:
 //				dropplan(motor_park_space_end,mobile_box_state);
+//				Ebox_state[motor_park_space_end]=1;
 //				motor_park_space_start = ChooseStartPoint();
 //				if(motor_park_space_start>=0){Control_Mode = MOBILE_MODE;} // mission in progress
 //				else{Control_Mode = STOP_MODE;} //mission over
@@ -313,6 +313,7 @@ int main(void){
 //				// just stop!
 //				MotorSpeedExpected(0, 0, 0, 0, 0);
 //				delay_ms(1);
+//				break;
 //			
 //			default:
 //				Control_Mode = STOP_MODE;
