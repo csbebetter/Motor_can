@@ -57,7 +57,7 @@ void CoordinatePositionMovement(float CurrentX, float CurrentY, float ExpectedX,
 								0);
 		}
 		delay_ms(2);
-	}while(!(stopCspdJudging(CSPDERR*10,-1)));
+	}while(!(stopCspdJudging(CSPDERR*8,-1)));
 		
   //实现小车缓慢减速
 	do{
