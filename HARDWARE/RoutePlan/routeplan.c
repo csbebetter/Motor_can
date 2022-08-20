@@ -346,6 +346,7 @@ void dropplan(int e, int state){
 		{
 			//需要位置调整
 			Servo_Init();
+			delay_ms(2);
 			Lift_Drop_box(-360);
 			CoordinatePositionMovement(CTransX(300.00f, 0.00f), CTransY(300.00f,0.00f),0,0);
 			Lift_Drop_box(0);
@@ -369,6 +370,7 @@ void dropplan(int e, int state){
 			//需要位置调整
 			Clockwise;
 			Lift_Drop_box(-360);
+			delay_ms(2);
 			CoordinatePositionMovement(0, 0, CTransX(0.00f, 200.00f), CTransY(0.00f,200.00f));
 			CoordinatePositionMovement(CTransX(0.00f, 200.00f), CTransY(0.00f,200.00f),CTransX(-300.00f, 200.00f), CTransY(-300.00f,200.00f));
 			CoordinatePositionMovement(CTransX(-300.00f, 200.00f), CTransY(-300.00f,200.00f),CTransX(-300.00f, 00.00f), CTransY(-300.00f,00.00f));
