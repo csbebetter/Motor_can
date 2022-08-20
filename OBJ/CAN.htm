@@ -3,9 +3,9 @@
 <title>Static Call Graph - [..\OBJ\CAN.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\CAN.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Aug 20 22:11:21 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Sun Aug 21 03:46:09 2022
 <BR><P>
-<H3>Maximum Stack Usage =        280 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        288 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; routeplan &rArr; CTransY &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_d2iz
 <P>
@@ -235,7 +235,7 @@ Global Symbols
 <P><STRONG><a name="[143]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[6b]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 280 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 288 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; routeplan &rArr; CTransY &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -266,16 +266,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 612 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = main &rArr; routeplan &rArr; CTransY &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_d2iz
+<P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 784 bytes, Stack size 16 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = main &rArr; routeplan &rArr; CTransY &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart6_init
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart3_init
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart2_init
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stateInit
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runStop
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;routeplan
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;liftplan
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dropplan
@@ -285,6 +284,7 @@ Global Symbols
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance2
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance1
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_motors
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RedRayInit
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PidInit
@@ -458,12 +458,12 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clockwiseCounterRotate
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clockwiseRotate
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runRight
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runLeft
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runBack
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runFront
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runStop
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runRight
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runLeft
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runBack
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runFront
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AngularRotationMovement
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runStop
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance2
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance1
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinatePositionMovement
@@ -579,11 +579,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8b]"></a>liftplan</STRONG> (Thumb, 1148 bytes, Stack size 32 bytes, routeplan.o(.text))
+<P><STRONG><a name="[8b]"></a>liftplan</STRONG> (Thumb, 988 bytes, Stack size 32 bytes, routeplan.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = liftplan &rArr; CTransY &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_d2iz
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_Drop_box
+<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_Drop_box
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinatePositionMovement
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CTransY
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CTransX
@@ -591,13 +591,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8d]"></a>dropplan</STRONG> (Thumb, 652 bytes, Stack size 32 bytes, routeplan.o(.text))
+<P><STRONG><a name="[8d]"></a>dropplan</STRONG> (Thumb, 644 bytes, Stack size 32 bytes, routeplan.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = dropplan &rArr; CTransY &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_d2iz
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_Drop_box
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_Drop_box
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinatePositionMovement
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CTransY
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CTransX
@@ -610,7 +609,7 @@ Global Symbols
 <P><STRONG><a name="[77]"></a>LED_Init</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, led.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = LED_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
@@ -626,34 +625,35 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[bb]"></a>KEY_Scan</STRONG> (Thumb, 188 bytes, Stack size 8 bytes, key.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<P><STRONG><a name="[ba]"></a>KEY_Scan</STRONG> (Thumb, 188 bytes, Stack size 8 bytes, key.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 
-<P><STRONG><a name="[b9]"></a>Servo_Angle_Set</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, myservo.o(.text))
+<P><STRONG><a name="[88]"></a>Servo_Angle_Set</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, myservo.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Servo_Angle_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
+<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;liftplan
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dropplan
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[80]"></a>Servo_Init</STRONG> (Thumb, 160 bytes, Stack size 48 bytes, myservo.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = Servo_Init &rArr; GPIO_PinAFConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PreloadConfig
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ARRPreloadConfig
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
+<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PreloadConfig
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ARRPreloadConfig
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dropplan
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -675,127 +675,126 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c3]"></a>wayAllBlack</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<P><STRONG><a name="[c2]"></a>wayAllBlack</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
 
-<P><STRONG><a name="[c4]"></a>canRotate</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<P><STRONG><a name="[c3]"></a>canRotate</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRotateCounterClockwise
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRotateClockwise
-</UL>
-
-<P><STRONG><a name="[c5]"></a>needRotateClockwise</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canRotate
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRotateCounterClockwise
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRotateClockwise
 </UL>
 
-<P><STRONG><a name="[c6]"></a>needRotateCounterClockwise</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canRotate
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<P><STRONG><a name="[c4]"></a>needRotateClockwise</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canRotate
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
 
-<P><STRONG><a name="[c7]"></a>lightBlack</STRONG> (Thumb, 382 bytes, Stack size 24 bytes, track.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<P><STRONG><a name="[c5]"></a>needRotateCounterClockwise</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canRotate
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
 
-<P><STRONG><a name="[c8]"></a>rotateToTrack</STRONG> (Thumb, 670 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[c6]"></a>lightBlack</STRONG> (Thumb, 382 bytes, Stack size 24 bytes, track.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+</UL>
+
+<P><STRONG><a name="[c7]"></a>rotateToTrack</STRONG> (Thumb, 670 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = rotateToTrack
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[c9]"></a>way1AllWhite</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[c8]"></a>way1AllWhite</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = way1AllWhite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[ca]"></a>way2AllWhite</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[c9]"></a>way2AllWhite</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = way2AllWhite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[cb]"></a>reachTarget</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, track.o(.text))
+<P><STRONG><a name="[ca]"></a>reachTarget</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = reachTarget
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[cc]"></a>needRight</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[cb]"></a>needRight</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = needRight
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[cd]"></a>needLeft</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[cc]"></a>needLeft</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = needLeft
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[ce]"></a>needForward</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[cd]"></a>needForward</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = needForward
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[cf]"></a>runFront</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[ce]"></a>runFront</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = runFront &rArr; MotorSpeedExpected &rArr; motor_driver &rArr; Motor_Set_Current &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSpeedExpected
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[d0]"></a>runBack</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
+<P><STRONG><a name="[cf]"></a>runBack</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSpeedExpected
 </UL>
 
-<P><STRONG><a name="[d1]"></a>runLeft</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[d0]"></a>runLeft</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = runLeft &rArr; MotorSpeedExpected &rArr; motor_driver &rArr; Motor_Set_Current &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSpeedExpected
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[d2]"></a>runRight</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[d1]"></a>runRight</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = runRight &rArr; MotorSpeedExpected &rArr; motor_driver &rArr; Motor_Set_Current &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSpeedExpected
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
-<P><STRONG><a name="[89]"></a>runStop</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[d2]"></a>runStop</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = runStop &rArr; MotorSpeedExpected &rArr; motor_driver &rArr; Motor_Set_Current &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSpeedExpected
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
 <P><STRONG><a name="[d3]"></a>clockwiseRotate</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
@@ -804,7 +803,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSpeedExpected
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
 <P><STRONG><a name="[d4]"></a>clockwiseCounterRotate</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, track.o(.text))
@@ -813,30 +812,30 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSpeedExpected
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
 <P><STRONG><a name="[7f]"></a>stateInit</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, track.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[88]"></a>startTrack</STRONG> (Thumb, 1246 bytes, Stack size 8 bytes, track.o(.text))
+<P><STRONG><a name="[89]"></a>startTrack</STRONG> (Thumb, 1246 bytes, Stack size 8 bytes, track.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = startTrack &rArr; clockwiseCounterRotate &rArr; MotorSpeedExpected &rArr; motor_driver &rArr; Motor_Set_Current &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clockwiseCounterRotate
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clockwiseRotate
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runRight
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runLeft
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runFront
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needForward
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needLeft
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRight
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reachTarget
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;way2AllWhite
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;way1AllWhite
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotateToTrack
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runStop
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runStop
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runRight
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runLeft
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runFront
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needForward
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needLeft
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRight
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reachTarget
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;way2AllWhite
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;way1AllWhite
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotateToTrack
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -900,16 +899,15 @@ Global Symbols
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_LaserDis_Usart2
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clockwiseCounterRotate
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clockwiseRotate
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runRight
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runLeft
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runBack
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runFront
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEY_Scan
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runStop
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runRight
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runLeft
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runBack
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runFront
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEY_Scan
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_Drop_box
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AngularRotationMovement
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runStop
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dropplan
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance3
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinatePositionMovement
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1341,21 +1339,21 @@ Global Symbols
 
 <P><STRONG><a name="[14c]"></a>GPIO_PinLockConfig</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, stm32f4xx_gpio.o(.text), UNUSED)
 
-<P><STRONG><a name="[bc]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needForward
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needLeft
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRight
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reachTarget
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;way2AllWhite
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;way1AllWhite
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotateToTrack
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lightBlack
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRotateCounterClockwise
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRotateClockwise
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canRotate
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wayAllBlack
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEY_Scan
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
+<P><STRONG><a name="[bb]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needForward
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needLeft
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRight
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reachTarget
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;way2AllWhite
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;way1AllWhite
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rotateToTrack
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lightBlack
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRotateCounterClockwise
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;needRotateClockwise
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;canRotate
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wayAllBlack
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEY_Scan
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 </UL>
 
 <P><STRONG><a name="[14d]"></a>GPIO_ReadInputData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text), UNUSED)
@@ -1364,7 +1362,7 @@ Global Symbols
 
 <P><STRONG><a name="[14f]"></a>GPIO_ReadOutputData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text), UNUSED)
 
-<P><STRONG><a name="[ba]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text))
+<P><STRONG><a name="[b9]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 </UL>
 
@@ -1724,7 +1722,7 @@ Global Symbols
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
 </UL>
 
-<P><STRONG><a name="[be]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
+<P><STRONG><a name="[bd]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
 </UL>
 
@@ -1746,7 +1744,7 @@ Global Symbols
 
 <P><STRONG><a name="[1ac]"></a>TIM_UpdateRequestConfig</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[c1]"></a>TIM_ARRPreloadConfig</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
+<P><STRONG><a name="[c0]"></a>TIM_ARRPreloadConfig</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
 </UL>
 
@@ -1754,13 +1752,13 @@ Global Symbols
 
 <P><STRONG><a name="[1ae]"></a>TIM_SetClockDivision</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[c2]"></a>TIM_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
+<P><STRONG><a name="[c1]"></a>TIM_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
 </UL>
 
 <P><STRONG><a name="[1af]"></a>TIM_OC1Init</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, stm32f4xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[bf]"></a>TIM_OC2Init</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, stm32f4xx_tim.o(.text))
+<P><STRONG><a name="[be]"></a>TIM_OC2Init</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, stm32f4xx_tim.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC2Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
@@ -1776,8 +1774,8 @@ Global Symbols
 
 <P><STRONG><a name="[1b4]"></a>TIM_SetCompare1</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[bd]"></a>TIM_SetCompare2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
+<P><STRONG><a name="[bc]"></a>TIM_SetCompare2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
 </UL>
 
 <P><STRONG><a name="[1b5]"></a>TIM_SetCompare3</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text), UNUSED)
@@ -1794,7 +1792,7 @@ Global Symbols
 
 <P><STRONG><a name="[1bb]"></a>TIM_OC1PreloadConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[c0]"></a>TIM_OC2PreloadConfig</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
+<P><STRONG><a name="[bf]"></a>TIM_OC2PreloadConfig</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
 </UL>
 

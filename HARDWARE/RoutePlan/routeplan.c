@@ -47,7 +47,7 @@ void CoordinatePositionMovement(float CurrentX, float CurrentY, float ExpectedX,
 								sign(linear_speed[2])*flag*fabs(errX)/(fabs(errX)+fabs(errY)),
 								sign(linear_speed[3])*flag*fabs(errY)/(fabs(errX)+fabs(errY)),
 								0);
-			flag += 0.3f ;
+			flag += 0.1f ;
 		}
 		else{
 			MotorSpeedExpected( linear_speed[0]*fabs(errX)/(fabs(errX)+fabs(errY)),
@@ -57,7 +57,7 @@ void CoordinatePositionMovement(float CurrentX, float CurrentY, float ExpectedX,
 								0);
 		}
 		delay_ms(2);
-	}while(!(stopCspdJudging(CSPDERR*8,-1)));
+	}while(!(stopCspdJudging(CSPDERR*10,-1)));
 	
 	if (flag<50){
 		flag = 50;
@@ -108,7 +108,7 @@ void AngularRotationMovement(float CurrentA, float ExpectedA){
 								sign(spinning_speed[2])*flag,
 								sign(spinning_speed[3])*flag,
 								0);
-			flag += 0.3f ;
+			flag += 0.2f ;
 		}
 		else{
 			MotorSpeedExpected(spinning_speed[0],spinning_speed[1],spinning_speed[2],spinning_speed[3],0);
@@ -242,8 +242,8 @@ void routeplan(int s, int e, int startORend){
 		}
 
 		if(s==1&&e==2){
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -1100.00f), CTransY(0.00f, -1100.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, -1100.00f), CTransY(-1800.00f, -1100.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -1000.00f), CTransY(0.00f, -1000.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, -1000.00f), CTransY(-1800.00f, -1000.00f));
 			AngularRotationMovement(motor_Position[2], -180.0f);
 			CoordinatePositionMovement(0, 0, CTransX(00.00f, -510.00f), CTransY(00.00f, -510.00f));
 		}
@@ -278,7 +278,7 @@ void routeplan(int s, int e, int startORend){
 		}
 
 		if(s==0&&e==2){
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -1100.00f), CTransY(0.00f, -1100.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -1000.00f), CTransY(0.00f, -1000.00f));
 			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, -1100.00f), CTransY(-1800.00f, -1100.00f));
 			AngularRotationMovement(motor_Position[2], -180.0f);
 		}
@@ -294,7 +294,7 @@ void liftplan(int upordown, int state){
 		CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
 		Lift_Drop_box(-5800);
 		CoordinatePositionMovement(CTransX(370.00f, 0.00f), CTransY(370.00f,0.00f),0,0);
-		Lift_Drop_box(-2100);
+		Lift_Drop_box(-3000);
 	}
 	if(upordown == 1 && state == 2)//up |
 	{
@@ -305,15 +305,15 @@ void liftplan(int upordown, int state){
 		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
 		Lift_Drop_box(-5800);
 		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
-		Lift_Drop_box(-2100);
-		CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
+		Lift_Drop_box(-3000);
+		//CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
 
 	}
 	if(upordown == 0 && state == 1)//down -
 	{
 		Lift_Drop_box(-360);
 		CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
-		Lift_Drop_box(-2100);
+		Lift_Drop_box(-3000);
 		CoordinatePositionMovement(CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f),0,0);
 
 	}
@@ -324,9 +324,9 @@ void liftplan(int upordown, int state){
 		Lift_Drop_box(-360);
 		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
 		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
-		Lift_Drop_box(-2100);
+		Lift_Drop_box(-3000);
 		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
-		CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
+		//CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
 	}
 }
 	
@@ -345,8 +345,8 @@ void dropplan(int e, int state){
 		else
 		{
 			//需要位置调整
-			Servo_Init();
-			delay_ms(2);
+			MoveToDefault;
+
 			Lift_Drop_box(-360);
 			CoordinatePositionMovement(CTransX(300.00f, 0.00f), CTransY(300.00f,0.00f),0,0);
 			Lift_Drop_box(0);
@@ -370,7 +370,6 @@ void dropplan(int e, int state){
 			//需要位置调整
 			Clockwise;
 			Lift_Drop_box(-360);
-			delay_ms(2);
 			CoordinatePositionMovement(0, 0, CTransX(0.00f, 200.00f), CTransY(0.00f,200.00f));
 			CoordinatePositionMovement(CTransX(0.00f, 200.00f), CTransY(0.00f,200.00f),CTransX(-300.00f, 200.00f), CTransY(-300.00f,200.00f));
 			CoordinatePositionMovement(CTransX(-300.00f, 200.00f), CTransY(-300.00f,200.00f),CTransX(-300.00f, 00.00f), CTransY(-300.00f,00.00f));
