@@ -442,11 +442,6 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\WL_LaserDis_V2\cal_distance.c</FilePath>
             </File>
-            <File>
-              <FileName>hcsr04.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\HCSR04\hcsr04.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

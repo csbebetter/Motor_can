@@ -137,6 +137,15 @@ int main(void){
 	Servo_Init();
 	u8 trackModeState = 0;
 
+// chuan gan  qi  tiao  shi
+//	while(1)
+//	{
+//		Sbox_state[0][0] = cal_distance3();
+//		delay_ms(5);
+//		Sbox_state[1][0] = cal_distance1();
+//		Sbox_state[1][1] = cal_distance2(Sbox_state[1][0]);
+//		delay_ms(10);
+//	}
 
 //	
 //		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
@@ -158,7 +167,7 @@ int main(void){
 //		
 
 
-//		
+//	delay_ms(2);
 //	Control_Mode=TRACK_MODE;
 //	
 //	while(1){
@@ -166,9 +175,9 @@ int main(void){
 //			case TRACK_MODE:
 //				trackModeState = startTrack();
 //				if(trackModeState){
-//					stateInit();
+////					stateInit();
 //					//如果小车位于起始位置，做抬升;如果小车位于结尾位置，做放下操作
-//					//Control_Mode = DROP_MODE;
+////					Control_Mode = STOP_MODE;
 //				}
 //				break;
 ////			case DROP_MODE:
@@ -184,18 +193,31 @@ int main(void){
 //				delay_ms(1);
 //			default:
 //				Control_Mode=STOP_MODE;
-//		}	
+//		}
+//}
 
+//	
+//	
+	
+	
+//	while(1){
+//		Clockwise;
+//		delay_ms(1000);
+//		MoveToDefault;
+//		delay_ms(1000);
+//		CounterClockwise;
+//		delay_ms(1000);
+//		MoveToDefault;
+//		delay_ms(1000);
 //	}
-
-//	
-//	
 	
 	
-	
-	
-	
-	
+//	while(1){
+//		trackModeState = startTrack();
+//		if(trackModeState){
+//			runStop();
+//		}
+//	}
 	
 	
 	
@@ -224,7 +246,7 @@ int main(void){
 	/*——————————————————————————V 检测牛奶箱状态； 并进行移位操作，如果位置1没有牛奶箱，则移位到位置0 V————————————————————————————————————*/
 	delay_ms(2000);
 	Sbox_state[1][0] = cal_distance1();
-	Sbox_state[0][0] = 3;//cal_distance3();
+	Sbox_state[0][0] = cal_distance3();
 	if(Sbox_state[1][0] == 0){
 		Sbox_state[2][0] = 3;
 		CoordinatePositionMovement(0.0f, 0.0f, CTransX(00.00f, 550.00f), CTransY(00.00f, 550.00f)); //如果中间没有，向左移到位置0。

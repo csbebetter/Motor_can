@@ -1,3 +1,4 @@
+
 #include "track.h"
 
 static u8 currentRobotState;
@@ -10,11 +11,7 @@ static u8 lastRobotState;
 static u8 flag = 0;
 static u8 rotateFlag = 0;
 
-/*————————————————————————————————————————————循迹代码↓————————————————————————————————————————————*/
-/*————————————————————————————————————————————循迹代码↓————————————————————————————————————————————*/
-/*————————————————————————————————————————————循迹代码↓————————————————————————————————————————————*/
-/*————————————————————————————————————————————循迹代码↓————————————————————————————————————————————*/
-/*————————————————————————————————————————————循迹代码↓————————————————————————————————————————————*/
+
 void GPIOCLKInit(void)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA , ENABLE);
@@ -112,7 +109,7 @@ void RedRayInit(void){
 	GPIO_Init(SEARCH_OUT_GPIO_17, &GPIO_InitStructure);
 }
 
-//判断是否全黑
+//??????
 u8 wayAllBlack(void){
 	if(SEARCH_OUT_IO_1 == BLACK_AREA &&
 	SEARCH_OUT_IO_2 == BLACK_AREA &&
@@ -193,7 +190,7 @@ u8 rotateToTrack(void){
 		}
 }
 
-u8 wayAllWhite(void){
+u8 way1AllWhite(void){
 	if(SEARCH_OUT_IO_1 == WHITE_AREA &&
 	SEARCH_OUT_IO_2 == WHITE_AREA &&
 	SEARCH_OUT_IO_3 == WHITE_AREA &&
@@ -201,6 +198,22 @@ u8 wayAllWhite(void){
 	SEARCH_OUT_IO_5 == WHITE_AREA &&
 	SEARCH_OUT_IO_6 == WHITE_AREA &&
 	SEARCH_OUT_IO_7 == WHITE_AREA)
+	{
+		return 1;
+	}
+	else{
+		return 0;
+	}
+}
+
+u8 way2AllWhite(void){
+	if(SEARCH_OUT_IO_11 == WHITE_AREA &&
+	SEARCH_OUT_IO_12 == WHITE_AREA &&
+	SEARCH_OUT_IO_13 == WHITE_AREA &&
+	SEARCH_OUT_IO_14 == WHITE_AREA &&
+	SEARCH_OUT_IO_15 == WHITE_AREA &&
+	SEARCH_OUT_IO_16 == WHITE_AREA &&
+	SEARCH_OUT_IO_17 == WHITE_AREA)
 	{
 		return 1;
 	}
@@ -368,140 +381,290 @@ void stateInit(void){
 	lastRobotState = COMM_STOP;
 	currentRobotState = COMM_STOP;
 	flag = 0;
+	rotateFlag = 0;
 }
+
+//u8 startTrack(void){
+////	if(canRotate() && flag == 0){
+////		flag = 1;
+////	}
+//	if(rotateToTrack() && flag == 1){
+//		rotateFlag = 0;
+//		flag = 2;
+//	}
+//	if(flag == 0){
+//		lastRobotState = currentRobotState;
+//		currentRobotState = COMM_LEFT;
+//		if(rotateFlag == 0){
+//			if(SEARCH_OUT_IO_7 == BLACK_AREA && SEARCH_OUT_IO_11 == BLACK_AREA){
+//				rotateFlag = 1;
+//				flag = 1;
+//			}
+//			else if(SEARCH_OUT_IO_7 == BLACK_AREA && SEARCH_OUT_IO_11 == WHITE_AREA){
+//				rotateFlag = 2; // need clockwise rotate
+//				flag = 1;
+//			}
+//			else if(SEARCH_OUT_IO_7 == WHITE_AREA && SEARCH_OUT_IO_11 == BLACK_AREA){
+//				rotateFlag = 3; // need counterclockwise rotate
+//				flag = 1;
+//			}
+//		}
+//	}
+//	if(flag == 1){
+//		if(rotateFlag == 1){
+//			if(SEARCH_OUT_IO_4 == BLACK_AREA){
+//				flag = 2;
+//				lastRobotState = currentRobotState;
+//				currentRobotState = COMM_FORWARD;
+//			}
+//		}
+//		else if(rotateFlag == 2){
+//			if(SEARCH_OUT_IO_2 == BLACK_AREA || SEARCH_OUT_IO_1 == BLACK_AREA){
+//				lastRobotState = currentRobotState;
+//				currentRobotState = COMM_CLOCK;
+//			}
+//		}
+//		else if(rotateFlag == 3){
+//			if(SEARCH_OUT_IO_6 == BLACK_AREA || SEARCH_OUT_IO_7 == BLACK_AREA){
+//				lastRobotState = currentRobotState;
+//				currentRobotState = COMM_CTCLOCK;
+//			}
+//		}
+//	}
+////	if(flag == 1){
+////		if(needRotateClockwise()){
+////			lastRobotState = currentRobotState;
+////			currentRobotState = COMM_CLOCK;
+////		}
+////		else if(needRotateCounterClockwise()){
+////			lastRobotState = currentRobotState;
+////			currentRobotState = COMM_CTCLOCK;
+////		}
+////	}
+//	if(flag == 2){
+//		if(needForward()){
+//			lastRobotState = currentRobotState;
+//			currentRobotState = COMM_FORWARD;
+//		}
+//		else if(needLeft()){
+//			lastRobotState = currentRobotState;
+//			currentRobotState = COMM_LEFT;
+//		}
+//		else if(needRight()){
+//			lastRobotState = currentRobotState;
+//			currentRobotState = COMM_RIGHT;
+//		}
+//		else if(reachTarget(6)){
+//			lastRobotState = currentRobotState;
+//			currentRobotState = COMM_STOP;
+//		}
+//		else if(wayAllWhite()){
+//			lastRobotState = currentRobotState;
+//			currentRobotState = COMM_STOP;
+//		}
+//	}
+//	
+//	if(currentRobotState == COMM_STOP && wayAllWhite() && flag == 2){
+//		if(lastRobotState == COMM_LEFT){
+//			currentRobotState = COMM_LEFT;
+//		}
+//		if(lastRobotState == COMM_RIGHT){
+//			currentRobotState = COMM_RIGHT;
+//		}
+//		if(lastRobotState == COMM_FORWARD){
+//			if(reachTarget(6)){
+//				currentRobotState = COMM_STOP;
+//			}
+//			else{
+//				currentRobotState = COMM_FORWARD;
+//			}
+//		}
+//	}
+
+//	switch(currentRobotState){
+//		case COMM_FORWARD:{
+//			runFront();
+//			break;
+//		}
+//		case COMM_LEFT:{
+//			runLeft();
+//			break;
+//		}
+//		case COMM_RIGHT:{
+//			runRight();
+//			break;
+//		}
+//		case COMM_STOP:{
+//			runStop();
+//			break;
+//		}
+//		case COMM_CLOCK:{
+//			clockwiseRotate();
+//			break;
+//		}
+//		case COMM_CTCLOCK:{
+//			clockwiseCounterRotate();
+//			break;
+//		}
+//		default:{
+//			delay_ms(10);
+//			break;
+//		}
+//	}
+//	
+//	if(reachTarget(6)){
+//		return 1;
+//	}
+//	else{
+//		return 0;
+//	}
+//}
 
 u8 startTrack(void){
-	if(canRotate() && flag == 0){
-		flag = 1;
-	}
-	if(rotateToTrack() && flag == 1){
-		rotateFlag = 0;
-		flag = 2;
-	}
-	if(flag == 0){
-		lastRobotState = currentRobotState;
-		currentRobotState = COMM_LEFT;
-		if(rotateFlag == 0){
-			if(SEARCH_OUT_IO_7 == BLACK_AREA && SEARCH_OUT_IO_11 == BLACK_AREA){
-				rotateFlag = 1;
-				flag = 1;
-			}
-			else if(SEARCH_OUT_IO_7 == BLACK_AREA && SEARCH_OUT_IO_11 == WHITE_AREA){
-				rotateFlag = 2; // need clockwise rotate
-				flag = 1;
-			}
-			else if(SEARCH_OUT_IO_7 == WHITE_AREA && SEARCH_OUT_IO_11 == BLACK_AREA){
-				rotateFlag = 3; // need counterclockwise rotate
-				flag = 1;
+		if(rotateToTrack() && flag == 1){
+			rotateFlag = 0;
+			flag = 2;
+		}
+		if(flag == 0){
+			lastRobotState = currentRobotState;
+			currentRobotState = COMM_LEFT;
+			if(rotateFlag == 0){
+				if(SEARCH_OUT_IO_1 == BLACK_AREA && SEARCH_OUT_IO_17 == BLACK_AREA){
+					rotateFlag = 1;
+					flag = 1;
+				}
+				else if(way1AllWhite() && SEARCH_OUT_IO_17 == BLACK_AREA){
+					rotateFlag = 2; // need clockwise rotate
+					flag = 1;
+				}
+				else if(SEARCH_OUT_IO_1 == BLACK_AREA && way2AllWhite()){
+					rotateFlag = 3; // need counterclockwise rotate
+					flag = 1;
+				}
 			}
 		}
-	}
-	if(flag == 1){
-		if(rotateFlag == 1){
-			if(SEARCH_OUT_IO_4 == BLACK_AREA){
-				flag = 2;
+		if(flag == 1){
+			if(rotateFlag == 1){
+				if(SEARCH_OUT_IO_4 == BLACK_AREA){
+					flag = 2;
+					lastRobotState = currentRobotState;
+					currentRobotState = COMM_FORWARD;
+				}
+				else{
+					lastRobotState = currentRobotState;
+					currentRobotState = COMM_RIGHT;
+				}
+			}
+			else if(rotateFlag == 2){
+				if(SEARCH_OUT_IO_3 == BLACK_AREA || SEARCH_OUT_IO_4 == BLACK_AREA){
+					lastRobotState = currentRobotState;
+					currentRobotState = COMM_CLOCK;
+				}
+				else{
+					lastRobotState = currentRobotState;
+					currentRobotState = COMM_RIGHT;
+				}
+			}
+			else if(rotateFlag == 3){
+				if(SEARCH_OUT_IO_6 == BLACK_AREA || SEARCH_OUT_IO_5 == BLACK_AREA){
+					lastRobotState = currentRobotState;
+					currentRobotState = COMM_CTCLOCK;
+				}
+				else{
+					lastRobotState = currentRobotState;
+					currentRobotState = COMM_RIGHT;
+				}
+			}
+		}
+	//	if(flag == 1){
+	//		if(needRotateClockwise()){
+	//			lastRobotState = currentRobotState;
+	//			currentRobotState = COMM_CLOCK;
+	//		}
+	//		else if(needRotateCounterClockwise()){
+	//			lastRobotState = currentRobotState;
+	//			currentRobotState = COMM_CTCLOCK;
+	//		}
+	//	}
+		if(flag == 2){
+			if(needForward()){
 				lastRobotState = currentRobotState;
 				currentRobotState = COMM_FORWARD;
 			}
-		}
-		else if(rotateFlag == 2){
-			if(SEARCH_OUT_IO_2 == BLACK_AREA || SEARCH_OUT_IO_1 == BLACK_AREA){
+			else if(needLeft()){
 				lastRobotState = currentRobotState;
-				currentRobotState = COMM_CLOCK;
+				currentRobotState = COMM_LEFT;
 			}
-		}
-		else if(rotateFlag == 3){
-			if(SEARCH_OUT_IO_6 == BLACK_AREA || SEARCH_OUT_IO_7 == BLACK_AREA){
+			else if(needRight()){
 				lastRobotState = currentRobotState;
-				currentRobotState = COMM_CTCLOCK;
+				currentRobotState = COMM_RIGHT;
 			}
-		}
-	}
-	if(flag == 1){
-		if(needRotateClockwise()){
-			lastRobotState = currentRobotState;
-			currentRobotState = COMM_CLOCK;
-		}
-		else if(needRotateCounterClockwise()){
-			lastRobotState = currentRobotState;
-			currentRobotState = COMM_CTCLOCK;
-		}
-	}
-	if(flag == 2){
-		if(needForward()){
-			lastRobotState = currentRobotState;
-			currentRobotState = COMM_FORWARD;
-		}
-		else if(needLeft()){
-			lastRobotState = currentRobotState;
-			currentRobotState = COMM_LEFT;
-		}
-		else if(needRight()){
-			lastRobotState = currentRobotState;
-			currentRobotState = COMM_RIGHT;
-		}
-		else if(reachTarget(6)){
-			lastRobotState = currentRobotState;
-			currentRobotState = COMM_STOP;
-		}
-		else if(wayAllWhite()){
-			lastRobotState = currentRobotState;
-			currentRobotState = COMM_STOP;
-		}
-	}
-	
-	if(currentRobotState == COMM_STOP && wayAllWhite() && flag == 2){
-		if(lastRobotState == COMM_LEFT){
-			currentRobotState = COMM_LEFT;
-		}
-		if(lastRobotState == COMM_RIGHT){
-			currentRobotState = COMM_RIGHT;
-		}
-		if(lastRobotState == COMM_FORWARD){
-			if(reachTarget(6)){
+			else if(reachTarget(6)){
+				lastRobotState = currentRobotState;
 				currentRobotState = COMM_STOP;
 			}
-			else{
-				currentRobotState = COMM_FORWARD;
+			else if(way1AllWhite()){
+				lastRobotState = currentRobotState;
+				currentRobotState = COMM_STOP;
 			}
 		}
-	}
+		
+		if(currentRobotState == COMM_STOP && way1AllWhite() && flag == 2){
+			if(lastRobotState == COMM_LEFT){
+				currentRobotState = COMM_LEFT;
+			}
+			if(lastRobotState == COMM_RIGHT){
+				currentRobotState = COMM_RIGHT;
+			}
+			if(lastRobotState == COMM_FORWARD){
+				if(reachTarget(6)){
+					currentRobotState = COMM_STOP;
+					lastRobotState = COMM_STOP;
+					flag = 10;
+				}
+				else{
+					currentRobotState = COMM_FORWARD;
+				}
+			}
+		}
 
-	switch(currentRobotState){
-		case COMM_FORWARD:{
-			runFront();
-			break;
+		switch(currentRobotState){
+			case COMM_FORWARD:{
+				runFront();
+				break;
+			}
+			case COMM_LEFT:{
+				runLeft();
+				break;
+			}
+			case COMM_RIGHT:{
+				runRight();
+				break;
+			}
+			case COMM_STOP:{
+				runStop();
+				break;
+			}
+			case COMM_CLOCK:{
+				clockwiseRotate();
+				break;
+			}
+			case COMM_CTCLOCK:{
+				clockwiseCounterRotate();
+				break;
+			}
+			default:{
+				delay_ms(10);
+				break;
+			}
 		}
-		case COMM_LEFT:{
-			runLeft();
-			break;
-		}
-		case COMM_RIGHT:{
-			runRight();
-			break;
-		}
-		case COMM_STOP:{
+		
+		if(reachTarget(6)){
 			runStop();
-			break;
+			return 1;
 		}
-		case COMM_CLOCK:{
-			clockwiseRotate();
-			break;
+		else{
+			return 0;
 		}
-		case COMM_CTCLOCK:{
-			clockwiseCounterRotate();
-			break;
-		}
-		default:{
-			delay_ms(10);
-			break;
-		}
-	}
-	
-	if(reachTarget(6)){
-		return 1;
-	}
-	else{
-		return 0;
-	}
 }
+

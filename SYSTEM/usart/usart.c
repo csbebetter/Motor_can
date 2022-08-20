@@ -95,6 +95,9 @@ u16 USART_RX_STA0[16] = { 0 };       //接收状态标记
 u8 Num3 = 0;              //接收数据的当前位置
 u16 USART_RX_STA1[16] = { 0 };       //接收状态标记	  
 u8 Num2 = 0;              //接收数据的当前位置
+u16 USART_RX_STA2[16] = { 0 };       //接收状态标记	  
+u8 Num6 = 0;              //接收数据的当前位置
+
 
 void uart3_init(u32 bound)
 {
@@ -194,6 +197,56 @@ void uart2_init(u32 bound)
 	
 }
 
+void uart6_init(u32 bound)
+{
+   //GPIO????
+	GPIO_InitTypeDef GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
+	
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC,ENABLE); //
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART6,ENABLE);
+ 
+
+	GPIO_PinAFConfig(GPIOC,GPIO_PinSource6,GPIO_AF_USART6); //GPIOA10???USART3
+	GPIO_PinAFConfig(GPIOC,GPIO_PinSource7,GPIO_AF_USART6); //GPIOA11???USART3
+	
+	//USART3????
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_6; //GPIOA11?GPIOA10
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP; 
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP; 
+	GPIO_Init(GPIOC,&GPIO_InitStructure); 
+ 
+   //USART3 ?????
+	USART_InitStructure.USART_BaudRate = bound;
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	USART_InitStructure.USART_Parity = USART_Parity_No;
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+	USART_Init(USART6, &USART_InitStructure); 
+		
+	USART_Cmd(USART6, ENABLE); 
+	
+	//USART_ClearFlag(USART1, USART_FLAG_TC);
+	
+//#if EN_USART1_RX	
+	USART_ITConfig(USART6, USART_IT_RXNE, ENABLE);
+ 
+	//Usart1 NVIC ??
+   NVIC_InitStructure.NVIC_IRQChannel = USART6_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority =0;		
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+	NVIC_Init(&NVIC_InitStructure);
+ 
+//#endif
+	
+}
+
+
 void Read_LaserDis_Usart3(unsigned char ID, unsigned int *Data)
 {
 	
@@ -209,7 +262,7 @@ void Read_LaserDis_Usart3(unsigned char ID, unsigned int *Data)
 	while(USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);
 	USART_SendData(USART3, ID);																  //ID模块编号
 	while(USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
-	delay_ms(20);
+	delay_ms(15);
 	
 	while(1)
   {
@@ -261,7 +314,7 @@ void Read_LaserDis_Usart2(unsigned char ID, unsigned int *Data)
 	while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
 	USART_SendData(USART2, ID);																  //ID模块编号
 	while(USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET);
-	delay_ms(200);
+	delay_ms(15);
 	
 	while(1)
   {
@@ -297,6 +350,59 @@ void Read_LaserDis_Usart2(unsigned char ID, unsigned int *Data)
     }
   }
 }
+
+void Read_LaserDis_Usart6(unsigned char ID, unsigned int *Data)
+{
+	
+	
+	unsigned char y=0;
+	unsigned int Receive_data[3] = { 0 };       //数据缓存区
+	//Num=0;
+	
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART6, 0x57);																//命令起始信号
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TC) == RESET);	
+
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART6, ID);																  //ID模块编号
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TC) == RESET);
+	delay_ms(15);
+	
+	while(1)
+  {
+		if(USART_RX_STA2[0] != 0x75) { Num6 = 0; } 
+		if(Num6 == 8)
+		{
+			Num6 = 0;
+			if(USART_RX_STA2[7] == 0x07)  //判断帧尾0x07,否者不赋值
+			{
+				Receive_data[0] = USART_RX_STA2[1];
+				Receive_data[0] <<= 8;
+				Receive_data[0] |= USART_RX_STA2[2];        
+				*Data = Receive_data[0];          //距离
+				
+				Receive_data[1] = USART_RX_STA2[3];
+				Receive_data[1] <<= 8;
+				Receive_data[1] |= USART_RX_STA2[4];
+				*(Data+1) = Receive_data[1];          //环境质量
+				
+				Receive_data[2] = USART_RX_STA2[5];
+				Receive_data[2] <<= 8;
+				Receive_data[2] |= USART_RX_STA2[6];
+				*(Data+2) = Receive_data[2];         //环境光强        
+				
+				break;
+			}        
+			break;
+		}
+    else
+    {
+      delay_ms(1);y++;
+      if(y==10) { Num6 = 0;break; }
+    }
+  }
+}
+
 
 /*********************************************************************
  *  函数名称：Set_LaserDis
@@ -349,6 +455,29 @@ void Set_LaserDis_Usart2(unsigned char ID, unsigned char Fun,unsigned char Par)
 ///////////////////////////设置功能参数///////////////////////////////		
 }
 
+void Set_LaserDis_Usart6(unsigned char ID, unsigned char Fun,unsigned char Par)	       
+{	
+ ///////////////////////////设置功能参数///////////////////////////////	
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART6, 0x4C);																//命令起始信号
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TC) == RESET);	
+	
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART6, ID);																  //ID模块编号
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TC) == RESET);
+	
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART6, Fun);																//功能项
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TC) == RESET);	
+	
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TXE) == RESET);
+	USART_SendData(USART6, Par);																//参数
+	while(USART_GetFlagStatus(USART6, USART_FLAG_TC) == RESET);
+
+///////////////////////////设置功能参数///////////////////////////////		
+}
+
+
 void USART1_IRQHandler(void)                	//串口1中断服务程序
 {
 	u8 Res;
@@ -397,6 +526,15 @@ void USART2_IRQHandler(void)
 	if(USART_GetITStatus(USART2,USART_IT_RXNE)!=RESET)
 	{		
 		USART_RX_STA1[Num2++] = USART_ReceiveData(USART2);	
+	}
+
+}
+
+void USART6_IRQHandler(void)
+{
+	if(USART_GetITStatus(USART6,USART_IT_RXNE)!=RESET)
+	{		
+		USART_RX_STA2[Num6++] = USART_ReceiveData(USART6);	
 	}
 
 }

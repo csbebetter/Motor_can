@@ -37,10 +37,14 @@ extern u16 USART_RX_STA1[16];
 void uart_init(u32 bound);
 void Read_LaserDis_Usart3(unsigned char ID, unsigned int *Data);
 void Read_LaserDis_Usart2(unsigned char ID, unsigned int *Data);
+void Read_LaserDis_Usart6(unsigned char ID, unsigned int *Data);
 void Set_LaserDis_Usart3(unsigned char ID, unsigned char Fun,unsigned char Par);
 void Set_LaserDis_Usart2(unsigned char ID, unsigned char Fun,unsigned char Par);
+void Set_LaserDis_Usart6(unsigned char ID, unsigned char Fun,unsigned char Par);
 void uart3_init(u32 bound);
 void uart2_init(u32 bound);
+void uart6_init(u32 bound);
 void USART3_IRQHandler(void);
 void USART2_IRQHandler(void);
+void USART6_IRQHandler(void);
 #endif

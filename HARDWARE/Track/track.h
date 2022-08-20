@@ -36,33 +36,34 @@
 
 
 /* Back Track Module */
-#define SEARCH_OUT_PIN_11 GPIO_Pin_8
+#define SEARCH_OUT_PIN_11 GPIO_Pin_6
 #define SEARCH_OUT_GPIO_11 GPIOA
 #define SEARCH_OUT_IO_11 GPIO_ReadInputDataBit(GPIOA, SEARCH_OUT_PIN_11)
 
-#define SEARCH_OUT_PIN_12 GPIO_Pin_8
+#define SEARCH_OUT_PIN_12 GPIO_Pin_4
 #define SEARCH_OUT_GPIO_12 GPIOC
 #define SEARCH_OUT_IO_12 GPIO_ReadInputDataBit(GPIOC, SEARCH_OUT_PIN_12)
 
-#define SEARCH_OUT_PIN_13 GPIO_Pin_6
-#define SEARCH_OUT_GPIO_13 GPIOC
-#define SEARCH_OUT_IO_13 GPIO_ReadInputDataBit(GPIOC, SEARCH_OUT_PIN_13)
+#define SEARCH_OUT_PIN_13 GPIO_Pin_0
+#define SEARCH_OUT_GPIO_13 GPIOB
+#define SEARCH_OUT_IO_13 GPIO_ReadInputDataBit(GPIOB, SEARCH_OUT_PIN_13)
 
-#define SEARCH_OUT_PIN_14 GPIO_Pin_14
-#define SEARCH_OUT_GPIO_14 GPIOD
-#define SEARCH_OUT_IO_14 GPIO_ReadInputDataBit(GPIOD, SEARCH_OUT_PIN_14)
+#define SEARCH_OUT_PIN_14 GPIO_Pin_7
+#define SEARCH_OUT_GPIO_14 GPIOE
+#define SEARCH_OUT_IO_14 GPIO_ReadInputDataBit(GPIOE, SEARCH_OUT_PIN_14)
 
-#define SEARCH_OUT_PIN_15 GPIO_Pin_12
-#define SEARCH_OUT_GPIO_15 GPIOD
-#define SEARCH_OUT_IO_15 GPIO_ReadInputDataBit(GPIOD, SEARCH_OUT_PIN_15)
+#define SEARCH_OUT_PIN_15 GPIO_Pin_9
+#define SEARCH_OUT_GPIO_15 GPIOE
+#define SEARCH_OUT_IO_15 GPIO_ReadInputDataBit(GPIOE, SEARCH_OUT_PIN_15)
 
-#define SEARCH_OUT_PIN_16 GPIO_Pin_10
-#define SEARCH_OUT_GPIO_16 GPIOD
-#define SEARCH_OUT_IO_16 GPIO_ReadInputDataBit(GPIOD, SEARCH_OUT_PIN_16)
+#define SEARCH_OUT_PIN_16 GPIO_Pin_11
+#define SEARCH_OUT_GPIO_16 GPIOE
+#define SEARCH_OUT_IO_16 GPIO_ReadInputDataBit(GPIOE, SEARCH_OUT_PIN_16)
 
-#define SEARCH_OUT_PIN_17 GPIO_Pin_8
-#define SEARCH_OUT_GPIO_17 GPIOD
-#define SEARCH_OUT_IO_17 GPIO_ReadInputDataBit(GPIOD, SEARCH_OUT_PIN_17)
+#define SEARCH_OUT_PIN_17 GPIO_Pin_13
+#define SEARCH_OUT_GPIO_17 GPIOE
+#define SEARCH_OUT_IO_17 GPIO_ReadInputDataBit(GPIOE, SEARCH_OUT_PIN_17)
+
 
 #define BLACK_AREA 1
 #define WHITE_AREA 0
@@ -74,13 +75,16 @@
 #define COMM_CLOCK 4
 #define COMM_CTCLOCK 5
 
+#define TRACK_SPEED 50
+
 typedef uint8_t u8;
 
 /* Judge how to move */
 void GPIOCLKInit(void);
 void RedRayInit(void);
 u8 wayAllBlack(void); 
-u8 wayAllWhite(void); 
+u8 way1AllWhite(void); 
+u8 way2AllWhite(void); 
 u8 needLeft(void);
 u8 needRight(void);
 u8 needForward(void);
