@@ -40,3 +40,5 @@
 ..\obj\cal_distance.o: ..\SYSTEM\sys\sys.h
 ..\obj\cal_distance.o: ..\SYSTEM\delay\delay.h
 ..\obj\cal_distance.o: ..\HARDWARE\HCSR04\hcsr04.h
+..\obj\cal_distance.o: ..\HARDWARE\MotorControl\motor.h
+..\obj\cal_distance.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h

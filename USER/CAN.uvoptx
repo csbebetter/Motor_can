@@ -157,9 +157,25 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+          <LineNumber>138</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134218576</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\admin\Desktop\妗岄潰鏂囨。\repo\Motor_can\USER\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\CAN\main.c\138</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
           <LineNumber>144</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134218588</Address>
+          <Address>134218580</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -171,27 +187,11 @@
           <Expression>\\CAN\main.c\144</Expression>
         </Bp>
         <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>147</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134218612</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\admin\Desktop\妗岄潰鏂囨。\repo\Motor_can\USER\main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\CAN\main.c\147</Expression>
-        </Bp>
-        <Bp>
           <Number>2</Number>
           <Type>0</Type>
           <LineNumber>95</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134227418</Address>
+          <Address>134227410</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -207,7 +207,7 @@
           <Type>0</Type>
           <LineNumber>116</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134227508</Address>
+          <Address>134227498</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -217,6 +217,22 @@
           <Filename>C:\Users\admin\Desktop\妗岄潰鏂囨。\repo\Motor_can\HARDWARE\WL_LaserDis_V2\cal_distance.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\CAN\../HARDWARE/WL_LaserDis_V2/cal_distance.c\116</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>147</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134218604</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\admin\Desktop\妗岄潰鏂囨。\repo\Motor_can\USER\main.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\CAN\main.c\147</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>

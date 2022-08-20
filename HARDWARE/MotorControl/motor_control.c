@@ -363,6 +363,20 @@ void MotorSpeedExpected(float Spe1,float Spe2,float Spe3,float Spe4,float Spe5){
 	motor_driver();
 }
 
+void MotorCurrentExpected(float Pos1,float Pos2,float Pos3,float Pos4,float Pos5){
+	Motor_1.State = MOTOR_CURRENT;
+	Motor_2.State = MOTOR_CURRENT;
+	Motor_3.State = MOTOR_CURRENT;
+	Motor_4.State = MOTOR_CURRENT;
+	Motor_5.State = MOTOR_CURRENT;
+	Motor_1.PositionExpected = Pos1;
+ 	Motor_2.PositionExpected = Pos2;
+	Motor_3.PositionExpected = Pos3;
+	Motor_4.PositionExpected = Pos4;
+	Motor_5.PositionExpected = Pos5;
+	motor_driver();
+}
+
 void MotorPositionExpected(float Pos1,float Pos2,float Pos3,float Pos4,float Pos5){
 	Motor_1.State = PIDPOSITION;
 	Motor_2.State = PIDPOSITION;
@@ -376,7 +390,6 @@ void MotorPositionExpected(float Pos1,float Pos2,float Pos3,float Pos4,float Pos
 	Motor_5.PositionExpected = Pos5;
 	motor_driver();
 }
-
 
 
 

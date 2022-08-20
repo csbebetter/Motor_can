@@ -1,4 +1,5 @@
 #include "cal_distance.h"
+#include "motor.h"
 //接线：PB10号口接RXD  11口接TXD
 //      PA3 接TXD      2接RXD
 
@@ -22,7 +23,8 @@ int cal_distance1()  //下面模块
 		sum1+=Temp_Data1[0];
 		if(Temp_Data1[0]>last_time1_max)	last_time1_max=Temp_Data1[0];
 //		if(Temp_Data1[0]<last_time1_min)	last_time1_min=Temp_Data1[0];
-		delay_ms(1);
+		MotorSpeedExpected(0, 0, 0, 0, 0);
+//		delay_ms(1);
 	}
 	distance1 = last_time1_max;
 	if(distance1 >= 650)
@@ -65,7 +67,8 @@ int cal_distance2(int last_flag) //上面模块
 			sum2+=Temp_Data2[0];
 			if(Temp_Data2[0]>last_time2_max)	last_time2_max=Temp_Data2[0];
 //			if(Temp_Data2[0]<last_time2_min)	last_time2_min=Temp_Data2[0];
-			delay_ms(1);
+			MotorSpeedExpected(0, 0, 0, 0, 0);
+//			delay_ms(1);
 		}
 		distance2 = last_time2_max;
 		if(distance2 >= 302 && distance2 <= 360)
@@ -105,7 +108,7 @@ int cal_distance3() //侧面模块
 			if(Temp_Data3[0]<last_time3_min)	last_time3_min=Temp_Data3[0];
 			delay_ms(1);
 		}
-		distance3 = sum3/3;
+		distance3 = sum3-last_time3_min-last_time3_max;
 		if(distance3 >= 400 && distance3 <=800 )
 		{
 			//有纸箱

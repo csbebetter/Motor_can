@@ -80,5 +80,5 @@ void Reset_motors(void);
 void MotorSpeedExpected(float Spe1,float Spe2,float Spe3,float Spe4,float Spe5);
 void MotorPositionExpected(float Spe1,float Spe2,float Spe3,float Spe4,float Spe5);
 float ClassicPidRegulate(float Reference, float PresentFeedback,ClassicPidStructTypedef *PidStruct);
-
+void MotorCurrentExpected(float Pos1,float Pos2,float Pos3,float Pos4,float Pos5);
 #endif
