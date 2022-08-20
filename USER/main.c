@@ -123,6 +123,7 @@ int main(void){
 	uart_init(115200);
 	uart2_init(115200);
 	uart3_init(115200);
+	uart6_init(115200);
 	delay_init(168);
 	LED_Init();
 	KEY_Init();
