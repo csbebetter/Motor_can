@@ -145,26 +145,26 @@ int main(void){
 //		delay_ms(10);
 //	}
 
-////////	
-		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
-//		Clockwise;
-//		Lift_Drop_box(-4800);
-		
-//		Lift_Drop_box(-5400);
-//		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
-//		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
-//		Lift_Drop_box(-5700);
-//		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
-//		Lift_Drop_box(-2000);
-//		CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
-
-
-//		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -550.00f), CTransY(0.00f, -550.00f));
-//		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, -550.00f), CTransY(-1200.00f, -550.00f));
-//		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 520.00f), CTransY(-1200.00f, 520.00f));
-//		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 520.00f), CTransY(-1900.00f, 520.00f));
-//		AngularRotationMovement(motor_Position[2], 180.0f);
+//////////	
+//		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
+////		Clockwise;
+////		Lift_Drop_box(-4800);
 //		
+////		Lift_Drop_box(-5400);
+////		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
+////		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
+////		Lift_Drop_box(-5700);
+////		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
+////		Lift_Drop_box(-2000);
+////		CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
+
+
+////		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -550.00f), CTransY(0.00f, -550.00f));
+////		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, -550.00f), CTransY(-1200.00f, -550.00f));
+////		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 520.00f), CTransY(-1200.00f, 520.00f));
+////		CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 520.00f), CTransY(-1900.00f, 520.00f));
+////		AngularRotationMovement(motor_Position[2], 180.0f);
+////		
 
 
 	delay_ms(2);
@@ -198,15 +198,15 @@ int main(void){
 		}
 }
 
-//	
-//	
-//	
-//	
-//	while(1){
-//		Clockwise;
-//		delay_ms(1000);
-//		MoveToDefault;
-//		delay_ms(1000);
+////	
+////	
+////	
+////	
+////	while(1){
+////		Clockwise;
+////		delay_ms(1000);
+////		MoveToDefault;
+////		delay_ms(1000);
 //		CounterClockwise;
 //		delay_ms(1000);
 //		MoveToDefault;
@@ -235,14 +235,14 @@ int main(void){
 //	
 //	
 //	
-//	
-//	
-//	
 	
 	
 	
 	
-//	
+	
+	
+	
+	
 
 //	
 //	/*——————————————————————————V 检测牛奶箱状态； 并进行移位操作，如果位置1没有牛奶箱，则移位到位置0 V————————————————————————————————————*/
