@@ -1,12 +1,10 @@
---cpu=Cortex-M4.fp
+--cpu=Cortex-M4.fp.sp
 "..\obj\main.o"
 "..\obj\stm32f4xx_it.o"
 "..\obj\system_stm32f4xx.o"
 "..\obj\can.o"
 "..\obj\motor_control.o"
 "..\obj\routeplan.o"
-"..\obj\led.o"
-"..\obj\key.o"
 "..\obj\myservo.o"
 "..\obj\track.o"
 "..\obj\cal_distance.o"
