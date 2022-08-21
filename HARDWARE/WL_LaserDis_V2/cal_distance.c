@@ -2,7 +2,7 @@
 #include "motor.h"
 //接线：PB10号口接RXD  11口接TXD
 //      PA3 接TXD      2接RXD
-
+extern int i;
 
 int cal_distance1()  //下面模块
 {
@@ -14,11 +14,17 @@ int cal_distance1()  //下面模块
 	unsigned int distance1=0;
 	int flag1=0;
 	 
+	for(i=0;i<20;i++){
+		MotorSpeedExpected(0, 0, 0, 0, 0);
+		delay_ms(2);
+	}
+	
 	while(i1<=reading_count1)
 	{
 		i1++;
 		if(i1<=2)	continue;
 		delay_us(500);
+		MotorSpeedExpected(0, 0, 0, 0, 0);
 		Read_LaserDis_Usart3(0x00, Temp_Data1);  //读取
 		sum1+=Temp_Data1[0];
 		if(Temp_Data1[0]>last_time1_max)	last_time1_max=Temp_Data1[0];
@@ -56,6 +62,11 @@ int cal_distance2(int last_flag) //上面模块
 	unsigned int distance2=0;
 	int flag2=0;
 	
+	for(i=0;i<20;i++){
+		MotorSpeedExpected(0, 0, 0, 0, 0);
+		delay_ms(2);
+	}
+	
 	if(last_flag != 0)
 	{
 		while(i2<=reading_count2)
@@ -63,6 +74,7 @@ int cal_distance2(int last_flag) //上面模块
 			i2++;
 			if(i2<=2)	continue;
 			delay_us(500);
+			MotorSpeedExpected(0, 0, 0, 0, 0);
 			Read_LaserDis_Usart2(0x00, Temp_Data2);  //读取
 			sum2+=Temp_Data2[0];
 			if(Temp_Data2[0]>last_time2_max)	last_time2_max=Temp_Data2[0];

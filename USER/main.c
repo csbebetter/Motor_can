@@ -146,9 +146,11 @@ int main(void){
 //	}
 
 ////////	
-//		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
+		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
 //		Clockwise;
-//		Lift_Drop_box(-4900);
+//		Lift_Drop_box(-4800);
+		
+//		Lift_Drop_box(-5400);
 //		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
 //		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
 //		Lift_Drop_box(-5700);
@@ -166,7 +168,7 @@ int main(void){
 
 
 	delay_ms(2);
-	Control_Mode=TRACK_MODE;
+	Control_Mode=STOP_MODE;
 	
 	while(1){
 		switch(Control_Mode){
@@ -240,9 +242,9 @@ int main(void){
 	
 	
 	
-	
+//	
 
-	
+//	
 //	/*——————————————————————————V 检测牛奶箱状态； 并进行移位操作，如果位置1没有牛奶箱，则移位到位置0 V————————————————————————————————————*/
 //	delay_ms(2000);
 //	Sbox_state[1][0] = cal_distance1();
