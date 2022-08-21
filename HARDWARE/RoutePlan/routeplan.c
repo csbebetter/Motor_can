@@ -69,7 +69,7 @@ void CoordinatePositionMovement(float CurrentX, float CurrentY, float ExpectedX,
 							sign(linear_speed[2])*flag*fabs(errX)/(fabs(errX)+fabs(errY)),
 							sign(linear_speed[3])*flag*fabs(errY)/(fabs(errX)+fabs(errY)),
 							0);
-		if(flag>50)flag -= 0.5f;
+		if(flag>50)flag -= 0.4f;
 		delay_ms(2);
 	}while(!(stopCspdJudging(CSPDERR,-1)));
 

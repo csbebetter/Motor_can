@@ -3,7 +3,7 @@
 ..\obj\can.o: ..\SYSTEM\sys\sys.h
 ..\obj\can.o: ..\USER\stm32f4xx.h
 ..\obj\can.o: ..\CORE\core_cm4.h
-..\obj\can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\can.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\can.o: ..\CORE\core_cmInstr.h
 ..\obj\can.o: ..\CORE\core_cmFunc.h
 ..\obj\can.o: ..\CORE\core_cm4_simd.h
@@ -38,5 +38,5 @@
 ..\obj\can.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\can.o: ..\HARDWARE\MotorControl\motor.h
 ..\obj\can.o: ..\SYSTEM\usart\usart.h
-..\obj\can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\can.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\can.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h

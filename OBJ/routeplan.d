@@ -1,10 +1,10 @@
 ..\obj\routeplan.o: ..\HARDWARE\RoutePlan\routeplan.c
 ..\obj\routeplan.o: ..\HARDWARE\RoutePlan\routeplan.h
-..\obj\routeplan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\routeplan.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\routeplan.o: ..\HARDWARE\MotorControl\motor.h
 ..\obj\routeplan.o: ..\USER\stm32f4xx.h
 ..\obj\routeplan.o: ..\CORE\core_cm4.h
-..\obj\routeplan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\routeplan.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\routeplan.o: ..\CORE\core_cmInstr.h
 ..\obj\routeplan.o: ..\CORE\core_cmFunc.h
 ..\obj\routeplan.o: ..\CORE\core_cm4_simd.h
@@ -39,7 +39,7 @@
 ..\obj\routeplan.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\routeplan.o: ..\SYSTEM\sys\sys.h
 ..\obj\routeplan.o: ..\SYSTEM\usart\usart.h
-..\obj\routeplan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\routeplan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\routeplan.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\routeplan.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\routeplan.o: ..\SYSTEM\delay\delay.h
 ..\obj\routeplan.o: ..\HARDWARE\Servo\MyServo.h

@@ -139,12 +139,15 @@ int main(void){
 	motor_Location = 0;
 
 // chuan gan  qi  tiao  shi
+//	volatile int down = -1;
+//	volatile int up = -1;
+//	volatile int left = -1;
 //	while(1)
 //	{
-//		//Sbox_state[0][0] = cal_distance3();
+//		//left= cal_distance3();
 //		delay_ms(5);
-//		Sbox_state[0][0] = cal_distance1();
-//		Sbox_state[0][1] = cal_distance2(Sbox_state[1][0]);
+//		down = cal_distance1();
+//		up= cal_distance2(down);
 //		delay_ms(10);
 //	}
 
@@ -261,13 +264,13 @@ int main(void){
 	}
 	/*——————————————————————————^ 检测牛奶箱状态； 并进行移位操作，如果位置1没有牛奶箱，则移位到位置0 ^————————————————————————————————————*/
 	
-//	/*Program flow ideas：
-//                       	 ------------------------------------------------------------------------<--------------------------------<
-//                     	v                                                                         |                                |
-//	 LIFT_MODE -> MOBILE_MODE -> TRACK_MODE (if motor_Location == 0) -> LIFT_MODE -> MOBILE_MODE -^                                |
-//											(if motor_Location == 0) -> DROP_MODE (if motor_park_space_start！=-1) -> MOBILE_MODE -^
-//																				  (if motor_park_space_start ==-1) -> STOP_MODE
-//	*/
+	/*Program flow ideas：
+                       	 ------------------------------------------------------------------------<--------------------------------<
+                     	v                                                                         |                                |
+	 LIFT_MODE -> MOBILE_MODE -> TRACK_MODE (if motor_Location == 0) -> LIFT_MODE -> MOBILE_MODE -^                                |
+											(if motor_Location == 0) -> DROP_MODE (if motor_park_space_start！=-1) -> MOBILE_MODE -^
+																				  (if motor_park_space_start ==-1) -> STOP_MODE
+	*/
 
 	while(1){
 		switch(Control_Mode){
@@ -297,7 +300,7 @@ int main(void){
 				trackModeState = startTrack();
 				if(trackModeState){
 					stateInit();
-					//runStop();
+					runStop();
 					//如果小车位于起始位置，做抬升;如果小车位于结尾位置，做放下操作
 					if(motor_Location == 0){
 						Control_Mode=LIFT_MODE;

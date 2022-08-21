@@ -7,7 +7,7 @@
 int cal_distance1()  //下面模块
 {
 	unsigned int Temp_Data1[3] = { 0 };       //数据缓存区
-	unsigned int reading_count1 = 4 ; //记录读数次数
+	unsigned int reading_count1 = 6 ; //记录读数次数
 	unsigned int last_time1_max=0 , last_time1_min=999999999;
 	unsigned int i1=0;
 	unsigned int sum1=0;
@@ -22,11 +22,11 @@ int cal_distance1()  //下面模块
 		Read_LaserDis_Usart3(0x00, Temp_Data1);  //读取
 		sum1+=Temp_Data1[0];
 		if(Temp_Data1[0]>last_time1_max)	last_time1_max=Temp_Data1[0];
-//		if(Temp_Data1[0]<last_time1_min)	last_time1_min=Temp_Data1[0];
+		if(Temp_Data1[0]<last_time1_min)	last_time1_min=Temp_Data1[0];
 		MotorSpeedExpected(0, 0, 0, 0, 0);
 //		delay_ms(1);
 	}
-	distance1 = last_time1_max;
+	distance1 = (sum1-last_time1_max-last_time1_min)/3;
 	if(distance1 >= 650)
 	{
 		//此时没有箱子
@@ -49,7 +49,7 @@ int cal_distance1()  //下面模块
 int cal_distance2(int last_flag) //上面模块
 {
 	unsigned int Temp_Data2[3] = { 0 };       //数据缓存
-	unsigned int reading_count2 = 4 ; //记录读数次数
+	unsigned int reading_count2 = 6 ; //记录读数次数
 	unsigned int last_time2_max=0 , last_time2_min=999999999;
 	unsigned int i2=0;
 	unsigned int sum2=0;
@@ -66,11 +66,11 @@ int cal_distance2(int last_flag) //上面模块
 			Read_LaserDis_Usart2(0x00, Temp_Data2);  //读取
 			sum2+=Temp_Data2[0];
 			if(Temp_Data2[0]>last_time2_max)	last_time2_max=Temp_Data2[0];
-//			if(Temp_Data2[0]<last_time2_min)	last_time2_min=Temp_Data2[0];
+			if(Temp_Data2[0]<last_time2_min)	last_time2_min=Temp_Data2[0];
 			MotorSpeedExpected(0, 0, 0, 0, 0);
 //			delay_ms(1);
 		}
-		distance2 = last_time2_max;
+		distance2 = (sum2-last_time2_max-last_time2_min)/3;;
 		if(distance2 >= 302 && distance2 <= 360)
 		{
 			//此处有一个纸箱，纸箱横放
