@@ -20,6 +20,8 @@ void GPIOCLKInit(void)
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC , ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD , ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE , ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF , ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG , ENABLE);
 }
 
 void RedRayInit(void){
@@ -442,9 +444,9 @@ u8 needForward(void){
 		SEARCH_OUT_IO_6 == WHITE_AREA &&
 		SEARCH_OUT_IO_1 == WHITE_AREA &&
 		SEARCH_OUT_IO_2 == WHITE_AREA &&
-		(SEARCH_OUT_IO_3 == BLACK_AREA &&
 		SEARCH_OUT_IO_4 == BLACK_AREA 
-		&& SEARCH_OUT_IO_5 == BLACK_AREA)
+//		|| SEARCH_OUT_IO_3 == BLACK_AREA 
+//		|| SEARCH_OUT_IO_5 == BLACK_AREA
 	){
 			return 1;
 		}
@@ -549,7 +551,7 @@ u8 startTrack(void){
 		if(rotateToTrack() == 1 && flag == 1){
 			rotateFlag = 0;
 			flag = 2;
-			for(u8 i = 0; i < 1; ++i){
+			for(u8 i = 0; i < 5; ++i){
 				if(currentRobotState == COMM_CLOCK){
 					clockwiseRotate();
 				}
@@ -596,7 +598,7 @@ u8 startTrack(void){
 				}
 			}
 			else if(rotateFlag == 2){
-				if(SEARCH_OUT_IO_3 == BLACK_AREA){
+				if(SEARCH_OUT_IO_2 == BLACK_AREA){
 					lastRobotState = currentRobotState;
 					currentRobotState = COMM_CLOCK;
 				}
@@ -606,7 +608,7 @@ u8 startTrack(void){
 				}
 			}
 			else if(rotateFlag == 3){
-				if(SEARCH_OUT_IO_14 == BLACK_AREA){
+				if(SEARCH_OUT_IO_15 == BLACK_AREA){
 					lastRobotState = currentRobotState;
 					currentRobotState = COMM_CTCLOCK;
 				}
@@ -639,6 +641,7 @@ u8 startTrack(void){
 				lastRobotState = currentRobotState;
 				currentRobotState = COMM_RIGHT;
 			}
+			
 //			else if(reachTarget(6)){
 //				lastRobotState = currentRobotState;
 //				currentRobotState = COMM_STOP;
@@ -647,6 +650,18 @@ u8 startTrack(void){
 //				lastRobotState = currentRobotState;
 //				currentRobotState = COMM_STOP;
 //			}
+			if(currentRobotState == COMM_FORWARD){
+				if(lastRobotState == COMM_LEFT){
+					for(u8 i = 0; i < 50; ++i){
+						runLeft();
+					}
+				}
+				else if(lastRobotState == COMM_RIGHT){
+					for(u8 i = 0; i < 50; ++i){
+						runRight();
+					}
+				}
+			}
 		}
 		
 //		if(currentRobotState == COMM_STOP && way1AllWhite() && flag == 2){

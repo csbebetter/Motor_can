@@ -121,7 +121,7 @@ int cal_distance3() //²àÃæÄ£¿é
 			delay_ms(1);
 		}
 		distance3 = sum3-last_time3_min-last_time3_max;
-		if(distance3 >= 400 && distance3 <=800 )
+		if(distance3 >= 250 && distance3 <=900 )
 		{
 			//ÓÐÖ½Ïä
 			flag3 = 3;

@@ -138,7 +138,7 @@ int main(void){
 //	volatile int left = -1;
 //	while(1)
 //	{
-//		//left= cal_distance3();
+//		left= cal_distance3();
 //		delay_ms(5);
 //		down = cal_distance1();
 //		up= cal_distance2(down);
@@ -168,7 +168,7 @@ int main(void){
 
 
 //	delay_ms(2);
-//	Control_Mode=STOP_MODE;
+//	Control_Mode=TRACK_MODE;
 //	
 //	while(1){
 //		switch(Control_Mode){
