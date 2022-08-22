@@ -1,6 +1,6 @@
-# Motor_can: Intelligent handling trolley control code
+# Motor_can: Intelligent moving robot controlling code
 
-## 1. List of Items:
+## 1. List of items:
 
 | Items                | quantity |
 | :------------------: | -------- |
@@ -16,8 +16,20 @@
 | STM32F407 core development board | 1        |
 | JTA1050 CAN | 1        |
 
-## 2. Introduction of  The Code
+## 2. Rule of  the contest:
 
-The [Motor_can](https://github.com/csbebetter/Motor_can) code is used to control the Intelligent handling trolley to move and carry the boxes. 
+The [Motor_can](https://github.com/csbebetter/Motor_can) code is used to control the Intelligent moving robot  to move and carry the boxes. The blue circle is the start point of the robot. The green circle is the obstacle. The moving robot should transfer the boxes from the blue stacking area to the red placement area. the robot must pass through the obstacles. In addition, the robot needs to recognize the boxes pose intelligently.
 
-![the playing field](https://user-images.githubusercontent.com/70866844/185326114-abafdfab-ea89-4a9f-a688-429f38928b2e.jpg)
+<div align="center">
+<img src="https://user-images.githubusercontent.com/70866844/185326114-abafdfab-ea89-4a9f-a688-429f38928b2e.jpg" width="50%" > 
+</div>
+
+
+
+## 3. Introduction of the code
+
+**Program flow chart:**
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/70866844/185852224-8b14656f-aef2-4fb6-b5bd-98b7be6519ac.png"> 
+</div>
