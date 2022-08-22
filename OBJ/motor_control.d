@@ -2,7 +2,7 @@
 ..\obj\motor_control.o: ..\HARDWARE\MotorControl\motor.h
 ..\obj\motor_control.o: ..\USER\stm32f4xx.h
 ..\obj\motor_control.o: ..\CORE\core_cm4.h
-..\obj\motor_control.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\motor_control.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\motor_control.o: ..\CORE\core_cmInstr.h
 ..\obj\motor_control.o: ..\CORE\core_cmFunc.h
 ..\obj\motor_control.o: ..\CORE\core_cm4_simd.h
@@ -37,5 +37,5 @@
 ..\obj\motor_control.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\motor_control.o: ..\SYSTEM\sys\sys.h
 ..\obj\motor_control.o: ..\SYSTEM\usart\usart.h
-..\obj\motor_control.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\motor_control.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\motor_control.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\motor_control.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

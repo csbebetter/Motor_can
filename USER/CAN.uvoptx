@@ -103,7 +103,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>6</nTsel>
+        <nTsel>5</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -157,41 +157,41 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>142</LineNumber>
+          <LineNumber>15</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134218582</Address>
+          <Address>134228562</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\main.c</Filename>
+          <Filename>..\HARDWARE\WL_LaserDis_V2\cal_distance.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\CAN\main.c\142</Expression>
+          <Expression>\\CAN\../HARDWARE/WL_LaserDis_V2/cal_distance.c\15</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>145</LineNumber>
+          <LineNumber>52</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134218602</Address>
+          <Address>134228774</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\main.c</Filename>
+          <Filename>..\HARDWARE\WL_LaserDis_V2\cal_distance.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\CAN\main.c\145</Expression>
+          <Expression>\\CAN\../HARDWARE/WL_LaserDis_V2/cal_distance.c\52</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>110</LineNumber>
+          <LineNumber>63</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134228500</Address>
+          <Address>134228810</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -200,14 +200,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\HARDWARE\WL_LaserDis_V2\cal_distance.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\CAN\../HARDWARE/WL_LaserDis_V2/cal_distance.c\110</Expression>
+          <Expression>\\CAN\../HARDWARE/WL_LaserDis_V2/cal_distance.c\63</Expression>
         </Bp>
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>131</LineNumber>
+          <LineNumber>98</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134228588</Address>
+          <Address>134229016</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -216,7 +216,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\HARDWARE\WL_LaserDis_V2\cal_distance.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\CAN\../HARDWARE/WL_LaserDis_V2/cal_distance.c\131</Expression>
+          <Expression>\\CAN\../HARDWARE/WL_LaserDis_V2/cal_distance.c\98</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>

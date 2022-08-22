@@ -133,20 +133,20 @@ int main(void){
 	motor_Location = 0;
 
 // chuan gan  qi  tiao  shi
-	volatile int down = -1;
-	volatile int up = -1;
-	volatile int left = -1;
-	while(1)
-	{
-		left= cal_distance3();
-		delay_ms(5);
-		down = cal_distance1();
-		up= cal_distance2(down);
-		delay_ms(10);
-	}
+//	volatile int down = -1;
+//	volatile int up = -1;
+//	volatile int left = -1;
+//	while(1)
+//	{
+//		//left= cal_distance3();
+//		delay_ms(5);
+//		down = cal_distance1();
+//		up= cal_distance2(down);
+//		delay_ms(10);
+//	}
 
 //////////	
-//		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
+//CoordinatePositionMovement(0, 0, CTransX(0.00f, 1250.00f), CTransY(0.00f,1250.00f));
 ////		Clockwise;
 ////		Lift_Drop_box(-4800);
 //		
@@ -168,7 +168,7 @@ int main(void){
 
 
 //	delay_ms(2);
-//	Control_Mode=TRACK_MODE;
+//	Control_Mode=STOP_MODE;
 //	
 //	while(1){
 //		switch(Control_Mode){
@@ -232,8 +232,8 @@ int main(void){
 //	
 //	
 //	
-//	
-//	
+	
+	
 	
 	
 	
