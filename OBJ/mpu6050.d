@@ -4,7 +4,7 @@
 ..\obj\mpu6050.o: ..\SYSTEM\sys\sys.h
 ..\obj\mpu6050.o: ..\USER\stm32f4xx.h
 ..\obj\mpu6050.o: ..\CORE\core_cm4.h
-..\obj\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\mpu6050.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\mpu6050.o: ..\CORE\core_cmInstr.h
 ..\obj\mpu6050.o: ..\CORE\core_cmFunc.h
 ..\obj\mpu6050.o: ..\CORE\core_cm4_simd.h
@@ -39,4 +39,4 @@
 ..\obj\mpu6050.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\mpu6050.o: ..\SYSTEM\delay\delay.h
 ..\obj\mpu6050.o: ..\SYSTEM\usart\usart.h
-..\obj\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\mpu6050.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h

@@ -320,6 +320,36 @@ u8 rotateToTrack(void){
 		
 		else if(
 		(SEARCH_OUT_IO_1 == BLACK_AREA && SEARCH_OUT_IO_17 == BLACK_AREA
+		&& SEARCH_OUT_IO_2 == WHITE_AREA && SEARCH_OUT_IO_16 == WHITE_AREA)
+	
+		|| (SEARCH_OUT_IO_1 == WHITE_AREA && SEARCH_OUT_IO_17 == WHITE_AREA
+		&& SEARCH_OUT_IO_2 == BLACK_AREA && SEARCH_OUT_IO_16 == BLACK_AREA
+		&& SEARCH_OUT_IO_3 == WHITE_AREA && SEARCH_OUT_IO_15 == WHITE_AREA)
+	
+		|| (SEARCH_OUT_IO_2 == WHITE_AREA && SEARCH_OUT_IO_16 == WHITE_AREA
+		&& SEARCH_OUT_IO_3 == BLACK_AREA && SEARCH_OUT_IO_15 == BLACK_AREA
+		&& SEARCH_OUT_IO_4 == WHITE_AREA && SEARCH_OUT_IO_14 == WHITE_AREA)
+	
+		|| (SEARCH_OUT_IO_3 == WHITE_AREA && SEARCH_OUT_IO_15 == WHITE_AREA
+		&& SEARCH_OUT_IO_4 == BLACK_AREA && SEARCH_OUT_IO_14 == BLACK_AREA
+		&& SEARCH_OUT_IO_5 == WHITE_AREA && SEARCH_OUT_IO_13 == WHITE_AREA)
+	
+		|| (SEARCH_OUT_IO_4 == WHITE_AREA && SEARCH_OUT_IO_14 == WHITE_AREA
+		&& SEARCH_OUT_IO_5 == BLACK_AREA && SEARCH_OUT_IO_13 == BLACK_AREA
+		&& SEARCH_OUT_IO_6 == WHITE_AREA && SEARCH_OUT_IO_12 == WHITE_AREA)
+	
+		|| (SEARCH_OUT_IO_5 == WHITE_AREA && SEARCH_OUT_IO_13 == WHITE_AREA
+		&& SEARCH_OUT_IO_6 == BLACK_AREA && SEARCH_OUT_IO_12 == BLACK_AREA
+		&& SEARCH_OUT_IO_7 == WHITE_AREA && SEARCH_OUT_IO_11 == WHITE_AREA)
+		
+		|| (SEARCH_OUT_IO_6 == WHITE_AREA && SEARCH_OUT_IO_12 == WHITE_AREA
+		&& SEARCH_OUT_IO_7 == BLACK_AREA && SEARCH_OUT_IO_11 == BLACK_AREA)
+		){
+			return 2;
+		}
+		
+		else if(
+		(SEARCH_OUT_IO_1 == BLACK_AREA && SEARCH_OUT_IO_17 == BLACK_AREA
 		&& SEARCH_OUT_IO_2 == BLACK_AREA && SEARCH_OUT_IO_16 == BLACK_AREA
 		&& SEARCH_OUT_IO_3 == BLACK_AREA && SEARCH_OUT_IO_15 == BLACK_AREA)
 	
@@ -339,7 +369,7 @@ u8 rotateToTrack(void){
 		&& SEARCH_OUT_IO_6 == BLACK_AREA && SEARCH_OUT_IO_12 == BLACK_AREA
 		&& SEARCH_OUT_IO_7 == BLACK_AREA && SEARCH_OUT_IO_11 == BLACK_AREA)
 		){
-			return 2;
+			return 3;
 		}
 		else{
 			return 0;
@@ -566,7 +596,24 @@ u8 startTrack(void){
 		else if(rotateToTrack() == 2 && flag == 1){
 			rotateFlag = 0;
 			flag = 2;
+			for(u8 i = 0; i < 10; ++i){
+				if(currentRobotState == COMM_CLOCK){
+					clockwiseRotate();
+				}
+				else if(currentRobotState == COMM_CTCLOCK){
+					clockwiseCounterRotate();
+				}
+				else{
+					break;
+				}
+			}
 		}
+		else if(rotateToTrack() == 3 && flag == 1){
+			rotateFlag = 0;
+			flag = 2;
+		}
+		
+		
 		if(flag == 0){
 			lastRobotState = currentRobotState;
 			currentRobotState = COMM_LEFT;

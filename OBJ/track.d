@@ -1,10 +1,10 @@
 ..\obj\track.o: ..\HARDWARE\Track\track.c
 ..\obj\track.o: ..\HARDWARE\Track\track.h
-..\obj\track.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\track.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\track.o: ..\HARDWARE\MotorControl\motor.h
 ..\obj\track.o: ..\USER\stm32f4xx.h
 ..\obj\track.o: ..\CORE\core_cm4.h
-..\obj\track.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\track.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\track.o: ..\CORE\core_cmInstr.h
 ..\obj\track.o: ..\CORE\core_cmFunc.h
 ..\obj\track.o: ..\CORE\core_cm4_simd.h
@@ -39,6 +39,6 @@
 ..\obj\track.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\track.o: ..\SYSTEM\sys\sys.h
 ..\obj\track.o: ..\SYSTEM\usart\usart.h
-..\obj\track.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\track.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\track.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\track.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\track.o: ..\SYSTEM\delay\delay.h
