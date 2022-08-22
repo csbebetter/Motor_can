@@ -175,7 +175,7 @@ void routeplan(int s, int e, int startORend){
 			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 530.00f), CTransY(-1200.00f, 530.00f));
 			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 530.00f), CTransY(-1900.00f, 530.00f));
 			AngularRotationMovement(motor_Position[2], 180.0f);
-			CoordinatePositionMovement(0, 0, CTransX(00.00f, 1100.00f), CTransY(00.00f, 1100.00f));
+			CoordinatePositionMovement(0, 0, CTransX(00.00f, 1000.00f), CTransY(00.00f, 1000.00f));
 		}
 
 		if(s==2&&e==0){
@@ -198,7 +198,7 @@ void routeplan(int s, int e, int startORend){
 			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 530.00f), CTransY(-1200.00f, 530.00f));
 			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 530.00f), CTransY(-1900.00f, 530.00f));
 			AngularRotationMovement(motor_Position[2], 180.0f);
-			CoordinatePositionMovement(0, 0, CTransX(00.00f, 1100.00f), CTransY(00.00f, 1100.00f));
+			CoordinatePositionMovement(0, 0, CTransX(00.00f, 1000.00f), CTransY(00.00f, 1000.00f));
 		}
 
 		if(s==0&&e==0){
@@ -222,7 +222,7 @@ void routeplan(int s, int e, int startORend){
 			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1200.00f, 530.00f), CTransY(-1200.00f, 530.00f));
 			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1900.00f, 530.00f), CTransY(-1900.00f, 530.00f));
 			AngularRotationMovement(motor_Position[2], 180.0f);
-			CoordinatePositionMovement(0, 0, CTransX(00.00f, 1100.00f), CTransY(00.00f, 1100.00f));
+			CoordinatePositionMovement(0, 0, CTransX(00.00f, 1000.00f), CTransY(00.00f, 1000.00f));
 		}
 	}
 	//»Ø
@@ -249,8 +249,8 @@ void routeplan(int s, int e, int startORend){
 		}
 
 		if(s==2&&e==0){
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, 1100.00f), CTransY(0.00f, 1100.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, 1100.00f), CTransY(-1800.00f, 1100.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, 1000.00f), CTransY(0.00f, 1000.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, 1000.00f), CTransY(-1800.00f, 1000.00f));
 			AngularRotationMovement(motor_Position[2], 180.0f);
 		}
 
@@ -279,7 +279,7 @@ void routeplan(int s, int e, int startORend){
 
 		if(s==0&&e==2){
 			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(0.00f, -1000.00f), CTransY(0.00f, -1000.00f));
-			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, -1100.00f), CTransY(-1800.00f, -1100.00f));
+			CoordinatePositionMovement(motor_Position[0], motor_Position[1], CTransX(-1800.00f, -1000.00f), CTransY(-1800.00f, -1000.00f));
 			AngularRotationMovement(motor_Position[2], -180.0f);
 		}
 	}
@@ -290,9 +290,9 @@ void liftplan(int upordown, int state){
 	
 	if(upordown == 1 && state == 1)//up -
 	{
-		Lift_Drop_box(-4800);
+		Lift_Drop_box(-4400);
 		CoordinatePositionMovement(0, 0, CTransX(360.00f, 0.00f), CTransY(360.00f,0.00f));
-		Lift_Drop_box(-5400);
+		Lift_Drop_box(-5100);
 		CoordinatePositionMovement(CTransX(370.00f, 0.00f), CTransY(370.00f,0.00f),0,0);
 		Lift_Drop_box(-2000);
 	}
@@ -300,10 +300,10 @@ void liftplan(int upordown, int state){
 	{
 		CoordinatePositionMovement(0, 0, CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f));
 		Clockwise;
-		Lift_Drop_box(-4800);
+		Lift_Drop_box(-4400);
 		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
 		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
-		Lift_Drop_box(-5400);
+		Lift_Drop_box(-5100);
 		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
 		Lift_Drop_box(-2000);
 		//CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
