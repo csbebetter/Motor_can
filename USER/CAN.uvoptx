@@ -218,6 +218,38 @@
           <ExecCommand></ExecCommand>
           <Expression>\\CAN\main.c\150</Expression>
         </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>110</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134229954</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\HARDWARE\WL_LaserDis_V2\cal_distance.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\CAN\../HARDWARE/WL_LaserDis_V2/cal_distance.c\110</Expression>
+        </Bp>
+        <Bp>
+          <Number>5</Number>
+          <Type>0</Type>
+          <LineNumber>131</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134230042</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\HARDWARE\WL_LaserDis_V2\cal_distance.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\CAN\../HARDWARE/WL_LaserDis_V2/cal_distance.c\131</Expression>
+        </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>

@@ -141,17 +141,17 @@ int main(void){
 
 // chuan gan  qi  tiao  shi
 //	//Set_LaserDis_Usart2(0x00, 0x06,0x01);
-//	volatile int down = -1;
-//	volatile int up = -1;
-//	volatile int left = -1;
-//	while(1)
-//	{
-//		left= cal_distance3();
-//		delay_ms(5);
-//		down = cal_distance1();
-//		up= cal_distance2(down);
-//		delay_ms(10);
-//	}
+	volatile int down = -1;
+	volatile int up = -1;
+	volatile int left = -1;
+	while(1)
+	{
+		left= cal_distance3();
+		delay_ms(5);
+		down = cal_distance1();
+		up= cal_distance2(down);
+		delay_ms(10);
+	}
 
 //////////	
 //CoordinatePositionMovement(0, 0, CTransX(0.00f, 1250.00f), CTransY(0.00f,1250.00f));

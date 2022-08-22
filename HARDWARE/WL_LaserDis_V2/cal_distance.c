@@ -38,12 +38,12 @@ int cal_distance1()  //下面模块
 		//此时没有箱子
 		flag1 = 0;
 	}
-	if(distance1 >= 425 && distance1 <= 490)
+	if(distance1 >= 436 && distance1 <= 500)
 	{
 		//此处有一个纸箱，纸箱横放
 		flag1 = 1;
 	}
-	if(distance1 >= 360 && distance1 <= 424)
+	if(distance1 >= 360 && distance1 <= 435)
 	{
 		//此处有一个纸箱，纸箱纵放
 		flag1 = 2;
@@ -88,7 +88,7 @@ int cal_distance2(int last_flag) //上面模块
 			//此处有一个纸箱，纸箱横放
 			flag2 = 1;
 		}
-		if(distance2 >= 265 && distance2 <= 329)
+		if(distance2 >= 283 && distance2 <= 329)
 		{
 			//此处有一个纸箱，纸箱纵放
 			flag2 = 2;
