@@ -487,23 +487,23 @@ u8 needForward(void){
 }
 
 
-void runFront(void){
-	MotorSpeedExpected(30, -30, -30, 30, 0);
+void runFront(float speed){
+	MotorSpeedExpected(speed, -speed, -speed, speed, 0);
 	delay_ms(1);
 }
 
-void runBack(void){
-	MotorSpeedExpected(-30, 30, 30, -30, 0);
+void runBack(float speed){
+	MotorSpeedExpected(-speed, speed, speed, -speed, 0);
 	delay_ms(1);
 }
 
-void runLeft(void){
-	MotorSpeedExpected(-30, -30, 30, 30, 0);
+void runLeft(float speed){
+	MotorSpeedExpected(-speed, -speed, speed, speed, 0);
 	delay_ms(1);
 }
 
-void runRight(void){
-	MotorSpeedExpected(30, 30, -30, -30, 0);
+void runRight(float speed){
+	MotorSpeedExpected(speed, speed, -speed, -speed, 0);
 	delay_ms(1);
 }
 
@@ -512,13 +512,13 @@ void runStop(void){
 	delay_ms(1);
 }
 
-void clockwiseRotate(void){
-	MotorSpeedExpected(30, 30, 30, 30, 0);
+void clockwiseRotate(float speed){
+	MotorSpeedExpected(speed, speed, speed, speed, 0);
 	delay_ms(1);
 }
 
-void clockwiseCounterRotate(void){
-	MotorSpeedExpected(-30, -30, -30, -30, 0);
+void clockwiseCounterRotate(float speed){
+	MotorSpeedExpected(-speed, -speed, -speed, -speed, 0);
 	delay_ms(1);
 }
 
@@ -780,48 +780,54 @@ void stateInit(void){
 //}
 
 
-u8 startTrack(void){
+u8 startTrack(float speed){
 	/* Detected where the robot is */
 	if(posFlag == 0){
 		if(way1AllWhite() && way2AllWhite()){
 			posFlag = 1;
 		}
-		else{
+		else if(way1AllWhite()){
 			posFlag = 2;
+		}
+		else if(way2AllWhite()){
+			posFlag = 3;
+		}
+		else{
+			posFlag = 4;
 		}
 	}
 	
 	/* Have not detected the rotate needed situation */
-	if(posFlag == 2){
+	if(posFlag == 4){
 		if(rotateToTrack() == 1 && flag == 1){
 			rotateFlag = 0;
 			flag = 2;
-			for(u8 i = 0; i < 5; ++i){
-				if(currentRobotState == COMM_CLOCK){
-					clockwiseRotate();
-				}
-				else if(currentRobotState == COMM_CTCLOCK){
-					clockwiseCounterRotate();
-				}
-				else{
-					break;
-				}
-			}
+//			for(u8 i = 0; i < 5; ++i){
+//				if(currentRobotState == COMM_CLOCK){
+//					clockwiseRotate(speed);
+//				}
+//				else if(currentRobotState == COMM_CTCLOCK){
+//					clockwiseCounterRotate(speed);
+//				}
+//				else{
+//					break;
+//				}
+//			}
 		}
 		else if(rotateToTrack() == 2 && flag == 1){
 			rotateFlag = 0;
 			flag = 2;
-			for(u8 i = 0; i < 10; ++i){
-				if(currentRobotState == COMM_CLOCK){
-					clockwiseRotate();
-				}
-				else if(currentRobotState == COMM_CTCLOCK){
-					clockwiseCounterRotate();
-				}
-				else{
-					break;
-				}
-			}
+//			for(u8 i = 0; i < 10; ++i){
+//				if(currentRobotState == COMM_CLOCK){
+//					clockwiseRotate(speed);
+//				}
+//				else if(currentRobotState == COMM_CTCLOCK){
+//					clockwiseCounterRotate(speed);
+//				}
+//				else{
+//					break;
+//				}
+//			}
 		}
 		else if(rotateToTrack() == 3 && flag == 1){
 			rotateFlag = 0;
@@ -919,12 +925,12 @@ u8 startTrack(void){
 			if(currentRobotState == COMM_FORWARD){
 				if(lastRobotState == COMM_LEFT){
 					for(u8 i = 0; i < 10; ++i){
-						runLeft();
+						runLeft(speed);
 					}
 				}
 				else if(lastRobotState == COMM_RIGHT){
 					for(u8 i = 0; i < 10; ++i){
-						runRight();
+						runRight(speed);
 					}
 				}
 			}
@@ -951,15 +957,15 @@ u8 startTrack(void){
 
 		switch(currentRobotState){
 			case COMM_FORWARD:{
-				runFront();
+				runFront(speed);
 				break;
 			}
 			case COMM_LEFT:{
-				runLeft();
+				runLeft(speed);
 				break;
 			}
 			case COMM_RIGHT:{
-				runRight();
+				runRight(speed);
 				break;
 			}
 			case COMM_STOP:{
@@ -967,11 +973,11 @@ u8 startTrack(void){
 				break;
 			}
 			case COMM_CLOCK:{
-				clockwiseRotate();
+				clockwiseRotate(speed);
 				break;
 			}
 			case COMM_CTCLOCK:{
-				clockwiseCounterRotate();
+				clockwiseCounterRotate(speed);
 				break;
 			}
 			default:{
@@ -999,32 +1005,32 @@ u8 startTrack(void){
 		if(rotateToTrack() == 1 && flag == 1){
 			rotateFlag = 0;
 			flag = 2;
-			for(u8 i = 0; i < 5; ++i){
-				if(currentRobotState == COMM_CLOCK){
-					clockwiseRotate();
-				}
-				else if(currentRobotState == COMM_CTCLOCK){
-					clockwiseCounterRotate();
-				}
-				else{
-					break;
-				}
-			}
+//			for(u8 i = 0; i < 2; ++i){
+//				if(currentRobotState == COMM_CLOCK){
+//					clockwiseRotate(speed);
+//				}
+//				else if(currentRobotState == COMM_CTCLOCK){
+//					clockwiseCounterRotate(speed);
+//				}
+//				else{
+//					break;
+//				}
+//			}
 		}
 		else if(rotateToTrack() == 2 && flag == 1){
 			rotateFlag = 0;
 			flag = 2;
-			for(u8 i = 0; i < 10; ++i){
-				if(currentRobotState == COMM_CLOCK){
-					clockwiseRotate();
-				}
-				else if(currentRobotState == COMM_CTCLOCK){
-					clockwiseCounterRotate();
-				}
-				else{
-					break;
-				}
-			}
+//			for(u8 i = 0; i < 3; ++i){
+//				if(currentRobotState == COMM_CLOCK){
+//					clockwiseRotate(speed);
+//				}
+//				else if(currentRobotState == COMM_CTCLOCK){
+//					clockwiseCounterRotate(speed);
+//				}
+//				else{
+//					break;
+//				}
+//			}
 		}
 		else if(rotateToTrack() == 3 && flag == 1){
 			rotateFlag = 0;
@@ -1036,16 +1042,26 @@ u8 startTrack(void){
 			lastRobotState = currentRobotState;
 			currentRobotState = COMM_LEFT;
 			if(rotateFlag == 0){
-				if(SEARCH_OUT_IO_1 == BLACK_AREA && SEARCH_OUT_IO_17 == BLACK_AREA){
-					rotateFlag = 1;
-					flag = 1;
+				if(posFlag == 1){
+					if(SEARCH_OUT_IO_1 == BLACK_AREA && SEARCH_OUT_IO_17 == BLACK_AREA){
+						rotateFlag = 1;
+						flag = 1;
+					}
+					else if(way2AllWhite() && SEARCH_OUT_IO_7 == BLACK_AREA){
+						rotateFlag = 2; // need clockwise rotate
+						flag = 1;
+					}
+					else if(SEARCH_OUT_IO_11 == BLACK_AREA && way1AllWhite()){
+						rotateFlag = 3; // need counterclockwise rotate
+						flag = 1;
+					}
 				}
-				else if(way2AllWhite() && SEARCH_OUT_IO_7 == BLACK_AREA){
-					rotateFlag = 2; // need clockwise rotate
-					flag = 1;
-				}
-				else if(SEARCH_OUT_IO_11 == BLACK_AREA && way1AllWhite()){
+				else if(posFlag == 2){
 					rotateFlag = 3; // need counterclockwise rotate
+					flag = 1;
+				}
+				else if(posFlag == 3){
+					rotateFlag = 2; // need clockwise rotate
 					flag = 1;
 				}
 			}
@@ -1066,7 +1082,7 @@ u8 startTrack(void){
 				}
 			}
 			else if(rotateFlag == 2){
-				if(SEARCH_OUT_IO_3 == WHITE_AREA && stopRightFlag == 0){
+				if(SEARCH_OUT_IO_13 == WHITE_AREA && stopRightFlag == 0){
 					lastRobotState = currentRobotState;
 					currentRobotState = COMM_LEFT;
 					
@@ -1078,7 +1094,7 @@ u8 startTrack(void){
 				}
 			}
 			else if(rotateFlag == 3){
-				if(SEARCH_OUT_IO_15 == WHITE_AREA && stopRightFlag == 0){
+				if(SEARCH_OUT_IO_5 == WHITE_AREA && stopRightFlag == 0){
 					lastRobotState = currentRobotState;
 					currentRobotState = COMM_LEFT;
 				}
@@ -1124,12 +1140,12 @@ u8 startTrack(void){
 			if(currentRobotState == COMM_FORWARD){
 				if(lastRobotState == COMM_LEFT){
 					for(u8 i = 0; i < 10; ++i){
-						runLeft();
+						runLeft(speed);
 					}
 				}
 				else if(lastRobotState == COMM_RIGHT){
 					for(u8 i = 0; i < 10; ++i){
-						runRight();
+						runRight(speed);
 					}
 				}
 			}
@@ -1156,15 +1172,15 @@ u8 startTrack(void){
 
 		switch(currentRobotState){
 			case COMM_FORWARD:{
-				runFront();
+				runFront(speed);
 				break;
 			}
 			case COMM_LEFT:{
-				runLeft();
+				runLeft(speed);
 				break;
 			}
 			case COMM_RIGHT:{
-				runRight();
+				runRight(speed);
 				break;
 			}
 			case COMM_STOP:{
@@ -1172,11 +1188,11 @@ u8 startTrack(void){
 				break;
 			}
 			case COMM_CLOCK:{
-				clockwiseRotate();
+				clockwiseRotate(speed);
 				break;
 			}
 			case COMM_CTCLOCK:{
-				clockwiseCounterRotate();
+				clockwiseCounterRotate(speed);
 				break;
 			}
 			default:{
