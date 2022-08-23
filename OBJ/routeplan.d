@@ -43,3 +43,4 @@
 ..\obj\routeplan.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\routeplan.o: ..\SYSTEM\delay\delay.h
 ..\obj\routeplan.o: ..\HARDWARE\Servo\MyServo.h
+..\obj\routeplan.o: ..\HARDWARE\Track\track.h

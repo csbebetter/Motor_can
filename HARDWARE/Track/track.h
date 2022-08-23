@@ -103,13 +103,14 @@ void runBack(float speed);
 void runLeft(float speed);
 void runRight(float speed);
 void runStop(void);
-void clockwiseRotate(float speed);
-void clockwiseCounterRotate(float speed);
+void clockwiseRotate(void);
+void clockwiseCounterRotate(void);
 
 void redRayDebug(void);
 
 void stateInit(void);
 u8 startTrack(float speed);
+u8 nextTrack(float speed);
 
 #endif
 

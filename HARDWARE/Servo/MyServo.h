@@ -8,9 +8,9 @@
 #define Servo_PSC 83
 #define Servo_arr 19999
 
-#define Clockwise Servo_Angle_Set(78)
+#define Clockwise Servo_Angle_Set(74)
 #define CounterClockwise Servo_Angle_Set(-85)
-#define MoveToDefault Servo_Angle_Set(-5)
+#define MoveToDefault Servo_Angle_Set(-7)
 
 void Servo_Init(void );
 void Servo_Angle_Set(float angle );

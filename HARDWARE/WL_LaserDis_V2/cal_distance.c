@@ -72,7 +72,7 @@ int cal_distance2(int last_flag) //上面模块
 		while(i2<=reading_count2)
 		{
 			i2++;
-			if(i2<=2)	continue;
+ 			if(i2<=2)	continue;
 			delay_us(500);
 			MotorSpeedExpected(0, 0, 0, 0, 0);
 			Read_LaserDis_Usart2(0x00, Temp_Data2);  //读取

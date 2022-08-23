@@ -512,13 +512,13 @@ void runStop(void){
 	delay_ms(1);
 }
 
-void clockwiseRotate(float speed){
-	MotorSpeedExpected(speed, speed, speed, speed, 0);
+void clockwiseRotate(void){
+	MotorSpeedExpected(30, 30, 30, 30, 0);
 	delay_ms(1);
 }
 
-void clockwiseCounterRotate(float speed){
-	MotorSpeedExpected(-speed, -speed, -speed, -speed, 0);
+void clockwiseCounterRotate(void){
+	MotorSpeedExpected(-30, -30, -30, -30, 0);
 	delay_ms(1);
 }
 
@@ -800,7 +800,7 @@ u8 startTrack(float speed){
 	/* Have not detected the rotate needed situation */
 	if(posFlag == 4){
 		if(rotateToTrack() == 1 && flag == 1){
-			rotateFlag = 0;
+			rotateFlag = 10;
 			flag = 2;
 //			for(u8 i = 0; i < 5; ++i){
 //				if(currentRobotState == COMM_CLOCK){
@@ -815,7 +815,7 @@ u8 startTrack(float speed){
 //			}
 		}
 		else if(rotateToTrack() == 2 && flag == 1){
-			rotateFlag = 0;
+			rotateFlag = 10;
 			flag = 2;
 //			for(u8 i = 0; i < 10; ++i){
 //				if(currentRobotState == COMM_CLOCK){
@@ -830,7 +830,7 @@ u8 startTrack(float speed){
 //			}
 		}
 		else if(rotateToTrack() == 3 && flag == 1){
-			rotateFlag = 0;
+			rotateFlag = 10;
 			flag = 2;
 		}
 		
@@ -883,7 +883,7 @@ u8 startTrack(float speed){
 					lastRobotState = currentRobotState;
 					currentRobotState = COMM_RIGHT;
 				}
-				else if(stopRightFlag == 0){
+				else{
 					lastRobotState = currentRobotState;
 					currentRobotState = COMM_CTCLOCK;
 					stopRightFlag = 1;
@@ -973,11 +973,11 @@ u8 startTrack(float speed){
 				break;
 			}
 			case COMM_CLOCK:{
-				clockwiseRotate(speed);
+				clockwiseRotate();
 				break;
 			}
 			case COMM_CTCLOCK:{
-				clockwiseCounterRotate(speed);
+				clockwiseCounterRotate();
 				break;
 			}
 			default:{
@@ -1003,7 +1003,7 @@ u8 startTrack(float speed){
 	else if(posFlag == 1 || posFlag == 2 || posFlag == 3){
 		/* judge when to stop rotate */
 		if(rotateToTrack() == 1 && flag == 1){
-			rotateFlag = 0;
+			rotateFlag = 10;
 			flag = 2;
 //			for(u8 i = 0; i < 2; ++i){
 //				if(currentRobotState == COMM_CLOCK){
@@ -1018,7 +1018,7 @@ u8 startTrack(float speed){
 //			}
 		}
 		else if(rotateToTrack() == 2 && flag == 1){
-			rotateFlag = 0;
+			rotateFlag = 10;
 			flag = 2;
 //			for(u8 i = 0; i < 3; ++i){
 //				if(currentRobotState == COMM_CLOCK){
@@ -1033,7 +1033,7 @@ u8 startTrack(float speed){
 //			}
 		}
 		else if(rotateToTrack() == 3 && flag == 1){
-			rotateFlag = 0;
+			rotateFlag = 10;
 			flag = 2;
 		}
 		
@@ -1098,7 +1098,7 @@ u8 startTrack(float speed){
 					lastRobotState = currentRobotState;
 					currentRobotState = COMM_LEFT;
 				}
-				else if(stopRightFlag == 0){
+				else{
 					lastRobotState = currentRobotState;
 					currentRobotState = COMM_CTCLOCK;
 					stopRightFlag = 1;
@@ -1188,11 +1188,11 @@ u8 startTrack(float speed){
 				break;
 			}
 			case COMM_CLOCK:{
-				clockwiseRotate(speed);
+				clockwiseRotate();
 				break;
 			}
 			case COMM_CTCLOCK:{
-				clockwiseCounterRotate(speed);
+				clockwiseCounterRotate();
 				break;
 			}
 			default:{
@@ -1217,6 +1217,44 @@ u8 startTrack(float speed){
 	/* Get error, to ensure the robot move normally */
 	else{
 		posFlag = 2;
+	}
+}
+
+u8 nextTrack(float speed){
+	if(needForward()){
+		lastRobotState = currentRobotState;
+		currentRobotState = COMM_FORWARD;
+	}
+	else if(needLeft()){
+		lastRobotState = currentRobotState;
+		currentRobotState = COMM_LEFT;
+	}
+	else if(needRight()){
+		lastRobotState = currentRobotState;
+		currentRobotState = COMM_RIGHT;
+	}
+	
+	switch(currentRobotState){
+		case COMM_FORWARD:{
+			runFront(speed);
+			break;
+		}
+		case COMM_LEFT:{
+			runLeft(speed);
+			break;
+		}
+		case COMM_RIGHT:{
+			runRight(speed);
+			break;
+		}
+	}
+	
+	if(reachTarget(6)){
+		runStop();
+		return 1;
+	}
+	else{
+		return 0;
 	}
 }
 
