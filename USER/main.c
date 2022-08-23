@@ -183,10 +183,10 @@ int main(void){
 ////		AngularRotationMovement(motor_Position[2], 180.0f);
 ////		
 
-
+//	CoordinatePositionMovement_Speed(motor_Position[0], motor_Position[1], CTransX(-2000.00f, 0.00f), CTransY(-2000.00f, 0.00f));
 //	delay_ms(2);
-////	Control_Mode=STOP_MODE;
-//	Control_Mode=TRACK_MODE;
+//	Control_Mode=STOP_MODE;
+////	Control_Mode=TRACK_MODE;
 
 //	
 //	while(1){
@@ -243,14 +243,14 @@ int main(void){
 //	
 //	
 //	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
-//	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -268,7 +268,7 @@ int main(void){
 			nextTrackState = nextTrack(30);
 		}
 		nextTrackState = 0;
-		for(k=0;k<1500;k++){
+		for(k=0;k<1000;k++){
 				runStop();
 		}
 
