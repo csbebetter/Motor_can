@@ -117,6 +117,7 @@ int ChooseStartPoint(){
 int main(void){
 	//Parametereinstellung
 	int Control_Mode;
+	int isUPcontected = 0;
 	
 	u32 keepCommCnt = 0;
 	int j = 0;
@@ -141,17 +142,17 @@ int main(void){
 
 // chuan gan  qi  tiao  shi
 //	//Set_LaserDis_Usart2(0x00, 0x06,0x01);
-	volatile int down = -1;
-	volatile int up = -1;
-	volatile int left = -1;
-	while(1)
-	{
-		left= cal_distance3();
-		delay_ms(5);
-		down = cal_distance1();
-		up= cal_distance2(down);
-		delay_ms(10);
-	}
+//	volatile int down = -1;
+//	volatile int up = -1;
+//	volatile int left = -1;
+//	while(1)
+//	{
+//		left= cal_distance3();
+//		delay_ms(5);
+//		down = cal_distance1();
+//		up= cal_distance2(down);
+//		delay_ms(10);
+//	}
 
 //////////	
 //CoordinatePositionMovement(0, 0, CTransX(0.00f, 1250.00f), CTransY(0.00f,1250.00f));
@@ -317,12 +318,15 @@ int main(void){
 				
 			case LIFT_MODE:	
 				Sbox_state[motor_park_space_start][0] = cal_distance1();
-//				if(ifjudge()){
-//					Sbox_state[motor_park_space_start][1] = 0;
-//				}
-//				else{
-				Sbox_state[motor_park_space_start][1] = cal_distance2(Sbox_state[motor_park_space_start][0]);
-				//}
+				if(isUPcontected==0){
+					Sbox_state[motor_park_space_start][1] = cal_distance2(Sbox_state[motor_park_space_start][0]);
+					if(Sbox_state[motor_park_space_start][1]>0){
+						isUPcontected = 1;
+					}
+				}
+				else{
+					Sbox_state[motor_park_space_start][1] = 0;
+				}
 				
 				if(Sbox_state[motor_park_space_start][0] <= 0 ) //With path planning, this situation does not occur
 				{

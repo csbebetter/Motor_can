@@ -1,10 +1,12 @@
 #include "motor.h"
-
+#include "routeplan.h"
 /*****PID*****/
 //电机状态参数
 volatile MotorTypeDef Motor_1, Motor_2,Motor_3, Motor_4;
 volatile MotorTypeDef Motor_5;
-
+//static int TURN_Flag = 0;
+long int Line_Turn_Flag = 0;
+long int Line_Turn_Time_Out = 100;
 /*********PID*******/
 ClassicPidStructTypedef MotorPositionPid1,MotorSpeedPid1,MotorCurrentPid1,MotorPositionPid2,MotorSpeedPid2,MotorCurrentPid2;
 ClassicPidStructTypedef MotorPositionPid3,MotorSpeedPid3,MotorCurrentPid3,MotorPositionPid4,MotorSpeedPid4,MotorCurrentPid4;
@@ -43,6 +45,7 @@ void Reset_motors(void){
 	Motor_3.SpeedExpected = 0;
 	Motor_4.SpeedExpected = 0;
 	Motor_5.SpeedExpected = 0;
+	TIM3_Int_Init(100-1,840-1);	//定时器时钟84M，分频系数840，所以84M/8400=100Khz的计数频率，计数100次为1ms     
 }
 
 void MotorCurrentPidInit(void)
@@ -360,21 +363,7 @@ void MotorSpeedExpected(float Spe1,float Spe2,float Spe3,float Spe4,float Spe5){
 	Motor_3.SpeedExpected = Spe3;
 	Motor_4.SpeedExpected = Spe4;
 	Motor_5.SpeedExpected = Spe5;
-	motor_driver();
-}
-
-void MotorCurrentExpected(float Pos1,float Pos2,float Pos3,float Pos4,float Pos5){
-	Motor_1.State = MOTOR_CURRENT;
-	Motor_2.State = MOTOR_CURRENT;
-	Motor_3.State = MOTOR_CURRENT;
-	Motor_4.State = MOTOR_CURRENT;
-	Motor_5.State = MOTOR_CURRENT;
-	Motor_1.PositionExpected = Pos1;
- 	Motor_2.PositionExpected = Pos2;
-	Motor_3.PositionExpected = Pos3;
-	Motor_4.PositionExpected = Pos4;
-	Motor_5.PositionExpected = Pos5;
-	motor_driver();
+	//motor_driver();
 }
 
 void MotorPositionExpected(float Pos1,float Pos2,float Pos3,float Pos4,float Pos5){
@@ -388,8 +377,41 @@ void MotorPositionExpected(float Pos1,float Pos2,float Pos3,float Pos4,float Pos
 	Motor_3.PositionExpected = Pos3;
 	Motor_4.PositionExpected = Pos4;
 	Motor_5.PositionExpected = Pos5;
-	motor_driver();
+	//motor_driver();
 }
+void TIM3_Int_Init(u16 arr,u16 psc)
+{
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
+	
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);  ///使能TIM3时钟
+	
+  TIM_TimeBaseInitStructure.TIM_Period = arr; 	//自动重装载值
+	TIM_TimeBaseInitStructure.TIM_Prescaler=psc;  //定时器分频
+	TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //向上计数模式
+	TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1; 
+	
+	TIM_TimeBaseInit(TIM3,&TIM_TimeBaseInitStructure);//初始化TIM3
+	
+	TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE); //允许定时器3更新中断
+	
+	TIM_Cmd(TIM3,ENABLE); //使能定时器3
+	NVIC_InitStructure.NVIC_IRQChannel=TIM3_IRQn; //定时器3中断
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0x01; //抢占优先级1
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0x03; //子优先级3
+	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+}
+
+//定时器3中断服务函数
+void TIM3_IRQHandler(void)
+{
+	Line_Turn_Flag ++ ;
+	if (Line_Turn_Flag > Line_Turn_Time_Out) Line_Turn_Flag = 0;  //Reset Times
+	motor_driver();
+	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);  //清除中断标志位
+}
+
 
 
 
