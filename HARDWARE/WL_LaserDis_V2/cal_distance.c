@@ -83,12 +83,12 @@ int cal_distance2(int last_flag) //上面模块
 //			delay_ms(1);
 		}
 		distance2 = (sum2-last_time2_max-last_time2_min)/3;;
-		if(distance2 >= 330 && distance2 <= 395)
+		if(distance2 >= 303 && distance2 <= 380)
 		{
 			//此处有一个纸箱，纸箱横放
 			flag2 = 1;
 		}
-		if(distance2 >= 283 && distance2 <= 329)
+		if(distance2 >= 225 && distance2 <= 302)
 		{
 			//此处有一个纸箱，纸箱纵放
 			flag2 = 2;

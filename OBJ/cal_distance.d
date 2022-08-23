@@ -2,7 +2,7 @@
 ..\obj\cal_distance.o: ..\HARDWARE\WL_LaserDis_V2\cal_distance.h
 ..\obj\cal_distance.o: ..\USER\stm32f4xx.h
 ..\obj\cal_distance.o: ..\CORE\core_cm4.h
-..\obj\cal_distance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\cal_distance.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\cal_distance.o: ..\CORE\core_cmInstr.h
 ..\obj\cal_distance.o: ..\CORE\core_cmFunc.h
 ..\obj\cal_distance.o: ..\CORE\core_cm4_simd.h
@@ -36,9 +36,9 @@
 ..\obj\cal_distance.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\cal_distance.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\cal_distance.o: ..\SYSTEM\usart\usart.h
-..\obj\cal_distance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\cal_distance.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\cal_distance.o: ..\SYSTEM\sys\sys.h
 ..\obj\cal_distance.o: ..\SYSTEM\delay\delay.h
 ..\obj\cal_distance.o: ..\HARDWARE\HCSR04\hcsr04.h
 ..\obj\cal_distance.o: ..\HARDWARE\MotorControl\motor.h
-..\obj\cal_distance.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\cal_distance.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h

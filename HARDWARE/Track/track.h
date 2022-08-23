@@ -98,18 +98,18 @@ u8 needRotateClockwise(void);
 u8 needRotateCounterClockwise(void);
 
 /* Move Command */
-void runFront(void);
-void runBack(void);
-void runLeft(void);
-void runRight(void);
+void runFront(float speed);
+void runBack(float speed);
+void runLeft(float speed);
+void runRight(float speed);
 void runStop(void);
-void clockwiseRotate(void);
-void clockwiseCounterRotate(void);
+void clockwiseRotate(float speed);
+void clockwiseCounterRotate(float speed);
 
 void redRayDebug(void);
 
 void stateInit(void);
-u8 startTrack(void);
+u8 startTrack(float speed);
 
 #endif
 
