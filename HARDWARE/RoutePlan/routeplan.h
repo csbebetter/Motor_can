@@ -9,7 +9,7 @@
 #define WHEEL_DIAMETER  75.00f
 #define LINEAR_SPEED 200   //straight speed
 #define LINEAR_SPEED1 400   //straight speed
-#define LINEAR_SPEED2 600 
+#define LINEAR_SPEED2 500 
 #define SPINNING_SPEED 80 //rotate speed
 #define PI 3.141592768f
 #define CSPDERR 50

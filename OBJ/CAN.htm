@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\CAN.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\CAN.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Aug 24 02:30:33 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Wed Aug 24 14:22:20 2022
 <BR><P>
 <H3>Maximum Stack Usage =        288 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -266,7 +266,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 890 bytes, Stack size 16 bytes, main.o(.text))
+<P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 850 bytes, Stack size 16 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = main &rArr; routeplan &rArr; CTransY &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
@@ -468,7 +468,6 @@ Global Symbols
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinatePositionMovement2
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinatePositionMovement1
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runStop
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dropplan
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance2
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance1
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinatePositionMovement
@@ -665,14 +664,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8c]"></a>dropplan</STRONG> (Thumb, 366 bytes, Stack size 32 bytes, routeplan.o(.text))
+<P><STRONG><a name="[8c]"></a>dropplan</STRONG> (Thumb, 302 bytes, Stack size 32 bytes, routeplan.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = dropplan &rArr; CTransY &rArr; __hardfp_sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_Drop_box
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Angle_Set
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorSpeedExpected
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinatePositionMovement
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CTransY
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CTransX
@@ -688,7 +684,6 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;liftplan
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dropplan
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Servo_Init
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -918,7 +913,7 @@ Global Symbols
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[81]"></a>cal_distance1</STRONG> (Thumb, 244 bytes, Stack size 48 bytes, cal_distance.o(.text))
+<P><STRONG><a name="[81]"></a>cal_distance1</STRONG> (Thumb, 288 bytes, Stack size 48 bytes, cal_distance.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = cal_distance1 &rArr; MotorSpeedExpected &rArr; motor_driver &rArr; Motor_Set_Current &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
@@ -929,8 +924,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[89]"></a>cal_distance2</STRONG> (Thumb, 242 bytes, Stack size 48 bytes, cal_distance.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = cal_distance2 &rArr; MotorSpeedExpected &rArr; motor_driver &rArr; Motor_Set_Current &rArr; CAN_Transmit
+<P><STRONG><a name="[89]"></a>cal_distance2</STRONG> (Thumb, 310 bytes, Stack size 56 bytes, cal_distance.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = cal_distance2 &rArr; MotorSpeedExpected &rArr; motor_driver &rArr; Motor_Set_Current &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_LaserDis_Usart2
@@ -990,7 +985,6 @@ Global Symbols
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CoordinatePositionMovement1
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTrack
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;runStop
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dropplan
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance3
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance2
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cal_distance1

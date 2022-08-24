@@ -13,7 +13,17 @@ int cal_distance1()  //下面模块
 	unsigned int sum1=0;
 	unsigned int distance1=0;
 	int flag1=0;
-	 
+	int check1 = 0;
+	
+	while(check1 == 0)
+	{
+		i1=0;
+		sum1=0;
+		last_time1_max=0;
+		last_time1_min=999999999;
+		distance1=0;
+		flag1=0;
+		
 	for(i=0;i<20;i++){
 		MotorSpeedExpected(0, 0, 0, 0, 0);
 		delay_ms(2);
@@ -37,18 +47,23 @@ int cal_distance1()  //下面模块
 	{
 		//此时没有箱子
 		flag1 = 0;
+		check1 = 1;
 	}
-	if(distance1 >= 436 && distance1 <= 500)
+	else if(distance1 >= 431 && distance1 <= 500)
 	{
 		//此处有一个纸箱，纸箱横放
 		flag1 = 1;
+		check1 = 1;
 	}
-	if(distance1 >= 360 && distance1 <= 435)
+	else if(distance1 >= 360 && distance1 <= 430)
 	{
 		//此处有一个纸箱，纸箱纵放
 		flag1 = 2;
+		check1 = 1;
 	}
+	else check1 = 0;
 	
+	}
 	return flag1;
 }
 
@@ -61,7 +76,17 @@ int cal_distance2(int last_flag) //上面模块
 	unsigned int sum2=0;
 	unsigned int distance2=0;
 	int flag2=0;
+	int check2 = 0;
 	
+	while(check2 == 0)
+	{
+		i2=0;
+		sum2=0;
+		last_time2_max=0;
+		last_time2_min=999999999;
+		distance2=0;
+		flag2=0;
+		
 	for(i=0;i<20;i++){
 		MotorSpeedExpected(0, 0, 0, 0, 0);
 		delay_ms(2);
@@ -83,16 +108,26 @@ int cal_distance2(int last_flag) //上面模块
 //			delay_ms(1);
 		}
 		distance2 = (sum2-last_time2_max-last_time2_min)/3;;
-		if(distance2 >= 303 && distance2 <= 380)
+		if(distance2 >= 302 && distance2 <= 380)
 		{
 			//此处有一个纸箱，纸箱横放
 			flag2 = 1;
+			check2 = 1;
 		}
-		if(distance2 >= 225 && distance2 <= 302)
+		else if(distance2 >= 235 && distance2 <= 301)
 		{
 			//此处有一个纸箱，纸箱纵放
 			flag2 = 2;
+			check2 = 1;
 		}
+		else if(distance2 >= 650)
+		{
+			flag2 = 0;
+			check2 = 1;
+		}
+		else check2 = 0;
+	}
+	else check2 = 1;
 	}
 	
 	return flag2;

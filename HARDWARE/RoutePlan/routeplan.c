@@ -48,7 +48,7 @@ void CoordinatePositionMovement(float CurrentX, float CurrentY, float ExpectedX,
 								sign(linear_speed[2])*flag*fabs(errX)/(fabs(errX)+fabs(errY)),
 								sign(linear_speed[3])*flag*fabs(errY)/(fabs(errX)+fabs(errY)),
 								0);
-			flag += 0.15f ;
+			flag += 0.1f ;
 		}
 		else{
 			MotorSpeedExpected( linear_speed[0]*fabs(errX)/(fabs(errX)+fabs(errY)),
@@ -185,7 +185,7 @@ void CoordinatePositionMovement2(float CurrentX, float CurrentY, float ExpectedX
 								0);
 		}
 		delay_ms(2);
-	}while(!(stopCspdJudging(CSPDERR*16,-1)));
+	}while(!(stopCspdJudging(CSPDERR*14,-1)));
 	
 	if (flag<100){
 		flag = 100;
@@ -610,12 +610,12 @@ void dropplan(int e, int state){
 //		else
 //		{
 //			//需要位置调整
-			MoveToDefault;
-			for(i=0;i<200;i++)
-			{
-					MotorSpeedExpected(0, 0, 0, 0, 0);
-					delay_ms(1);
-			}
+			//MoveToDefault;
+//			for(i=0;i<200;i++)
+//			{
+//					MotorSpeedExpected(0, 0, 0, 0, 0);
+//					delay_ms(1);
+//			}
 			Lift_Drop_box(0);
 			CoordinatePositionMovement(CTransX(300.00f, 0.00f), CTransY(300.00f,0.00f),0,0);
 //		}
