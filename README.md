@@ -32,5 +32,5 @@ The [Motor_can](https://github.com/csbebetter/Motor_can) code is used to control
 **Program flow chart:**
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/70866844/185852224-8b14656f-aef2-4fb6-b5bd-98b7be6519ac.png"> 
+<img src="https://user-images.githubusercontent.com/70866844/185852224-8b14656f-aef2-4fb6-b5bd-98b7be6519ac.png" width="70%"> 
 </div>
