@@ -161,37 +161,38 @@ int main(void){
 //		delay_ms(10);
 //	}
 
-////////////	
-////CoordinatePositionMovement(0, 0, CTransX(0.00f, 1250.00f), CTransY(0.00f,1250.00f));
-////////		Clockwise;
-////		Lift_Drop_box(-4000);
-////				Lift_Drop_box(-4600);
-//////		
-//////		Lift_Drop_box(-5400);
-//////		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
-//////		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
-//////		Lift_Drop_box(-5700);
+//////////	
+//CoordinatePositionMovement(0, 0, CTransX(0.00f, 1250.00f), CTransY(0.00f,1250.00f));
+//////		Clockwise;
+//		Lift_Drop_box(-4000);
+//				Lift_Drop_box(-4600);
+////		
+////		Lift_Drop_box(-5400);
+////		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
+////		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
+////		Lift_Drop_box(-5700);
 //////		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
 //		Clockwise;
-//		Lift_Drop_box(-2500);
+//		Lift_Drop_box(-4010);//3410
+//		
 //////		CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
 //		
-//		AngularRotationMovement(motor_Position[2], 98.0f);//52
+//		AngularRotationMovement(motor_Position[2], 96.0f);//52
 ////		CoordinatePositionMovement(0, 0,  550,0);
 ////		AngularRotationMovement(motor_Position[2], 47.0f);
 ////		CoordinatePositionMovement(0, 0,  -1200,0);
 ////		AngularRotationMovement(motor_Position[2], -47.0f);
 ////		CoordinatePositionMovement(0, 0, -1100,0);
 ////		AngularRotationMovement(motor_Position[2], 47.0f);
-////		CoordinatePositionMovement(0, 0, -1200,0);
+//		CoordinatePositionMovement(0, 0, -1200,0);
 ////		AngularRotationMovement(motor_Position[2], -47.0f);
 ////		CoordinatePositionMovement(0, 0,  550,0);
-////	CoordinatePositionMovement_Speed(motor_Position[0], motor_Position[1], CTransX(-2000.00f, 0.00f), CTransY(-2000.00f, 0.00f));
+//////	CoordinatePositionMovement_Speed(motor_Position[0], motor_Position[1], CTransX(-2000.00f, 0.00f), CTransY(-2000.00f, 0.00f));
 ////	delay_ms(2);
-//	Control_Mode=STOP_MODE;
+//Control_Mode=STOP_MODE;
 ////	Control_Mode=TRACK_MODE;
 
-//	
+
 //	while(1){
 //		switch(Control_Mode){
 //			case TRACK_MODE:
@@ -202,7 +203,7 @@ int main(void){
 //					//如果小车位于起始位置，做抬升;如果小车位于结尾位置，做放下操作
 //					Control_Mode = STOP_MODE;
 //				}
-////				Control_Mode=DROP_MODE;
+//	//				Control_Mode=DROP_MODE;
 //				break;
 //			case DROP_MODE:
 //				Lift_Drop_box(-360);
@@ -218,46 +219,63 @@ int main(void){
 //			default:
 //				Control_Mode=STOP_MODE;
 //		}
-//}
-////	
-////	
-////	
-////	
-//	while(1){
-//		Clockwise;
-//		delay_ms(1000);
-//		MoveToDefault;
-//		delay_ms(1000);
-////		CounterClockwise;
+//	}
+////////	
+////////	
+////////	
+////////	
+////	while(1){
+////		Clockwise;
 ////		delay_ms(1000);
 ////		MoveToDefault;
 ////		delay_ms(1000);
-//	}
+//////		CounterClockwise;
+//////		delay_ms(1000);
+//////		MoveToDefault;
+//////		delay_ms(1000);
+////	}
+//////	
+//////	
+//////	while(1){
+//////		trackModeState = startTrack();
+//////		if(trackModeState){
+//////			runStop();
+//////		}
+//////	}
+//////	
+////	
+////	
+////	
+////	
 //	
-//	
+	
+
+	
+//	u8 state1 = 0;
+//	u16 cnt = 0;
 //	while(1){
-//		trackModeState = startTrack();
-//		if(trackModeState){
-//			runStop();
+//		if(state1 == 0){
+//			clockwiseRotate();
+//			cnt++;
+//			if(cnt > 1500){
+//				state1 = 1;
+//				cnt = 0;
+//			}
+//		}
+//		if(state1 == 1){
+//			clockwiseCounterRotate();
+//			cnt++;
+//			if(cnt > 1500){
+//				state1 = 0;
+//				cnt = 0;
+//			}
 //		}
 //	}
+	
+	
+	
 //	
 //	
-//	
-//	
-//	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -308,10 +326,6 @@ int main(void){
 				//转换小车的s or e状态
 				if(motor_Location == 0){
 					motor_Location = 1;
-
-					if(motor_park_space_end==1){
-						MoveToDefault;
-					}
 				}
 				else{
 					motor_Location = 0;
@@ -321,7 +335,7 @@ int main(void){
 				break;
 			
 			case TRACK_MODE:
-				trackModeState = startTrack(30);
+				trackModeState = startTrack(40);
 				if(trackModeState){
 					stateInit();
 					//如果小车位于起始位置，做抬升;如果小车位于结尾位置，做放下操作
@@ -367,10 +381,12 @@ int main(void){
 				}
 				}
 
+				
 				Control_Mode = MOBILE_MODE;
 				break;
 				
 			case DROP_MODE:
+				for(k=0;k<300;k++){runStop();}
 				dropplan(motor_park_space_end,mobile_box_state);
 				Ebox_state[motor_park_space_end]=1;
 				motor_park_space_start = ChooseStartPoint();

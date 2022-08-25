@@ -134,22 +134,61 @@ int cal_distance2(int last_flag) //上面模块
 	
 }
 
-int cal_distance3() //侧面模块
+
+
+int cal_distance3() //2à???￡?é
 {
-	unsigned int Temp_Data3[3] = { 0 };       //数据缓存
-	unsigned int reading_count3 = 4 ; //记录读数次数
+	unsigned int Temp_Data3[3] = { 0 };       //êy?Y?o′?
+	unsigned int reading_count3 = 4 ; //?????áêy′?êy
 	unsigned int last_time3_max=0 , last_time3_min=999999999;
 	unsigned int i3=0;
 	unsigned int sum3=0;
 	unsigned int distance3=0;
 	int flag3=0;
+	int checkdis = 0;
 	
+	//red
+	GPIO_InitTypeDef  GPIO_InitStructure1;
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);//ê1?üGPIOFê±?ó
+
+  //GPIOF9,F103?ê??ˉéè??
+  GPIO_InitStructure1.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;//LED0oíLED1??ó|IO?ú
+  GPIO_InitStructure1.GPIO_Mode = GPIO_Mode_OUT;//??í¨ê?3??￡ê?
+  GPIO_InitStructure1.GPIO_OType = GPIO_OType_PP;//í?íìê?3?
+  GPIO_InitStructure1.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
+  GPIO_InitStructure1.GPIO_PuPd = GPIO_PuPd_UP;//é?à-
+  GPIO_Init(GPIOD, &GPIO_InitStructure1);//3?ê??ˉGPIO
+	
+	GPIO_ResetBits(GPIOD,GPIO_Pin_8 | GPIO_Pin_9);//GPIOF9,F10éè????￡?μ??e
+	
+	//green
+	GPIO_InitTypeDef  GPIO_InitStructure2;
+
+  //GPIOF9,F103?ê??ˉéè??
+  GPIO_InitStructure2.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;//LED0oíLED1??ó|IO?ú
+  GPIO_InitStructure2.GPIO_Mode = GPIO_Mode_OUT;//??í¨ê?3??￡ê?
+  GPIO_InitStructure2.GPIO_OType = GPIO_OType_PP;//í?íìê?3?
+  GPIO_InitStructure2.GPIO_Speed = GPIO_Speed_100MHz;//100MHz
+  GPIO_InitStructure2.GPIO_PuPd = GPIO_PuPd_UP;//é?à-
+  GPIO_Init(GPIOD, &GPIO_InitStructure2);//3?ê??ˉGPIO
+	
+	GPIO_ResetBits(GPIOD,GPIO_Pin_10 | GPIO_Pin_11);//GPIOF9,F10éè????￡?μ??e
+	GPIO_SetBits(GPIOD,GPIO_Pin_8);
+	GPIO_SetBits(GPIOD,GPIO_Pin_10);
+	
+	while(checkdis == 0)
+	{
+	last_time3_max=0;
+	last_time3_min=999999999;
+	i3=0;
+	sum3=0;
+	distance3=0;
 		while(i3<=reading_count3)
 		{
 			i3++;
 			if(i3<=2)	continue;
 			delay_us(500);
-			Read_LaserDis_Usart6(0x00, Temp_Data3);  //读取
+			Read_LaserDis_Usart6(0x00, Temp_Data3);  //?áè?
 			sum3+=Temp_Data3[0];
 			if(Temp_Data3[0]>last_time3_max)	last_time3_max=Temp_Data3[0];
 			if(Temp_Data3[0]<last_time3_min)	last_time3_min=Temp_Data3[0];
@@ -158,11 +197,27 @@ int cal_distance3() //侧面模块
 		distance3 = sum3-last_time3_min-last_time3_max;
 		if(distance3 >= 250 && distance3 <=900 )
 		{
-			//有纸箱
+			//óD????
 			flag3 = 3;
+			GPIO_SetBits(GPIOD,GPIO_Pin_8);//GPIOF9,F10éè????￡?μ??e
+			GPIO_ResetBits(GPIOD,GPIO_Pin_10);
+			checkdis = 1;
+			
 		}
-		else flag3 =0;
-	
+		else if(distance3>=10)
+		{
+			flag3 =0;
+			GPIO_SetBits(GPIOD,GPIO_Pin_10);//GPIOF9,F10éè????￡?μ??e
+			GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+			checkdis = 1;
+		}
+		else 
+		{
+			checkdis = 0;
+			GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+			GPIO_ResetBits(GPIOD,GPIO_Pin_10);
+		}
+	}
 	return flag3;
 	
 }
