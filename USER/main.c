@@ -9,7 +9,7 @@
 #include "cal_distance.h"
 #include "hcsr04.h"
 
-//5ÖÖÄ£Ê½
+//5ç§æ¨¡å¼
 #define MOBILE_MODE 1
 #define TRACK_MODE 2
 #define LIFT_MODE 3
@@ -25,35 +25,35 @@ extern u8 lastRobotState;
 
 /*         
 						(start)    
-Sbox_state[3][2]		0¡¢1¡¢2    motor_park_space_start       motor_Location = 0
+Sbox_state[3][2]		0ã€1ã€2    motor_park_space_start       motor_Location = 0
 						*******
-						*******     ¡ª¡ª mobile_box_state£ºÅ£ÄÌÏäµÄÔË¶¯×´Ì¬
+						*******     â€”â€” mobile_box_stateï¼šç‰›å¥¶ç®±çš„è¿åŠ¨çŠ¶æ€
 						*******
-Ebox_state[3]			0¡¢1¡¢2    motor_park_space_end         motor_Location = 1
+Ebox_state[3]			0ã€1ã€2    motor_park_space_end         motor_Location = 1
 						( end )    
 */
-int Sbox_state[3][2]; //Start ÆğÊ¼Î»ÖÃ 0£¬1£¬2µÄÅ£ÄÌÏä°Ú·Å×´Ì¬¡£0£ºÎ´·ÅÅ£ÄÌÏä£¬1£º·ÅÅ£ÄÌÏäºá·Å£¬2£º·ÅÅ£ÄÌÏä×İ·Å,3£º·ÅÖÃÅ£ÄÌÏä£¬µ«²»ÖªµÀ°Ú·Å·½Ê½£¬-1£º·ÅÓĞÅ£ÄÌÏäµ«ÒÑ´¦ÀíÍê³É
-int Ebox_state[3]={0,0,0}; //End ½áÊøÎ»ÖÃ 0£¬1£¬2µÄÅ£ÄÌÏä°Ú·Å×´Ì¬¡£ 0£ºÏĞÖÃ£»1£ºÒÑ·ÅÖÃÅ£ÄÌÏä×Ó
-int mobile_box_state = 0; //ÔË¶¯¹ı³ÌÖĞÅ£ÄÌÏäµÄÔË¶¯×´Ì¬¡£1£º·ÅÅ£ÄÌÏäºá·Å£¬2£º·ÅÅ£ÄÌÏä×İ·Å
-int motor_park_space_start = 1; //Ğ¡³µÄ¿±êÆğµãÎ»ÖÃµÄ3¸öÎ»ÖÃ0£¬1£¬2
-int motor_park_space_end = 0;   //Ğ¡³µÄ¿±êÖÕµãÎ»ÖÃµÄ3¸öÎ»ÖÃ0£¬1£¬2
-int motor_Location; //s or e state    0£ºĞ¡³µÎ»ÓÚÆğÊ¼´¦£¬1£ºĞ¡³µÎ»ÓÚ·ÅÖÃ´¦
+int Sbox_state[3][2]; //Start èµ·å§‹ä½ç½® 0ï¼Œ1ï¼Œ2çš„ç‰›å¥¶ç®±æ‘†æ”¾çŠ¶æ€ã€‚0ï¼šæœªæ”¾ç‰›å¥¶ç®±ï¼Œ1ï¼šæ”¾ç‰›å¥¶ç®±æ¨ªæ”¾ï¼Œ2ï¼šæ”¾ç‰›å¥¶ç®±çºµæ”¾,3ï¼šæ”¾ç½®ç‰›å¥¶ç®±ï¼Œä½†ä¸çŸ¥é“æ‘†æ”¾æ–¹å¼ï¼Œ-1ï¼šæ”¾æœ‰ç‰›å¥¶ç®±ä½†å·²å¤„ç†å®Œæˆ
+int Ebox_state[3]={0,0,0}; //End ç»“æŸä½ç½® 0ï¼Œ1ï¼Œ2çš„ç‰›å¥¶ç®±æ‘†æ”¾çŠ¶æ€ã€‚ 0ï¼šé—²ç½®ï¼›1ï¼šå·²æ”¾ç½®ç‰›å¥¶ç®±å­
+int mobile_box_state = 0; //è¿åŠ¨è¿‡ç¨‹ä¸­ç‰›å¥¶ç®±çš„è¿åŠ¨çŠ¶æ€ã€‚1ï¼šæ”¾ç‰›å¥¶ç®±æ¨ªæ”¾ï¼Œ2ï¼šæ”¾ç‰›å¥¶ç®±çºµæ”¾
+int motor_park_space_start = 1; //å°è½¦ç›®æ ‡èµ·ç‚¹ä½ç½®çš„3ä¸ªä½ç½®0ï¼Œ1ï¼Œ2
+int motor_park_space_end = 0;   //å°è½¦ç›®æ ‡ç»ˆç‚¹ä½ç½®çš„3ä¸ªä½ç½®0ï¼Œ1ï¼Œ2
+int motor_Location; //s or e state    0ï¼šå°è½¦ä½äºèµ·å§‹å¤„ï¼Œ1ï¼šå°è½¦ä½äºæ”¾ç½®å¤„
 int k;
 
-//Ñ¡ÔñÅ£ÄÌÏä×Ó·ÅÖÃÎ»ÖÃ
+//é€‰æ‹©ç‰›å¥¶ç®±å­æ”¾ç½®ä½ç½®
 int ChooseEndPoint(int iput){
 	int Ebox_state_sum = 0;
 	for(k=0;k<3;k++) Ebox_state_sum += Ebox_state[k];
 	
-	if(Ebox_state_sum == 2) //Èç¹ûÖ»Ê£Ò»¸ö¿Õ£¬Ôò±»ÆÈÑ¡Ôñ
+	if(Ebox_state_sum == 2) //å¦‚æœåªå‰©ä¸€ä¸ªç©ºï¼Œåˆ™è¢«è¿«é€‰æ‹©
 	{
 		for(k=0;k<3;k++){
 			if(Ebox_state[k]==0) return k;
 		}
 	}
-	if(Ebox_state_sum == 1)// Èç¹ûÓĞÁ½¸ö¿ÕÏĞÎ»ÖÃ
+	if(Ebox_state_sum == 1)// å¦‚æœæœ‰ä¸¤ä¸ªç©ºé—²ä½ç½®
 	{
-		if(iput == 1) //ºá·Å
+		if(iput == 1) //æ¨ªæ”¾
 		{
 			if(Ebox_state[1] == 1){
 				return 0;
@@ -62,30 +62,30 @@ int ChooseEndPoint(int iput){
 				return 1;
 			}
 		}
-		if(iput == 2)//×İ·Å
+		if(iput == 2)//çºµæ”¾
 		{
 			if(Ebox_state[0] == 1){
-				return 2; //0´¦·ÅÖÃÔòÑ¡Ôñ2ºÅÎ»
+				return 2; //0å¤„æ”¾ç½®åˆ™é€‰æ‹©2å·ä½
 			}
 			else {
-				return 0; //0ºÅÎ´·ÅÖÃÑ¡ÔñÁãºÅÎ»
+				return 0; //0å·æœªæ”¾ç½®é€‰æ‹©é›¶å·ä½
 			}
 		}
 	}
-	if(Ebox_state_sum == 0)//·ÅÖÃÇø»¹Ã»ÓĞ¿ªÊ¼·ÅÖÃÎïÆ·
+	if(Ebox_state_sum == 0)//æ”¾ç½®åŒºè¿˜æ²¡æœ‰å¼€å§‹æ”¾ç½®ç‰©å“
 	{
-		if(iput == 1) //ºá·Å
+		if(iput == 1) //æ¨ªæ”¾
 		{
-			return 1; //·ÅÖÃÖĞ¼ä
+			return 1; //æ”¾ç½®ä¸­é—´
 		}
-		if(iput == 2)//×İ·Å
+		if(iput == 2)//çºµæ”¾
 		{
-			return 0; //·ÅÖÃ0ºÅÎ»ÖÃ
+			return 0; //æ”¾ç½®0å·ä½ç½®
 		}
 	}
 }
 
-//Ñ¡ÔñĞ¡³µ·µ»ØµÄÆğµãÎ»ÖÃ
+//é€‰æ‹©å°è½¦è¿”å›çš„èµ·ç‚¹ä½ç½®
 int ChooseStartPoint(){
 	if(Sbox_state[1][0] >0){
 		return 1;
@@ -99,7 +99,7 @@ int ChooseStartPoint(){
 				return 2;
 			}
 			else{
-				return -1; //ÈÎÎñ½áÊø!!!
+				return -1; //ä»»åŠ¡ç»“æŸ!!!
 			}
 		}
 	}
@@ -138,153 +138,14 @@ int main(void){
 	//Clockwise;
 	u8 trackModeState = 0;
 	motor_Location = 0;
-	u8 nextTrackState = 0;
-//	
-//	while(nextTrackState == 0){
-//			nextTrackState = nextTrack(30);
-//		}
-//	while(1){
-//		runStop();
-//	}
-
-// chuan gan  qi  tiao  shi
-//	//Set_LaserDis_Usart2(0x00, 0x06,0x01);
-//	volatile int down = -1;
-//	volatile int up = -1;
-//	volatile int left = -1;
-//	while(1)
-//	{
-//		left= cal_distance3();
-//		delay_ms(5);
-//		down = cal_distance1();
-//		up= cal_distance2(down);
-//		delay_ms(10);
-//	}
-
-//////////	
-//CoordinatePositionMovement(0, 0, CTransX(0.00f, 1250.00f), CTransY(0.00f,1250.00f));
-//////		Clockwise;
-//		Lift_Drop_box(-4000);
-//				Lift_Drop_box(-4600);
-////		
-////		Lift_Drop_box(-5400);
-////		CoordinatePositionMovement(CTransX(0.00f, 250.00f), CTransY(0.00f,250.00f),CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f));
-////		CoordinatePositionMovement(CTransX(380.00f, 250.00f), CTransY(380.00f,250.00f), CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f));
-////		Lift_Drop_box(-5700);
-//////		CoordinatePositionMovement(CTransX(380.00f, 30.00f), CTransY(380.00f,30.00f),CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f));
-//		Clockwise;
-//		Lift_Drop_box(-4010);//3410
-//		
-//////		CoordinatePositionMovement(CTransX(0.00f, 30.00f), CTransY(0.00f,30.00f),CTransX(0.00f, -30.00f), CTransY(0.00f,-30.00f));
-//		
-//		AngularRotationMovement(motor_Position[2], 96.0f);//52
-////		CoordinatePositionMovement(0, 0,  550,0);
-////		AngularRotationMovement(motor_Position[2], 47.0f);
-////		CoordinatePositionMovement(0, 0,  -1200,0);
-////		AngularRotationMovement(motor_Position[2], -47.0f);
-////		CoordinatePositionMovement(0, 0, -1100,0);
-////		AngularRotationMovement(motor_Position[2], 47.0f);
-//		CoordinatePositionMovement(0, 0, -1200,0);
-////		AngularRotationMovement(motor_Position[2], -47.0f);
-////		CoordinatePositionMovement(0, 0,  550,0);
-//////	CoordinatePositionMovement_Speed(motor_Position[0], motor_Position[1], CTransX(-2000.00f, 0.00f), CTransY(-2000.00f, 0.00f));
-////	delay_ms(2);
-//Control_Mode=STOP_MODE;
-////	Control_Mode=TRACK_MODE;
-
-
-//	while(1){
-//		switch(Control_Mode){
-//			case TRACK_MODE:
-//				trackModeState = startTrack(50);
-//				if(trackModeState){
-//					stateInit();
-//					//runStop();
-//					//Èç¹ûĞ¡³µÎ»ÓÚÆğÊ¼Î»ÖÃ£¬×öÌ§Éı;Èç¹ûĞ¡³µÎ»ÓÚ½áÎ²Î»ÖÃ£¬×ö·ÅÏÂ²Ù×÷
-//					Control_Mode = STOP_MODE;
-//				}
-//	//				Control_Mode=DROP_MODE;
-//				break;
-//			case DROP_MODE:
-//				Lift_Drop_box(-360);
-//				CoordinatePositionMovement(0, 0, CTransX(0.00f, 200.00f), CTransY(0.00f,200.00f));
-//				CoordinatePositionMovement(CTransX(0.00f, 200.00f), CTransY(0.00f,200.00f),CTransX(-300.00f, 200.00f), CTransY(-300.00f,200.00f));
-//				CoordinatePositionMovement(CTransX(-300.00f, 200.00f), CTransY(-300.00f,200.00f),CTransX(-300.00f, 00.00f), CTransY(-300.00f,00.00f));
-//				Lift_Drop_box(0);
-//				Servo_Init();
-//				Control_Mode = STOP_MODE;
-//			case STOP_MODE:
-//				MotorSpeedExpected(0, 0, 0, 0, 0);
-//				delay_ms(1);
-//			default:
-//				Control_Mode=STOP_MODE;
-//		}
-//	}
-////////	
-////////	
-////////	
-////////	
-////	while(1){
-////		Clockwise;
-////		delay_ms(1000);
-////		MoveToDefault;
-////		delay_ms(1000);
-//////		CounterClockwise;
-//////		delay_ms(1000);
-//////		MoveToDefault;
-//////		delay_ms(1000);
-////	}
-//////	
-//////	
-//////	while(1){
-//////		trackModeState = startTrack();
-//////		if(trackModeState){
-//////			runStop();
-//////		}
-//////	}
-//////	
-////	
-////	
-////	
-////	
-//	
-	
-
-	
-//	u8 state1 = 0;
-//	u16 cnt = 0;
-//	while(1){
-//		if(state1 == 0){
-//			clockwiseRotate();
-//			cnt++;
-//			if(cnt > 1500){
-//				state1 = 1;
-//				cnt = 0;
-//			}
-//		}
-//		if(state1 == 1){
-//			clockwiseCounterRotate();
-//			cnt++;
-//			if(cnt > 1500){
-//				state1 = 0;
-//				cnt = 0;
-//			}
-//		}
-//	}
-	
-	
-	
-//	
-//	
-	
-	
+	u8 nextTrackState = 0;	
 	
 	
 	
 	
 
 	
-	/*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªV ¼ì²âÅ£ÄÌÏä×´Ì¬£» ²¢½øĞĞÒÆÎ»²Ù×÷£¬Èç¹ûÎ»ÖÃ1Ã»ÓĞÅ£ÄÌÏä£¬ÔòÒÆÎ»µ½Î»ÖÃ0 V¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
+	/*â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”V æ£€æµ‹ç‰›å¥¶ç®±çŠ¶æ€ï¼› å¹¶è¿›è¡Œç§»ä½æ“ä½œï¼Œå¦‚æœä½ç½®1æ²¡æœ‰ç‰›å¥¶ç®±ï¼Œåˆ™ç§»ä½åˆ°ä½ç½®0 Vâ€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”*/
 		while(nextTrackState == 0){
 			nextTrackState = nextTrack(30);
 		}
@@ -297,33 +158,33 @@ int main(void){
 	Sbox_state[0][0] = cal_distance3();
 	if(Sbox_state[1][0] == 0){
 		Sbox_state[2][0] = 3;
-		CoordinatePositionMovement(0.0f, 0.0f, CTransX(-180.00f, 0.00f), CTransY(-180.00f, 0.00f));		//Èç¹ûÖĞ¼äÃ»ÓĞ£¬Ïò×óÒÆµ½Î»ÖÃ0¡£
+		CoordinatePositionMovement(0.0f, 0.0f, CTransX(-180.00f, 0.00f), CTransY(-180.00f, 0.00f));		//å¦‚æœä¸­é—´æ²¡æœ‰ï¼Œå‘å·¦ç§»åˆ°ä½ç½®0ã€‚
 		CoordinatePositionMovement(CTransX(-180.00f, 0.00f), CTransY(-180.00f, 0.00f), CTransX(-180.00f, 250.00f), CTransY(-180.00f, 250.00f));
-		motor_park_space_start = 0;//²¢½«Ğ¡³µµÄ×´Ì¬Î»ÉèÖÃÎª´¦ÓÚ0Î»ÖÃ
+		motor_park_space_start = 0;//å¹¶å°†å°è½¦çš„çŠ¶æ€ä½è®¾ç½®ä¸ºå¤„äº0ä½ç½®
 		Control_Mode = TRACK_MODE;
 	}
-	else{ //·ñÔòĞ¡³µ²»ÒÆÎ»
+	else{ //å¦åˆ™å°è½¦ä¸ç§»ä½
 		if(Sbox_state[0][0] == 0){Sbox_state[2][0] = 3;} else{Sbox_state[2][0] = 0;}
 		Control_Mode = LIFT_MODE;
 	}
-	/*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª^ ¼ì²âÅ£ÄÌÏä×´Ì¬£» ²¢½øĞĞÒÆÎ»²Ù×÷£¬Èç¹ûÎ»ÖÃ1Ã»ÓĞÅ£ÄÌÏä£¬ÔòÒÆÎ»µ½Î»ÖÃ0 ^¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
+	/*â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”^ æ£€æµ‹ç‰›å¥¶ç®±çŠ¶æ€ï¼› å¹¶è¿›è¡Œç§»ä½æ“ä½œï¼Œå¦‚æœä½ç½®1æ²¡æœ‰ç‰›å¥¶ç®±ï¼Œåˆ™ç§»ä½åˆ°ä½ç½®0 ^â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”*/
 	
-	/*Program flow ideas£º
+	/*Program flow ideasï¼š
                        	 ------------------------------------------------------------------------<--------------------------------<
                      	v                                                                         |                                |
 	 LIFT_MODE -> MOBILE_MODE -> TRACK_MODE (if motor_Location == 0) -> LIFT_MODE -> MOBILE_MODE -^                                |
-											(if motor_Location == 0) -> DROP_MODE (if motor_park_space_start£¡=-1) -> MOBILE_MODE -^
+											(if motor_Location == 0) -> DROP_MODE (if motor_park_space_startï¼=-1) -> MOBILE_MODE -^
 																				  (if motor_park_space_start ==-1) -> STOP_MODE
 	*/
 
 	while(1){
 		switch(Control_Mode){
 			case MOBILE_MODE:
-				/*¹ì¼£¹æ»®*/
+				/*è½¨è¿¹è§„åˆ’*/
 				for (j=0; j<3; j++) {motor_Position[j]=0;}
 				routeplan(motor_park_space_start, motor_park_space_end, motor_Location);
 				
-				//×ª»»Ğ¡³µµÄs or e×´Ì¬
+				//è½¬æ¢å°è½¦çš„s or eçŠ¶æ€
 				if(motor_Location == 0){
 					motor_Location = 1;
 				}
@@ -338,7 +199,7 @@ int main(void){
 				trackModeState = startTrack(40);
 				if(trackModeState){
 					stateInit();
-					//Èç¹ûĞ¡³µÎ»ÓÚÆğÊ¼Î»ÖÃ£¬×öÌ§Éı;Èç¹ûĞ¡³µÎ»ÓÚ½áÎ²Î»ÖÃ£¬×ö·ÅÏÂ²Ù×÷
+					//å¦‚æœå°è½¦ä½äºèµ·å§‹ä½ç½®ï¼ŒåšæŠ¬å‡;å¦‚æœå°è½¦ä½äºç»“å°¾ä½ç½®ï¼Œåšæ”¾ä¸‹æ“ä½œ
 					if(motor_Location == 0){
 						Control_Mode=LIFT_MODE;
 					}
