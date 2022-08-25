@@ -18,13 +18,11 @@
 
 ## 2. Rule of  the contest:
 
-The [Motor_can](https://github.com/csbebetter/Motor_can) code is used to control the Intelligent moving robot  to move and carry the boxes. The blue circle is the start point of the robot. The green circle is the obstacle. The moving robot should transfer the boxes from the blue stacking area to the red placement area. the robot must pass through the obstacles. In addition, the robot needs to recognize the boxes pose intelligently.
+The [Motor_can](https://github.com/csbebetter/Motor_can) code is used to control the Intelligent moving robot  to move and carry the boxes. The blue circle is the start point of the robot. The green circle is the obstacle. The moving robot should transfer the boxes from the blue stacking area to the red placement area and the robot must pass through the obstacles. In addition, the robot needs to recognize the boxes pose intelligently.
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/70866844/185326114-abafdfab-ea89-4a9f-a688-429f38928b2e.jpg" width="70%" > 
 </div>
-
-
 
 
 ## 3. Introduction of the code
@@ -34,3 +32,25 @@ The [Motor_can](https://github.com/csbebetter/Motor_can) code is used to control
 <div align="center">
 <img src="https://user-images.githubusercontent.com/70866844/185852224-8b14656f-aef2-4fb6-b5bd-98b7be6519ac.png" width="70%"> 
 </div>
+
+Through the above flow chart，you must have seen that we have defined several different sport modes. They include ```LIFT_MODE \ MOBILE_MODE \ TRACK_MODE \ DROP_MODE  \ STOP_MODE```. 
+
+```c
+while(1){
+  switch(Control_Mode){
+    case LIFT_MODE:
+    
+    case MOBILE_MODE:
+    
+    case TRACK_MODE:
+    
+    case DROP_MODE:
+    
+    case STOP_MODE:
+    
+    default:
+      Control_Mode = STOP_MODE;
+  }
+}
+
+```
